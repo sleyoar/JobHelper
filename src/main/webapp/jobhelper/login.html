@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login</title>
+        <title>登录</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -49,9 +49,6 @@
         <script src="../static/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>  
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->  
 
         <!--Main Wrapper Start-->
         <div class="as-mainwrapper">
@@ -123,11 +120,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="breadcrumb-text">
-                                    <h2 class="text-center text-white uppercase mb-17">Login</h2>
+                                    <h2 class="text-center text-white uppercase mb-17">登录</h2>
                                     <div class="breadcrumb-bar">
                                         <ul class="breadcrumb text-center m-0">
-                                            <li class="text-white uppercase ml-15 mr-15"><a href="index.html">Home</a></li>
-                                            <li class="text-white uppercase ml-15 mr-15">Login</li>
+                                            <li class="text-white uppercase ml-15 mr-15"><a href="index.html">主页</a></li>
+                                            <li class="text-white uppercase ml-15 mr-15">登录</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -143,41 +140,41 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <form action="#">
                                     <div class="area-title text-center">
-                                        <h2 class="pt-10 pb-10">Login or create an account</h2>
+                                        <h2 class="pt-10 pb-10">登录或创建一个账户</h2>
                                     </div>
                                     <div class="account-form-container fix mt-70">
-                                        <a class="button button-style-two medium mb-7 modal-view" href="#" data-toggle="modal" data-target="#register">Register</a>
+                                        <a class="button button-style-two medium mb-7 modal-view" href="#" data-toggle="modal" data-target="#register">注册</a>
                                         <div class="text-center fix">
-                                            <a class="button button-style-two medium col-4 border-title bg-white modal-view" href="#" data-toggle="modal" data-target="#productModal">Already have account ? Login</a>
+                                            <a class="button button-style-two medium col-4 border-title bg-white modal-view" href="#" data-toggle="modal" data-target="#productModal">您已经有账号？去登录</a>
                                         </div>
                                         <div class="login-form mt-36">
                                             <div class="single-info pb-14 fix">
-                                                <label for="name" class="pull-left m-0 lg-text">User Name:</label>
+                                                <label for="name" class="pull-left m-0 lg-text">用户名:</label>
                                                 <div class="form-box col-4 fix">
-                                                    <input type="text" id="name" name="user_name" placeholder="Please enter your name">
+                                                    <input type="text" id="name" name="user_name" placeholder="请输入用户名" required>
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14 fix">
-                                                <label for="email" class="pull-left m-0 lg-text">Email address:</label>
+                                                <label for="email" class="pull-left m-0 lg-text">邮箱:</label>
                                                 <div class="form-box col-4 fix">
-                                                    <input type="text" id="email" name="email" placeholder="Please enter your email">
+                                                    <input type="email" id="email" name="email" placeholder="输入合适的邮箱地址">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14 fix">
-                                                <label for="password" class="pull-left m-0 lg-text">Password:</label>
+                                                <label for="password" class="pull-left m-0 lg-text">密码:</label>
                                                 <div class="form-box col-4 fix">
-                                                    <input type="password" id="password" name="password" placeholder="Please enter your password">
+                                                    <input type="password" id="password" name="password" placeholder="请输入密码" required>
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14 fix">
-                                                <label for="r_password" class="pull-left m-0 lg-text">Retype password:</label>
+                                                <label for="r_password" class="pull-left m-0 lg-text">再次输入密码:</label>
                                                 <div class="form-box col-4 fix">
-                                                    <input type="password" id="r_password" name="r_password" placeholder="Please enter your password">
+                                                    <input type="password" id="r_password" name="r_password" placeholder="请再次输入密码" required>
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="block conditions fix mt-34"><input type="checkbox" class="p-0 pull-left">I agree with the terms of use</span>
-                                        <button class="button button-style-two medium mt-15">Continue</button>
+                                        <span class="block conditions fix mt-34"><input type="checkbox" class="p-0 pull-left" required>我同意使用条例</span>
+                                        <button class="button button-style-two medium mt-15">注册</button>
                                     </div>
                                 </form>    
                             </div>
@@ -288,7 +285,7 @@
                         <div class="modal-body">
 							<div class="form-pop-up-content ptb-60 pl-60 pr-60">
 								<div class="area-title text-center mb-43">
-									<h2 class="pt-7 pb-7 pl-40 pr-40">Login</h2>
+									<h2 class="pt-7 pb-7 pl-40 pr-40">登录</h2>
 								</div>
 								<form method="post" action="#">
 									<div class="form-box">
@@ -297,10 +294,10 @@
 									</div>
 									<div class="fix ptb-30">
 										<span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span>
-										<span class="pull-right"><a href="#">Forget Password?</a></span>
+										<span class="pull-right"><a href="#">忘记密码?</a></span>
 									</div>
 									<div class="text-center">
-										<button type="submit" class="text-uppercase">SignIn</button>
+										<button type="submit" class="text-uppercase">登录</button>
 									</div>
 								</form>
 							</div>
@@ -323,24 +320,23 @@
                         <div class="modal-body">
 							<div class="form-pop-up-content ptb-60 pl-60 pr-60">
 								<div class="area-title text-center mb-43">
-									<h2 class="pt-7 pb-7 pl-40 pr-40">Sign Up</h2>
+									<h2 class="pt-7 pb-7 pl-40 pr-40">注册</h2>
 								</div>
 								<form method="post" action="#">
 									<div class="form-box">
-										<input type="text" name="fullname" placeholder="Full Name" class="mb-14">
-										<input type="text" name="username" placeholder="User Name" class="mb-14">
-										<input type="email" name="email" placeholder="Email" class="mb-14">
-										<input type="password" name="pass" placeholder="Password" class="mb-14">
-										<input type="password" name="re_pass" placeholder="Confirm Password">
+										<input type="text" name="username" placeholder="用户名" class="mb-14">
+										<input type="email" name="email" placeholder="邮箱" class="mb-14">
+										<input type="password" name="pass" placeholder="密码" class="mb-14">
+										<input type="password" name="re_pass" placeholder="密码验证">
 									</div>
 									<div class="fix ptb-30">
 										<span class="remember">
-											<input class="p-0 pull-left" type="checkbox">
-											<span class="fix block">There are many variations of passages of Lorem Ipsum available</span> 
+											<input class="p-0 pull-left" type="checkbox" required>
+											<span class="fix block">我同意相关使用条例</span>
 										</span>
 									</div>
 									<div class="text-center">
-										<button type="submit" class="text-uppercase">Register</button>
+										<button type="submit" class="text-uppercase">注册</button>
 									</div>
 								</form>
 							</div>
@@ -372,11 +368,9 @@
         <!-- Js plugins included in this file
 		========================================================= -->	
         <script src="../static/js/plugins.js"></script>
-        
-		<!-- Video Player JS
-		========================================================= -->			
+        <!-- Video Player JS
+        ========================================================= -->
         <script src="../static/js/jquery.mb.YTPlayer.js"></script>
-
 		<!-- StyleSwitch JS
 		========================================================= -->		
         <script src="../static/js/styleswitch.js"></script>
