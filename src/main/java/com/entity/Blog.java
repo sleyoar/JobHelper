@@ -9,9 +9,14 @@ public class Blog {
 
     private String blogCategory;
 
+    private String blogTitle;
+
     private Date blogDate;
 
     private String blogContext;
+
+    public Blog() {
+    }
 
     @Override
     public String toString() {
@@ -19,12 +24,10 @@ public class Blog {
                 "blogId=" + blogId +
                 ", blogUser='" + blogUser + '\'' +
                 ", blogCategory='" + blogCategory + '\'' +
+                ", blogTitle='" + blogTitle + '\'' +
                 ", blogDate=" + blogDate +
                 ", blogContext='" + blogContext + '\'' +
                 '}';
-    }
-
-    public Blog() {
     }
 
     public Integer getBlogId() {
@@ -49,6 +52,14 @@ public class Blog {
 
     public void setBlogCategory(String blogCategory) {
         this.blogCategory = blogCategory == null ? null : blogCategory.trim();
+    }
+
+    public String getBlogTitle() {
+        return blogTitle;
+    }
+
+    public void setBlogTitle(String blogTitle) {
+        this.blogTitle = blogTitle == null ? null : blogTitle.trim();
     }
 
     public Date getBlogDate() {
