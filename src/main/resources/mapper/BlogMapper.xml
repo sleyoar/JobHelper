@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BlogMapper">
+    <resultMap id="BaseResultMap" type="com.entity.Blog">
+        <id column="blog_id" jdbcType="INTEGER" property="blogId"/>
+        <result column="blog_user" jdbcType="VARCHAR" property="blogUser"/>
+        <result column="blog_category" jdbcType="VARCHAR" property="blogCategory"/>
+        <result column="blog_date" jdbcType="DATE" property="blogDate"/>
+        <result column="blog_context" jdbcType="LONGVARCHAR" property="blogContext"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from jh_blog
+        where blog_id = #{blogId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.Blog">
+        insert into jh_blog (blog_id, blog_user, blog_category,
+                             blog_date, blog_context)
+        values (#{blogId,jdbcType=INTEGER}, #{blogUser,jdbcType=VARCHAR}, #{blogCategory,jdbcType=VARCHAR},
+                #{blogDate,jdbcType=DATE}, #{blogContext,jdbcType=LONGVARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.Blog">
+        update jh_blog
+        set blog_user     = #{blogUser,jdbcType=VARCHAR},
+            blog_category = #{blogCategory,jdbcType=VARCHAR},
+            blog_date     = #{blogDate,jdbcType=DATE},
+            blog_context  = #{blogContext,jdbcType=LONGVARCHAR}
+        where blog_id = #{blogId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select blog_id, blog_user, blog_category, blog_date, blog_context
+        from jh_blog
+        where blog_id = #{blogId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select blog_id, blog_user, blog_category, blog_date, blog_context
+        from jh_blog
+    </select>
+    <resultMap id="BaseResultMap" type="com.entity.Blog">
+        <id column="blog_id" jdbcType="INTEGER" property="blogId"/>
+        <result column="blog_user" jdbcType="VARCHAR" property="blogUser"/>
+        <result column="blog_category" jdbcType="VARCHAR" property="blogCategory"/>
+        <result column="blog_date" jdbcType="DATE" property="blogDate"/>
+        <result column="blog_context" jdbcType="LONGVARCHAR" property="blogContext"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from jh_blog
+        where blog_id = #{blogId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.Blog">
+        insert into jh_blog (blog_id, blog_user, blog_category,
+                             blog_date, blog_context)
+        values (#{blogId,jdbcType=INTEGER}, #{blogUser,jdbcType=VARCHAR}, #{blogCategory,jdbcType=VARCHAR},
+                #{blogDate,jdbcType=DATE}, #{blogContext,jdbcType=LONGVARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.Blog">
+        update jh_blog
+        set blog_user     = #{blogUser,jdbcType=VARCHAR},
+            blog_category = #{blogCategory,jdbcType=VARCHAR},
+            blog_date     = #{blogDate,jdbcType=DATE},
+            blog_context  = #{blogContext,jdbcType=LONGVARCHAR}
+        where blog_id = #{blogId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select blog_id, blog_user, blog_category, blog_date, blog_context
+        from jh_blog
+        where blog_id = #{blogId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select blog_id, blog_user, blog_category, blog_date, blog_context
+        from jh_blog
+    </select>
+</mapper>

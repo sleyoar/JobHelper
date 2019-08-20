@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.entity.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
+        <result column="user_email" jdbcType="VARCHAR" property="userEmail"/>
+        <result column="resume_id" jdbcType="INTEGER" property="resumeId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from jh_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.User">
+        insert into jh_user (user_id, user_name, user_password,
+                             user_email, resume_id)
+        values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
+                #{userEmail,jdbcType=VARCHAR}, #{resumeId,jdbcType=INTEGER})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.User">
+        update jh_user
+        set user_name     = #{userName,jdbcType=VARCHAR},
+            user_password = #{userPassword,jdbcType=VARCHAR},
+            user_email    = #{userEmail,jdbcType=VARCHAR},
+            resume_id     = #{resumeId,jdbcType=INTEGER}
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select user_id, user_name, user_password, user_email, resume_id
+        from jh_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select user_id, user_name, user_password, user_email, resume_id
+        from jh_user
+    </select>
+    <resultMap id="BaseResultMap" type="com.entity.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
+        <result column="user_email" jdbcType="VARCHAR" property="userEmail"/>
+        <result column="resume_id" jdbcType="INTEGER" property="resumeId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from jh_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.User">
+        insert into jh_user (user_id, user_name, user_password,
+                             user_email, resume_id)
+        values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
+                #{userEmail,jdbcType=VARCHAR}, #{resumeId,jdbcType=INTEGER})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.User">
+        update jh_user
+        set user_name     = #{userName,jdbcType=VARCHAR},
+            user_password = #{userPassword,jdbcType=VARCHAR},
+            user_email    = #{userEmail,jdbcType=VARCHAR},
+            resume_id     = #{resumeId,jdbcType=INTEGER}
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select user_id, user_name, user_password, user_email, resume_id
+        from jh_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select user_id, user_name, user_password, user_email, resume_id
+        from jh_user
+    </select>
+</mapper>

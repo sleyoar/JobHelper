@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ResumeMapper">
+    <resultMap id="BaseResultMap" type="com.entity.Resume">
+        <id column="resume_id" jdbcType="INTEGER" property="resumeId"/>
+        <result column="resume_pic" jdbcType="VARCHAR" property="resumePic"/>
+        <result column="resume_name" jdbcType="VARCHAR" property="resumeName"/>
+        <result column="resume_address" jdbcType="VARCHAR" property="resumeAddress"/>
+        <result column="resume_phone" jdbcType="VARCHAR" property="resumePhone"/>
+        <result column="resume_email" jdbcType="VARCHAR" property="resumeEmail"/>
+        <result column="resume_page" jdbcType="VARCHAR" property="resumePage"/>
+        <result column="resume_describe" jdbcType="VARCHAR" property="resumeDescribe"/>
+        <result column="resume_school" jdbcType="VARCHAR" property="resumeSchool"/>
+        <result column="resume_degree" jdbcType="VARCHAR" property="resumeDegree"/>
+        <result column="resume_honour" jdbcType="VARCHAR" property="resumeHonour"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="project_time" jdbcType="INTEGER" property="projectTime"/>
+        <result column="project_describe" jdbcType="LONGVARCHAR" property="projectDescribe"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from jh_resume
+        where resume_id = #{resumeId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.Resume">
+        insert into jh_resume (resume_id, resume_pic, resume_name,
+                               resume_address, resume_phone, resume_email,
+                               resume_page, resume_describe, resume_school,
+                               resume_degree, resume_honour, project_name,
+                               project_time, project_describe)
+        values (#{resumeId,jdbcType=INTEGER}, #{resumePic,jdbcType=VARCHAR}, #{resumeName,jdbcType=VARCHAR},
+                #{resumeAddress,jdbcType=VARCHAR}, #{resumePhone,jdbcType=VARCHAR}, #{resumeEmail,jdbcType=VARCHAR},
+                #{resumePage,jdbcType=VARCHAR}, #{resumeDescribe,jdbcType=VARCHAR}, #{resumeSchool,jdbcType=VARCHAR},
+                #{resumeDegree,jdbcType=VARCHAR}, #{resumeHonour,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR},
+                #{projectTime,jdbcType=INTEGER}, #{projectDescribe,jdbcType=LONGVARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.Resume">
+        update jh_resume
+        set resume_pic       = #{resumePic,jdbcType=VARCHAR},
+            resume_name      = #{resumeName,jdbcType=VARCHAR},
+            resume_address   = #{resumeAddress,jdbcType=VARCHAR},
+            resume_phone     = #{resumePhone,jdbcType=VARCHAR},
+            resume_email     = #{resumeEmail,jdbcType=VARCHAR},
+            resume_page      = #{resumePage,jdbcType=VARCHAR},
+            resume_describe  = #{resumeDescribe,jdbcType=VARCHAR},
+            resume_school    = #{resumeSchool,jdbcType=VARCHAR},
+            resume_degree    = #{resumeDegree,jdbcType=VARCHAR},
+            resume_honour    = #{resumeHonour,jdbcType=VARCHAR},
+            project_name     = #{projectName,jdbcType=VARCHAR},
+            project_time     = #{projectTime,jdbcType=INTEGER},
+            project_describe = #{projectDescribe,jdbcType=LONGVARCHAR}
+        where resume_id = #{resumeId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select resume_id,
+               resume_pic,
+               resume_name,
+               resume_address,
+               resume_phone,
+               resume_email,
+               resume_page,
+               resume_describe,
+               resume_school,
+               resume_degree,
+               resume_honour,
+               project_name,
+               project_time,
+               project_describe
+        from jh_resume
+        where resume_id = #{resumeId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select resume_id,
+               resume_pic,
+               resume_name,
+               resume_address,
+               resume_phone,
+               resume_email,
+               resume_page,
+               resume_describe,
+               resume_school,
+               resume_degree,
+               resume_honour,
+               project_name,
+               project_time,
+               project_describe
+        from jh_resume
+    </select>
+    <resultMap id="BaseResultMap" type="com.entity.Resume">
+        <id column="resume_id" jdbcType="INTEGER" property="resumeId"/>
+        <result column="resume_pic" jdbcType="VARCHAR" property="resumePic"/>
+        <result column="resume_name" jdbcType="VARCHAR" property="resumeName"/>
+        <result column="resume_address" jdbcType="VARCHAR" property="resumeAddress"/>
+        <result column="resume_phone" jdbcType="VARCHAR" property="resumePhone"/>
+        <result column="resume_email" jdbcType="VARCHAR" property="resumeEmail"/>
+        <result column="resume_page" jdbcType="VARCHAR" property="resumePage"/>
+        <result column="resume_describe" jdbcType="VARCHAR" property="resumeDescribe"/>
+        <result column="resume_school" jdbcType="VARCHAR" property="resumeSchool"/>
+        <result column="resume_degree" jdbcType="VARCHAR" property="resumeDegree"/>
+        <result column="resume_honour" jdbcType="VARCHAR" property="resumeHonour"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="project_time" jdbcType="INTEGER" property="projectTime"/>
+        <result column="project_describe" jdbcType="LONGVARCHAR" property="projectDescribe"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from jh_resume
+        where resume_id = #{resumeId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.Resume">
+        insert into jh_resume (resume_id, resume_pic, resume_name,
+                               resume_address, resume_phone, resume_email,
+                               resume_page, resume_describe, resume_school,
+                               resume_degree, resume_honour, project_name,
+                               project_time, project_describe)
+        values (#{resumeId,jdbcType=INTEGER}, #{resumePic,jdbcType=VARCHAR}, #{resumeName,jdbcType=VARCHAR},
+                #{resumeAddress,jdbcType=VARCHAR}, #{resumePhone,jdbcType=VARCHAR}, #{resumeEmail,jdbcType=VARCHAR},
+                #{resumePage,jdbcType=VARCHAR}, #{resumeDescribe,jdbcType=VARCHAR}, #{resumeSchool,jdbcType=VARCHAR},
+                #{resumeDegree,jdbcType=VARCHAR}, #{resumeHonour,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR},
+                #{projectTime,jdbcType=INTEGER}, #{projectDescribe,jdbcType=LONGVARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.Resume">
+        update jh_resume
+        set resume_pic       = #{resumePic,jdbcType=VARCHAR},
+            resume_name      = #{resumeName,jdbcType=VARCHAR},
+            resume_address   = #{resumeAddress,jdbcType=VARCHAR},
+            resume_phone     = #{resumePhone,jdbcType=VARCHAR},
+            resume_email     = #{resumeEmail,jdbcType=VARCHAR},
+            resume_page      = #{resumePage,jdbcType=VARCHAR},
+            resume_describe  = #{resumeDescribe,jdbcType=VARCHAR},
+            resume_school    = #{resumeSchool,jdbcType=VARCHAR},
+            resume_degree    = #{resumeDegree,jdbcType=VARCHAR},
+            resume_honour    = #{resumeHonour,jdbcType=VARCHAR},
+            project_name     = #{projectName,jdbcType=VARCHAR},
+            project_time     = #{projectTime,jdbcType=INTEGER},
+            project_describe = #{projectDescribe,jdbcType=LONGVARCHAR}
+        where resume_id = #{resumeId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select resume_id,
+               resume_pic,
+               resume_name,
+               resume_address,
+               resume_phone,
+               resume_email,
+               resume_page,
+               resume_describe,
+               resume_school,
+               resume_degree,
+               resume_honour,
+               project_name,
+               project_time,
+               project_describe
+        from jh_resume
+        where resume_id = #{resumeId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select resume_id,
+               resume_pic,
+               resume_name,
+               resume_address,
+               resume_phone,
+               resume_email,
+               resume_page,
+               resume_describe,
+               resume_school,
+               resume_degree,
+               resume_honour,
+               project_name,
+               project_time,
+               project_describe
+        from jh_resume
+    </select>
+</mapper>
