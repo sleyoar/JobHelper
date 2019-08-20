@@ -13,14 +13,31 @@
     <!--配置注解驱动-->
     <mvc:annotation-driven/>
     <!--静态资源-->
-    <mvc:default-servlet-handler/>
+    <!--<mvc:default-servlet-handler/>-->
+    <mvc:resources location="/static/" mapping="/static/**" />
     <!--视图解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jobhelper/"/>
         <property name="suffix" value=".jsp"/>
-        <!--<property name="suffix" value=".html"/>-->
+    </bean>-->
+
+    <!--  模板解析器 -->
+    <bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/jobhelper/"/>
+        <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML5"/>
+        <property name="cacheable" value="false"/>
+        <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
+    <bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+    </bean>
+
+    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
     <!--其他。。转换器，文件上传等等-->
 
 </beans>

@@ -1,5 +1,4 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,7 +8,7 @@
 
     <!-- favicon
     ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/static/images/favicon.ico}">
 
     <!-- Google Fonts
     ============================================ -->
@@ -19,34 +18,34 @@
     ============================================ -->
     <!-- Bootstrap CSS
     ============================================ -->
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">
 
     <!-- This core.css file contents all plugins css file
     ============================================ -->
-    <link rel="stylesheet" href="../static/css/core.css">
+    <link rel="stylesheet" th:href="@{/static/css/core.css}">
 
     <!-- Theme shortcodes/elements style
     ============================================ -->
-    <link rel="stylesheet" href="../static/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" th:href="@{/static/css/shortcode/shortcodes.css}">
 
     <!-- Color Swithcer CSS
     ============================================ -->
-    <link rel="stylesheet" href="../static/css/plugins/color-switcher.css">
+    <link rel="stylesheet" th:href="@{/static/css/plugins/color-switcher.css}">
 
     <!--  Theme main style
     ============================================ -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
 
     <!-- Color CSS
     ============================================ -->
-    <link rel="stylesheet" href="../static/css/plugins/color.css">
+    <link rel="stylesheet" th:href="@{/static/css/plugins/color.css}">
 
     <!-- Responsive CSS
     ============================================ -->
-    <link rel="stylesheet" href="../static/css/responsive.css">
+    <link rel="stylesheet" th:href="@{/static/css/responsive.css}">
 
     <!-- Modernizr JS -->
-    <script src="../static/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script th:src="@{/static/js/vendor/modernizr-2.8.3.min.js}"></script>
 </head>
 <body>
 <!--Main Wrapper Start-->
@@ -58,7 +57,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-xs-12">
-                        <div class="logo"><a href="index.html"><img src="../static/images/logo/logo.png" alt="JobHelp"></a>
+                        <div class="logo"><a href="index.html"><img th:src="@{/static/images/logo/logo.png}"
+                                                                    alt="JobHelp"></a>
                         </div>
                     </div>
                     <div class="col-md-9 hidden-sm hidden-xs">
@@ -155,7 +155,8 @@
                                     <div class="single-info pb-14">
                                         <label for="jobSalary" class="uppercase pull-left m-0">职位薪资</label>
                                         <div class="form-box fix">
-                                            <input type="text" id="jobSalary" name="jobSalary" placeholder="输入薪资(??K-??K)">
+                                            <input type="text" id="jobSalary" name="jobSalary"
+                                                   placeholder="输入薪资(??K-??K)">
                                         </div>
                                     </div>
                                     <div class="single-info pb-14">
@@ -237,7 +238,8 @@
                 <div class="row">
                     <div class="col-md-6 fix col-xs-12 col-sm-6">
                         <div class="footer-logo pull-left">
-                            <a href="index.html" class="block"><img src="../static/images/logo/footer-logo.png" alt=""></a>
+                            <a href="index.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}"
+                                                                    alt=""></a>
                         </div>
                     </div>
                     <div class="col-md-6 fix col-xs-12 col-sm-6">
@@ -323,40 +325,36 @@
 <!--End of Main Wrapper Area-->
 <!-- jquery latest version
 ========================================================= -->
-<script src="../static/js/vendor/jquery-1.12.4.min.js"></script>
+<script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>
 
 <!-- Bootstrap framework js
 ========================================================= -->
-<script src="../static/js/bootstrap.min.js"></script>
+<script th:src="@{/static/js/bootstrap.min.js}"></script>
 
 <!-- Owl Carousel js
 ========================================================= -->
-<script src="../static/js/owl.carousel.min.js"></script>
+<script th:src="@{/static/js/owl.carousel.min.js}"></script>
 
 <!-- nivo slider js
 ========================================================= -->
-<script src="../static/lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
-<script src="../static/lib/nivo-slider/home.js" type="text/javascript"></script>
+<script th:src="@{/static/lib/nivo-slider/js/jquery.nivo.slider.js}" type="text/javascript"></script>
+<script th:src="@{/static/lib/nivo-slider/home.js}" type="text/javascript"></script>
 
 <!-- Js plugins included in this file
 ========================================================= -->
-<script src="../static/js/plugins.js"></script>
-
-<!-- Video Player JS
-========================================================= -->
-<script src="../static/js/jquery.mb.YTPlayer.js"></script>
+<script th:src="@{/static/js/plugins.js}"></script>
 
 <!-- StyleSwitch JS
 ========================================================= -->
-<script src="../static/js/styleswitch.js"></script>
+<script th:src="@{/static/js/styleswitch.js}"></script>
 
 <!-- Waypoint Js
 ========================================================= -->
-<script src="../static/js/waypoints.min.js"></script>
+<script th:src="@{/static/js/waypoints.min.js}"></script>
 
 <!-- Main js file contents all jQuery plugins activation
 ========================================================= -->
-<script src="../static/js/main.js"></script>
+<script th:src="@{/static/js/main.js}"></script>
 
 </body>
 </html>

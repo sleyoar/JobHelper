@@ -1,62 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.AdminMapper">
-    <resultMap id="BaseResultMap" type="com.entity.Admin">
-        <id column="admin_id" jdbcType="INTEGER" property="adminId"/>
-        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
-        <result column="admin_password" jdbcType="VARCHAR" property="adminPassword"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from jh_admin
-        where admin_id = #{adminId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.entity.Admin">
-        insert into jh_admin (admin_id, admin_name, admin_password)
-        values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR})
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.entity.Admin">
-        update jh_admin
-        set admin_name     = #{adminName,jdbcType=VARCHAR},
-            admin_password = #{adminPassword,jdbcType=VARCHAR}
-        where admin_id = #{adminId,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select admin_id, admin_name, admin_password
-        from jh_admin
-        where admin_id = #{adminId,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select admin_id, admin_name, admin_password
-        from jh_admin
-    </select>
-    <resultMap id="BaseResultMap" type="com.entity.Admin">
-        <id column="admin_id" jdbcType="INTEGER" property="adminId"/>
-        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
-        <result column="admin_password" jdbcType="VARCHAR" property="adminPassword"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from jh_admin
-        where admin_id = #{adminId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.entity.Admin">
-        insert into jh_admin (admin_id, admin_name, admin_password)
-        values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR})
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.entity.Admin">
-        update jh_admin
-        set admin_name     = #{adminName,jdbcType=VARCHAR},
-            admin_password = #{adminPassword,jdbcType=VARCHAR}
-        where admin_id = #{adminId,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select admin_id, admin_name, admin_password
-        from jh_admin
-        where admin_id = #{adminId,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select admin_id, admin_name, admin_password
-        from jh_admin
-    </select>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Admin" >
+    <id column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
+    <result column="admin_password" property="adminPassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jh_admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Admin" >
+    insert into jh_admin (admin_id, admin_name, admin_password
+      )
+    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Admin" >
+    update jh_admin
+    set admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_password = #{adminPassword,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select admin_id, admin_name, admin_password
+    from jh_admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select admin_id, admin_name, admin_password
+    from jh_admin
+  </select>
 </mapper>

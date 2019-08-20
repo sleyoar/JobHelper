@@ -1,138 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.JobMapper">
-    <resultMap id="BaseResultMap" type="com.entity.Job">
-        <id column="job_id" jdbcType="INTEGER" property="jobId"/>
-        <result column="job_name" jdbcType="VARCHAR" property="jobName"/>
-        <result column="job_salary" jdbcType="VARCHAR" property="jobSalary"/>
-        <result column="job_category" jdbcType="VARCHAR" property="jobCategory"/>
-        <result column="job_describe" jdbcType="VARCHAR" property="jobDescribe"/>
-        <result column="job_buff" jdbcType="VARCHAR" property="jobBuff"/>
-        <result column="job_need" jdbcType="VARCHAR" property="jobNeed"/>
-        <result column="job_quality" jdbcType="VARCHAR" property="jobQuality"/>
-        <result column="job_date" jdbcType="DATE" property="jobDate"/>
-        <result column="job_address" jdbcType="VARCHAR" property="jobAddress"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from jh_job
-        where job_id = #{jobId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.entity.Job">
-        insert into jh_job (job_id, job_name, job_salary,
-                            job_category, job_describe, job_buff,
-                            job_need, job_quality, job_date,
-                            job_address)
-        values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobSalary,jdbcType=VARCHAR},
-                #{jobCategory,jdbcType=VARCHAR}, #{jobDescribe,jdbcType=VARCHAR}, #{jobBuff,jdbcType=VARCHAR},
-                #{jobNeed,jdbcType=VARCHAR}, #{jobQuality,jdbcType=VARCHAR}, #{jobDate,jdbcType=DATE},
-                #{jobAddress,jdbcType=VARCHAR})
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.entity.Job">
-        update jh_job
-        set job_name     = #{jobName,jdbcType=VARCHAR},
-            job_salary   = #{jobSalary,jdbcType=VARCHAR},
-            job_category = #{jobCategory,jdbcType=VARCHAR},
-            job_describe = #{jobDescribe,jdbcType=VARCHAR},
-            job_buff     = #{jobBuff,jdbcType=VARCHAR},
-            job_need     = #{jobNeed,jdbcType=VARCHAR},
-            job_quality  = #{jobQuality,jdbcType=VARCHAR},
-            job_date     = #{jobDate,jdbcType=DATE},
-            job_address  = #{jobAddress,jdbcType=VARCHAR}
-        where job_id = #{jobId,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select job_id,
-               job_name,
-               job_salary,
-               job_category,
-               job_describe,
-               job_buff,
-               job_need,
-               job_quality,
-               job_date,
-               job_address
-        from jh_job
-        where job_id = #{jobId,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select job_id,
-               job_name,
-               job_salary,
-               job_category,
-               job_describe,
-               job_buff,
-               job_need,
-               job_quality,
-               job_date,
-               job_address
-        from jh_job
-    </select>
-    <resultMap id="BaseResultMap" type="com.entity.Job">
-        <id column="job_id" jdbcType="INTEGER" property="jobId"/>
-        <result column="job_name" jdbcType="VARCHAR" property="jobName"/>
-        <result column="job_salary" jdbcType="VARCHAR" property="jobSalary"/>
-        <result column="job_category" jdbcType="VARCHAR" property="jobCategory"/>
-        <result column="job_describe" jdbcType="VARCHAR" property="jobDescribe"/>
-        <result column="job_buff" jdbcType="VARCHAR" property="jobBuff"/>
-        <result column="job_need" jdbcType="VARCHAR" property="jobNeed"/>
-        <result column="job_quality" jdbcType="VARCHAR" property="jobQuality"/>
-        <result column="job_date" jdbcType="DATE" property="jobDate"/>
-        <result column="job_address" jdbcType="VARCHAR" property="jobAddress"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from jh_job
-        where job_id = #{jobId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.entity.Job">
-        insert into jh_job (job_id, job_name, job_salary,
-                            job_category, job_describe, job_buff,
-                            job_need, job_quality, job_date,
-                            job_address)
-        values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobSalary,jdbcType=VARCHAR},
-                #{jobCategory,jdbcType=VARCHAR}, #{jobDescribe,jdbcType=VARCHAR}, #{jobBuff,jdbcType=VARCHAR},
-                #{jobNeed,jdbcType=VARCHAR}, #{jobQuality,jdbcType=VARCHAR}, #{jobDate,jdbcType=DATE},
-                #{jobAddress,jdbcType=VARCHAR})
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.entity.Job">
-        update jh_job
-        set job_name     = #{jobName,jdbcType=VARCHAR},
-            job_salary   = #{jobSalary,jdbcType=VARCHAR},
-            job_category = #{jobCategory,jdbcType=VARCHAR},
-            job_describe = #{jobDescribe,jdbcType=VARCHAR},
-            job_buff     = #{jobBuff,jdbcType=VARCHAR},
-            job_need     = #{jobNeed,jdbcType=VARCHAR},
-            job_quality  = #{jobQuality,jdbcType=VARCHAR},
-            job_date     = #{jobDate,jdbcType=DATE},
-            job_address  = #{jobAddress,jdbcType=VARCHAR}
-        where job_id = #{jobId,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select job_id,
-               job_name,
-               job_salary,
-               job_category,
-               job_describe,
-               job_buff,
-               job_need,
-               job_quality,
-               job_date,
-               job_address
-        from jh_job
-        where job_id = #{jobId,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select job_id,
-               job_name,
-               job_salary,
-               job_category,
-               job_describe,
-               job_buff,
-               job_need,
-               job_quality,
-               job_date,
-               job_address
-        from jh_job
-    </select>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.JobMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Job" >
+    <id column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_salary" property="jobSalary" jdbcType="VARCHAR" />
+    <result column="job_category" property="jobCategory" jdbcType="VARCHAR" />
+    <result column="job_describe" property="jobDescribe" jdbcType="VARCHAR" />
+    <result column="job_buff" property="jobBuff" jdbcType="VARCHAR" />
+    <result column="job_need" property="jobNeed" jdbcType="VARCHAR" />
+    <result column="job_quality" property="jobQuality" jdbcType="VARCHAR" />
+    <result column="job_date" property="jobDate" jdbcType="DATE" />
+    <result column="job_address" property="jobAddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jh_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Job" >
+    insert into jh_job (job_id, job_name, job_salary, 
+      job_category, job_describe, job_buff, 
+      job_need, job_quality, job_date, 
+      job_address)
+    values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobSalary,jdbcType=VARCHAR}, 
+      #{jobCategory,jdbcType=VARCHAR}, #{jobDescribe,jdbcType=VARCHAR}, #{jobBuff,jdbcType=VARCHAR}, 
+      #{jobNeed,jdbcType=VARCHAR}, #{jobQuality,jdbcType=VARCHAR}, #{jobDate,jdbcType=DATE}, 
+      #{jobAddress,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Job" >
+    update jh_job
+    set job_name = #{jobName,jdbcType=VARCHAR},
+      job_salary = #{jobSalary,jdbcType=VARCHAR},
+      job_category = #{jobCategory,jdbcType=VARCHAR},
+      job_describe = #{jobDescribe,jdbcType=VARCHAR},
+      job_buff = #{jobBuff,jdbcType=VARCHAR},
+      job_need = #{jobNeed,jdbcType=VARCHAR},
+      job_quality = #{jobQuality,jdbcType=VARCHAR},
+      job_date = #{jobDate,jdbcType=DATE},
+      job_address = #{jobAddress,jdbcType=VARCHAR}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select job_id, job_name, job_salary, job_category, job_describe, job_buff, job_need, 
+    job_quality, job_date, job_address
+    from jh_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select job_id, job_name, job_salary, job_category, job_describe, job_buff, job_need, 
+    job_quality, job_date, job_address
+    from jh_job
+  </select>
 </mapper>

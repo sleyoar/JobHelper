@@ -1,70 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.ContactMapper">
-    <resultMap id="BaseResultMap" type="com.entity.Contact">
-        <id column="contact_id" jdbcType="INTEGER" property="contactId"/>
-        <result column="contact_name" jdbcType="VARCHAR" property="contactName"/>
-        <result column="contact_email" jdbcType="VARCHAR" property="contactEmail"/>
-        <result column="context_message" jdbcType="VARCHAR" property="contextMessage"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from jh_contact
-        where contact_id = #{contactId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.entity.Contact">
-        insert into jh_contact (contact_id, contact_name, contact_email,
-                                context_message)
-        values (#{contactId,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, #{contactEmail,jdbcType=VARCHAR},
-                #{contextMessage,jdbcType=VARCHAR})
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.entity.Contact">
-        update jh_contact
-        set contact_name    = #{contactName,jdbcType=VARCHAR},
-            contact_email   = #{contactEmail,jdbcType=VARCHAR},
-            context_message = #{contextMessage,jdbcType=VARCHAR}
-        where contact_id = #{contactId,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select contact_id, contact_name, contact_email, context_message
-        from jh_contact
-        where contact_id = #{contactId,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select contact_id, contact_name, contact_email, context_message
-        from jh_contact
-    </select>
-    <resultMap id="BaseResultMap" type="com.entity.Contact">
-        <id column="contact_id" jdbcType="INTEGER" property="contactId"/>
-        <result column="contact_name" jdbcType="VARCHAR" property="contactName"/>
-        <result column="contact_email" jdbcType="VARCHAR" property="contactEmail"/>
-        <result column="context_message" jdbcType="VARCHAR" property="contextMessage"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from jh_contact
-        where contact_id = #{contactId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.entity.Contact">
-        insert into jh_contact (contact_id, contact_name, contact_email,
-                                context_message)
-        values (#{contactId,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, #{contactEmail,jdbcType=VARCHAR},
-                #{contextMessage,jdbcType=VARCHAR})
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="com.entity.Contact">
-        update jh_contact
-        set contact_name    = #{contactName,jdbcType=VARCHAR},
-            contact_email   = #{contactEmail,jdbcType=VARCHAR},
-            context_message = #{contextMessage,jdbcType=VARCHAR}
-        where contact_id = #{contactId,jdbcType=INTEGER}
-    </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select contact_id, contact_name, contact_email, context_message
-        from jh_contact
-        where contact_id = #{contactId,jdbcType=INTEGER}
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select contact_id, contact_name, contact_email, context_message
-        from jh_contact
-    </select>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ContactMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Contact" >
+    <id column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_email" property="contactEmail" jdbcType="VARCHAR" />
+    <result column="context_message" property="contextMessage" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jh_contact
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Contact" >
+    insert into jh_contact (contact_id, contact_name, contact_email, 
+      context_message)
+    values (#{contactId,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, #{contactEmail,jdbcType=VARCHAR}, 
+      #{contextMessage,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Contact" >
+    update jh_contact
+    set contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_email = #{contactEmail,jdbcType=VARCHAR},
+      context_message = #{contextMessage,jdbcType=VARCHAR}
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select contact_id, contact_name, contact_email, context_message
+    from jh_contact
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select contact_id, contact_name, contact_email, context_message
+    from jh_contact
+  </select>
 </mapper>

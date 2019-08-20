@@ -139,7 +139,7 @@ Design and Developed by: Devitems
 /*------------------------------------
 	08. Video Player
 --------------------------------------*/
-    $(".player").YTPlayer({
+/*    $(".player").YTPlayer({
         showControls: false
     });    
     
@@ -149,7 +149,7 @@ Design and Developed by: Devitems
     
     $(".player-blog").YTPlayer({
         showControls: true
-    });
+    });*/
     
 /*------------------------------------
 	09. Mail Chimp
