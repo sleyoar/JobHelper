@@ -9,6 +9,19 @@ public class Contact {
 
     private String contextMessage;
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactId=" + contactId +
+                ", contactName='" + contactName + '\'' +
+                ", contactEmail='" + contactEmail + '\'' +
+                ", contextMessage='" + contextMessage + '\'' +
+                '}';
+    }
+
+    public Contact() {
+    }
+
     public Integer getContactId() {
         return contactId;
     }

@@ -1,10 +1,10 @@
-package com.mapper;
+package com.service;
 
 import com.entity.User;
 
 import java.util.List;
 
-public interface UserMapper {
+public interface UserService {
     /*delete one user by id*/
     int deleteByPrimaryKey(Integer userId);
 

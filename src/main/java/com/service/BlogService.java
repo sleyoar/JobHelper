@@ -1,10 +1,10 @@
-package com.mapper;
+package com.service;
 
 import com.entity.Blog;
 
 import java.util.List;
 
-public interface BlogMapper {
+public interface BlogService {
     /*delete one blog by id*/
     int deleteByPrimaryKey(Integer blogId);
 

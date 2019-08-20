@@ -11,6 +11,20 @@ public class User {
 
     private Integer resumeId;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", resumeId=" + resumeId +
+                '}';
+    }
+
+    public User() {
+    }
+
     public Integer getUserId() {
         return userId;
     }

@@ -29,6 +29,29 @@ public class Resume {
 
     private String projectDescribe;
 
+    @Override
+    public String toString() {
+        return "Resume{" +
+                "resumeId=" + resumeId +
+                ", resumePic='" + resumePic + '\'' +
+                ", resumeName='" + resumeName + '\'' +
+                ", resumeAddress='" + resumeAddress + '\'' +
+                ", resumePhone='" + resumePhone + '\'' +
+                ", resumeEmail='" + resumeEmail + '\'' +
+                ", resumePage='" + resumePage + '\'' +
+                ", resumeDescribe='" + resumeDescribe + '\'' +
+                ", resumeSchool='" + resumeSchool + '\'' +
+                ", resumeDegree='" + resumeDegree + '\'' +
+                ", resumeHonour='" + resumeHonour + '\'' +
+                ", projectName='" + projectName + '\'' +
+                ", projectTime=" + projectTime +
+                ", projectDescribe='" + projectDescribe + '\'' +
+                '}';
+    }
+
+    public Resume() {
+    }
+
     public Integer getResumeId() {
         return resumeId;
     }

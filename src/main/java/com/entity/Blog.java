@@ -13,6 +13,20 @@ public class Blog {
 
     private String blogContext;
 
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "blogId=" + blogId +
+                ", blogUser='" + blogUser + '\'' +
+                ", blogCategory='" + blogCategory + '\'' +
+                ", blogDate=" + blogDate +
+                ", blogContext='" + blogContext + '\'' +
+                '}';
+    }
+
+    public Blog() {
+    }
+
     public Integer getBlogId() {
         return blogId;
     }

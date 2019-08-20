@@ -23,6 +23,25 @@ public class Job {
 
     private String jobAddress;
 
+    @Override
+    public String toString() {
+        return "Job{" +
+                "jobId=" + jobId +
+                ", jobName='" + jobName + '\'' +
+                ", jobSalary='" + jobSalary + '\'' +
+                ", jobCategory='" + jobCategory + '\'' +
+                ", jobDescribe='" + jobDescribe + '\'' +
+                ", jobBuff='" + jobBuff + '\'' +
+                ", jobNeed='" + jobNeed + '\'' +
+                ", jobQuality='" + jobQuality + '\'' +
+                ", jobDate=" + jobDate +
+                ", jobAddress='" + jobAddress + '\'' +
+                '}';
+    }
+
+    public Job() {
+    }
+
     public Integer getJobId() {
         return jobId;
     }

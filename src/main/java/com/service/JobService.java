@@ -1,12 +1,13 @@
-package com.mapper;
+package com.service;
 
 import com.entity.Job;
 
 import java.util.List;
 
-public interface JobMapper {
+public interface JobService {
     /**
      * delete by id
+     *
      * @param jobId id
      * @return row
      */
@@ -14,6 +15,7 @@ public interface JobMapper {
 
     /**
      * insert into job
+     *
      * @param record job
      * @return row
      */
@@ -21,6 +23,7 @@ public interface JobMapper {
 
     /**
      * get job by id
+     *
      * @param jobId id
      * @return job
      */

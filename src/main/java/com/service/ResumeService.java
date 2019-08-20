@@ -1,10 +1,10 @@
-package com.mapper;
+package com.service;
 
 import com.entity.Resume;
 
 import java.util.List;
 
-public interface ResumeMapper {
+public interface ResumeService {
     /**
      * delete resume
      * @param resumeId resume_id

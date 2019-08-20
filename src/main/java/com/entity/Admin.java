@@ -7,6 +7,18 @@ public class Admin {
 
     private String adminPassword;
 
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", adminPassword='" + adminPassword + '\'' +
+                '}';
+    }
+
+    public Admin() {
+    }
+
     public Integer getAdminId() {
         return adminId;
     }

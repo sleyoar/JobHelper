@@ -1,10 +1,10 @@
-package com.mapper;
+package com.service;
 
 import com.entity.Admin;
 
 import java.util.List;
 
-public interface AdminMapper {
+public interface AdminService {
     /*delete admin by id*/
     int deleteByPrimaryKey(Integer adminId);
 

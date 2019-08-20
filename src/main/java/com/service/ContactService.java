@@ -1,10 +1,10 @@
-package com.mapper;
+package com.service;
 
 import com.entity.Contact;
 
 import java.util.List;
 
-public interface ContactMapper {
+public interface ContactService {
     /*delete one contact by id*/
     int deleteByPrimaryKey(Integer contactId);
 
