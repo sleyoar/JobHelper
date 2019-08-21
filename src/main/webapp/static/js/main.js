@@ -154,7 +154,7 @@ Design and Developed by: Devitems
 /*------------------------------------
 	09. Mail Chimp
 --------------------------------------*/
-    $('#mc-form').ajaxChimp({
+   /* $('#mc-form').ajaxChimp({
         language: 'en',
         callback: mailChimpResponse,
         // ADD YOUR MAILCHIMP URL BELOW HERE!
@@ -171,7 +171,7 @@ Design and Developed by: Devitems
             $('.mailchimp-error').html('' + resp.msg).fadeIn(900);
         }  
     }
-	
+	*/
 /*------------------------------------
 	10. ColorSwitcher
 --------------------------------------*/
@@ -190,4 +190,4 @@ Design and Developed by: Devitems
         $('.as-mainwrapper').removeClass('wrapper-boxed');
     });
     
-})(jQuery);
+});

@@ -8,10 +8,10 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1.  Job Post Style
     2.  Fun Factor Area
     3.  Advertise Area
@@ -25,7 +25,7 @@
     11.  Account Page
     12.  Contact Page
     13.  Other Page CSS
-	
+
 -----------------------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -70,10 +70,10 @@
     line-height: 24px
 }
 .stime-payment a.button {
-	padding: 0;
-	text-align: center;
-	width: 121px;
-	font-size: 14px
+    padding: 0;
+    text-align: center;
+    width: 121px;
+    font-size: 14px
 }
 .single-job-post:last-child {border-bottom: 1px solid #e3e3e3;}
 a.button.large-button {line-height: 33px; padding: 0 30px}
@@ -81,10 +81,10 @@ a.button.large-button {line-height: 33px; padding: 0 30px}
 /*  2.  Fun Factor Area
 /*----------------------------------------*/
 .single-fun-factor h3 {
-	font-family: "montserratsemi_bold";
-	font-size: 32px;
-	line-height: 27px;
-	position: relative;
+    font-family: "montserratsemi_bold";
+    font-size: 32px;
+    line-height: 27px;
+    position: relative;
 }
 .single-fun-factor > h1 {font-size: 52px; line-height: 39px;}
 .single-fun-factor h3:after {
@@ -119,11 +119,11 @@ a.button.large-button {line-height: 33px; padding: 0 30px}
 /*  4.  Testimonial Area
 /*----------------------------------------*/
 .testimonial-carousel .testimonial-img > img {
-	border: 3px solid #ffffff;
-	border-radius: 50%;
-	height: 143px;
-	margin: auto;
-	width: 143px;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    height: 143px;
+    margin: auto;
+    width: 143px;
 }
 .testimonial-name {font-family: "montserratsemi_bold"; font-size: 24px;}
 .testimonial-title {font-family: "montserratregular"; font-size: 14px;}
@@ -170,12 +170,12 @@ a.button.large-button {line-height: 33px; padding: 0 30px}
 .blog-image {border-bottom: 4px solid transparent;}
 .blog-image img {width: 100%;}
 .blog-date {
-	display: inline-block;
-	font-family: "montserratregular";
-	height: 66px;
-	line-height: 24px;
-	text-align: center;
-	width: 77px;
+    display: inline-block;
+    font-family: "montserratregular";
+    height: 66px;
+    line-height: 24px;
+    text-align: center;
+    width: 77px;
 }
 .blog-date span.text-large {font-family: "montserratsemi_bold"; font-size: 30px;}
 .blog-post-info > span {
@@ -192,9 +192,9 @@ a.button.large-button {line-height: 33px; padding: 0 30px}
 /*----------------------------------------*/
 .breadcrumb-text {z-index: 9; position: relative;}
 .breadcrumb-bar .breadcrumb {
-	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-	line-height: 12px;
-	padding: 8px 0;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    line-height: 12px;
+    padding: 8px 0;
 }
 .breadcrumb-text h2 {line-height: 25px;}
 .breadcrumb-bar li {
@@ -204,15 +204,15 @@ a.button.large-button {line-height: 33px; padding: 0 30px}
     position: relative;
 }
 .breadcrumb-bar .breadcrumb > li:first-child:before {
-	border-radius: 50%;
-	color: #eaeaea;
-	content: "/";
-	display: inline-block;
-	font-family: "Material-Design-Iconic-Font";
-	font-size: 18px;
-	position: absolute;
-	right: -20px;
-	top: -1px;
+    border-radius: 50%;
+    color: #eaeaea;
+    content: "/";
+    display: inline-block;
+    font-family: "Material-Design-Iconic-Font";
+    font-size: 18px;
+    position: absolute;
+    right: -20px;
+    top: -1px;
 }
 .breadcrumb-bar .breadcrumb > li + li:before {display: none;}
 .breadcrumb-bar a {color: #ffffff;}
@@ -235,34 +235,34 @@ a.button.large-button {line-height: 33px; padding: 0 30px}
 .select.small {width: 190px;}
 .select.medium {width: 200px;}
 .select select {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	background: #ffffff url("images/icons/arrow.png") no-repeat scroll 92% 50%;
-	border: medium none;
-	color: #555454;
-	cursor: pointer;
-	font-size: 13px;
-	height: 42px;
-	padding: 0 16px;
-	width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #ffffff url("images/icons/arrow.png") no-repeat scroll 92% 50%;
+    border: medium none;
+    color: #555454;
+    cursor: pointer;
+    font-size: 13px;
+    height: 42px;
+    padding: 0 16px;
+    width: 100%;
 }
 /*----------------------------------------*/
 /*  7.  Single Job Post Page
 /*----------------------------------------*/
 .single-info label {
-	color: #525252;
-	font-family: "montserratsemi_bold";
-	font-size: 14px;
-	width: 160px;
-	line-height: 34px;
+    color: #525252;
+    font-family: "montserratsemi_bold";
+    font-size: 14px;
+    width: 160px;
+    line-height: 34px;
 }
 .single-info input{
-	font-size: 12px;
-	color: #a2a2a2;
-	font-family: 'montserratlight';
-	height: 36px;
-	border: 1px solid #DEDEDE;
-	background: #fff
+    font-size: 12px;
+    color: #a2a2a2;
+    font-family: 'montserratlight';
+    height: 36px;
+    border: 1px solid #DEDEDE;
+    background: #fff
 }
 .single-info input.dark-border {border-color: #a2a2a2;}
 .area-title > h2, .border-title {
@@ -309,72 +309,72 @@ textarea.textarea.small{height: 120px}
 }
 .photo-uploader {width: 79.1%;}
 #fileupload > input, .fileupload #fileupload {
-	-moz-appearance: none;
-	border: 0 none;
-	color: #ffffff;
-	cursor: pointer;
-	height: 100%;
-	opacity: 0;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
+    -moz-appearance: none;
+    border: 0 none;
+    color: #ffffff;
+    cursor: pointer;
+    height: 100%;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
 }
 .filename {
-	color: #a2a2a2;
-	cursor: default;
-	display: block;
-	float: left;
-	font-size: 12px;
-	height: 100%;
-	line-height: 34px;
-	overflow: hidden;
-	padding: 0 10px;
-	width: 65%;
+    color: #a2a2a2;
+    cursor: default;
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 100%;
+    line-height: 34px;
+    overflow: hidden;
+    padding: 0 10px;
+    width: 65%;
 }
 .action {
-	color: #5e5e5e;
-	font-size: 12px;
-	height: 100%;
-	overflow: hidden;
-	text-align: right;
-	float: right;
-	line-height: 34px;
-	padding-right: 14px;
-	font-family: 'montserratlight';
+    color: #5e5e5e;
+    font-size: 12px;
+    height: 100%;
+    overflow: hidden;
+    text-align: right;
+    float: right;
+    line-height: 34px;
+    padding-right: 14px;
+    font-family: 'montserratlight';
 }
 .action i{font-size: 12px; margin-right: 7px}
 .photo-uploader .action {
-	color: #ffffff;
-	font-family: "montserratregular";
-	padding: 0;
-	text-align: center;
-	text-transform: uppercase;
-	width: 102px;
+    color: #ffffff;
+    font-family: "montserratregular";
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 102px;
 }
 .max-size {
-	color: #a2a2a2;
-	font-family: "montserratlight";
-	font-size: 12px;
-	line-height: 36px;
+    color: #a2a2a2;
+    font-family: "montserratlight";
+    font-size: 12px;
+    line-height: 36px;
 }
 /*----------------------------------------*/
 /*  8.  Candidates Page
 /*----------------------------------------*/
 .keyword a.button {text-transform: lowercase; font-size: 14px}
 .breadcrumb-list > li {
-	display: inline-block;
-	float: none;
-	margin-left: 22px;
-	position: relative;
+    display: inline-block;
+    float: none;
+    margin-left: 22px;
+    position: relative;
 }
 .breadcrumb-list > li:after {
-	color: #ffffff;
-	content: "/";
-	left: -14px;
-	position: absolute;
-	top: 2px;
+    color: #ffffff;
+    content: "/";
+    left: -14px;
+    position: absolute;
+    top: 2px;
 }
 .breadcrumb-list > li:first-child {margin-left: 0;}
 .breadcrumb-list > li:first-child:after {content: "";}
@@ -383,26 +383,26 @@ textarea.textarea.small{height: 120px}
 /*----------------------------------------*/
 .mark-icon, .number {line-height: 28px; position: relative;}
 .mark-icon:after {
-	content: "";
-	font-family: "Material-Design-Iconic-Font";
-	font-size: 18px;
-	left: 0;
-	position: absolute;
-	top: -1px;
+    content: "";
+    font-family: "Material-Design-Iconic-Font";
+    font-size: 18px;
+    left: 0;
+    position: absolute;
+    top: -1px;
 }
 .number > span {
-	display: inline-block;
-	font-family: "montserratregular";
-	width: 20px;
+    display: inline-block;
+    font-family: "montserratregular";
+    width: 20px;
 }
 /*----------------------------------------*/
 /*  10.  Blog Page
 /*----------------------------------------*/
 .sidebar-widget-title h4 {
-	color: #3e3e3e;
-	font-family: "montserratregular";
-	font-size: 24px;
-	line-height: 21px;
+    color: #3e3e3e;
+    font-family: "montserratregular";
+    font-size: 24px;
+    line-height: 21px;
 }
 .search-container input {
     background: #ffffff none repeat scroll 0 0;
@@ -440,10 +440,10 @@ textarea.textarea.small{height: 120px}
 .tags-and-links .social-links a:hover {background: transparent;}
 .comments {color: #4c4c4c;}
 h4.title {
-	color: #4c4c4c;
-	font-family: "montserratregular";
-	font-size: 24px;
-	position: relative;
+    color: #4c4c4c;
+    font-family: "montserratregular";
+    font-size: 24px;
+    position: relative;
 }
 h4.title:after {
     bottom: 2px;
@@ -478,9 +478,9 @@ span.reply a:hover {color: #2D3E50;}
 }
 span.comment-time {padding-right: 3px; position: relative;}
 .comment-text > p {
-	color: #4c4c4c;
-	font-weight: 300;
-	line-height: 20px;
+    color: #4c4c4c;
+    font-weight: 300;
+    line-height: 20px;
 }
 .single-comment.comment-reply {padding-left: 131px;}
 .comments .single-comment:last-child {margin-bottom: 0;}
@@ -489,9 +489,9 @@ span.comment-time {padding-right: 3px; position: relative;}
 /*----------------------------------------*/
 .single-info label.lg-text {font-family: "montserratregular"; font-size: 16px;}
 p.panel-title {
-	color: #414141;
-	font-size: 14px;
-	font-weight: 500;
+    color: #414141;
+    font-size: 14px;
+    font-weight: 500;
 }
 .conditions {
     color: #959595;
@@ -499,13 +499,13 @@ p.panel-title {
     font-size: 14px;
 }
 .conditions input[type="radio"], input[type="checkbox"] {
-	border: 1px solid #e3e3e3;
-	height: 17px;
-	margin: 0 10px 0 0;
-	padding: 0;
-	position: relative;
-	top: -1px;
-	width: 20px;
+    border: 1px solid #e3e3e3;
+    height: 17px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    position: relative;
+    top: -1px;
+    width: 20px;
 }
 .conditions input[type="radio"]:focus, input[type="checkbox"]:focus {outline: 0 none;}
 .modal .modal-header {
@@ -514,28 +514,28 @@ p.panel-title {
     padding: 0;
 }
 .modal {
-	background-color: rgba(0, 0, 0, 0.6);
-	z-index: 99999
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99999
 }
 .modal-dialog {
-	bottom: 0;
-	color: #ffffff;
-	height: 432px;
-	left: 0;
-	margin: auto;
-	position: absolute;
-	right: 0;
-	text-align: left;
-	top: 0;
-	width: 465px;
+    bottom: 0;
+    color: #ffffff;
+    height: 432px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 0;
+    width: 465px;
 }
 .modal-dialog.register{height: 555px}
 .modal-body {padding: 0}
 .form-pop-up-content {background: #ffffff none repeat scroll 0 0;}
 .form-pop-up-content .area-title h2 {
-	border-color: #cccccc;
-	display: inline-block;
-	font-size: 18px;
+    border-color: #cccccc;
+    display: inline-block;
+    font-size: 18px;
 }
 .form-pop-up-content .area-title h2 {
     border-color: #cccccc;
@@ -551,20 +551,20 @@ p.panel-title {
     padding: 0 16px;
 }
 .modal-dialog button.close {
-	border-radius: 50%;
-	color: #ffffff;
-	cursor: pointer;
-	font-size: 18px;
-	height: 28px;
-	line-height: 13px;
-	margin-top: 0;
-	opacity: 1;
-	position: absolute;
-	right: -13px;
-	text-align: center;
-	text-transform: uppercase;
-	top: -11px;
-	width: 28px;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    height: 28px;
+    line-height: 13px;
+    margin-top: 0;
+    opacity: 1;
+    position: absolute;
+    right: -13px;
+    text-align: center;
+    text-transform: uppercase;
+    top: -11px;
+    width: 28px;
 }
 .modal-dialog button.close:after {display: none}
 .form-pop-up-content span a {font-family: "montserratlight"; font-size: 12px;}
@@ -574,17 +574,17 @@ p.panel-title {
     font-size: 12px;
 }
 .remember input[type="checkbox"] {
-	height: 14px;
-	margin-right: 6px;
-	position: relative;
-	top: -1px;
-	width: 15px;
+    height: 14px;
+    margin-right: 6px;
+    position: relative;
+    top: -1px;
+    width: 15px;
 }
 .form-pop-up-content button {
-	color: #ffffff;
-	font-size: 14px;
-	line-height: 34px;
-	width: 187px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 34px;
+    width: 187px;
 }
 .signup-form #form-pop-up {height: 598px; top: 47.2%;}
 /*----------------------------------------*/
@@ -614,7 +614,7 @@ p.panel-title {
 }
 .single-contact-info:hover i {
     -webkit-animation: 500ms ease-in-out 0s normal none 1 running bounceIn;
-        animation: 500ms ease-in-out 0s normal none 1 running bounceIn;
+    animation: 500ms ease-in-out 0s normal none 1 running bounceIn;
 }
 .single-contact-text {
     color: #4c4c4c;
@@ -635,10 +635,10 @@ p.panel-title {
 }
 .contact-form textarea {height: 150px; padding-left: 20px}
 .submit-btn {
-	font-size: 14px;
-	line-height: 38px;
-	padding: 0 42px;
-	color: #fff;
+    font-size: 14px;
+    line-height: 38px;
+    padding: 0 42px;
+    color: #fff;
 }
 .single-contact-info {width: 33.3333%; float: left;}
 /*----------------------------------------*/
@@ -658,7 +658,7 @@ p.panel-title {
     display: block;
     position: relative;
     -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    transform: scaleY(1);
     -webkit-transition: all 0.7s ease-in-out 0s;
     transition: all 0.7s ease-in-out 0s;
 }
@@ -688,7 +688,7 @@ p.panel-title {
     text-align: center;
     text-transform: uppercase;
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transition: all 0.5s linear 0s;
     transition: all 0.5s linear 0s;
 }
@@ -699,13 +699,13 @@ p.panel-title {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     text-align: center;
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transition: all 0.5s linear 0s;
     transition: all 0.5s linear 0s;
 }
 .gallery-img:hover img {
     -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    transform: scale(1.5);
 }
 .gallery-img:hover .hover-effect {
     opacity: 1;
@@ -715,10 +715,10 @@ p.panel-title {
     opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
 }
 .header-logo-menu.stick.semi-transparent, .gallery-img, .gallery-img .hover-effect {
-	background: rgba(46, 63, 81, 0.85) none repeat scroll 0 0;
+    background: rgba(46, 63, 81, 0.85) none repeat scroll 0 0;
 }
 .video-gallery {
     display: block;

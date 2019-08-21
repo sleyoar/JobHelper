@@ -34,6 +34,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<Job> selectSome() {
+        return jobMapper.selectSome();
+    }
+
+    @Override
     public int updateByPrimaryKey(Job record) {
         return jobMapper.updateByPrimaryKey(record);
     }

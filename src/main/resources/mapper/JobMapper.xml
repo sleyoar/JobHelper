@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.JobMapper" >
+<mapper namespace="com.mapper.JobMapper" >
   <resultMap id="BaseResultMap" type="com.entity.Job" >
     <id column="job_id" property="jobId" jdbcType="INTEGER" />
     <result column="job_name" property="jobName" jdbcType="VARCHAR" />
@@ -50,5 +50,11 @@
     select job_id, job_name, job_salary, job_category, job_describe, job_buff, job_need, 
     job_quality, job_date, job_address
     from jh_job
+  </select>
+  <select id="selectSome" resultMap="BaseResultMap" >
+    select job_id, job_name, job_salary, job_category, job_describe, job_buff, job_need,
+           job_quality, job_date, job_address
+    from jh_job
+    LIMIT 3
   </select>
 </mapper>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.UserMapper" >
+<mapper namespace="com.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.entity.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -34,5 +34,10 @@
   <select id="selectAll" resultMap="BaseResultMap" >
     select user_id, user_name, user_password, user_email, resume_id
     from jh_user
+  </select>
+  <select id="verifyUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_name, user_password, user_email, resume_id
+    from jh_user
+    where user_name = #{userName}
   </select>
 </mapper>

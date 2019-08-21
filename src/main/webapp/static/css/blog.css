@@ -1,0 +1,44 @@
+.box-hover a {display: block; position: relative;}
+.box-hover > a:after {
+    background: rgba(255, 255, 255, 0.2) none repeat scroll 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    bottom: 0;
+    content: "";
+    left: 0;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
+}
+.hover-effect:hover .box-hover > a:after {
+    bottom: 20px;
+    left: 20px;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    right: 20px;
+    top: 20px;
+}
+.hover-effect:hover .box-hover.hover-large > a:after {bottom: 88px; top: 88px;}
+.blog-image {border-bottom: 4px solid transparent;}
+.blog-image img {width: 100%;}
+.blog-date {
+    display: inline-block;
+    font-family: "montserratregular";
+    height: 66px;
+    line-height: 24px;
+    text-align: center;
+    width: 77px;
+}
+.blog-date span.text-large {font-family: "montserratsemi_bold"; font-size: 30px;}
+.blog-post-info > span {
+    color: #8e8e8e;
+    display: inline-block;
+    font-size: 12px;
+}
+.blog-post-info {display: inline-block;}
+.blog-post-info > span i{bottom: -2px; position: relative}
+.blog-text > h5 {color: #5c5c5c; font-family: "montserratsemi_bold";}
+.blog-text > p {color: #8e8e8e; font-size: 12px;}

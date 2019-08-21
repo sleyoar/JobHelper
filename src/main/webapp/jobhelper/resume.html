@@ -57,13 +57,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3 col-xs-12">
-                                <div class="logo"><a href="index.html"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a></div>
+                                <div class="logo"><a href="index2.html"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a></div>
                             </div>
                             <div class="col-md-9 hidden-sm hidden-xs">
                                 <div class="pull-right">
                                     <nav id="primary-menu">
                                         <ul class="main-menu text-right">
-                                            <li><a href="index.html">主页</a>
+                                            <li><a href="index2.html">主页</a>
                                             </li>
                                             <li><a href="job-board.html" target="_blank">工作栏</a>
                                             </li>
@@ -91,7 +91,7 @@
                                     <div class="mobile-menu">
                                         <nav id="dropdown">
                                             <ul>
-                                                <li><a href="index.html">主页</a>
+                                                <li><a href="index2.html">主页</a>
                                                 </li>
                                                 <li><a href="job-board.html">工作栏</a>
                                                 </li>
@@ -121,7 +121,7 @@
                                     <h2 class="text-center text-white uppercase mb-17">添加简历</h2>
                                     <div class="breadcrumb-bar">
                                         <ul class="breadcrumb text-center m-0">
-                                            <li class="text-white uppercase ml-15 mr-15"><a href="index.html">主页</a></li>
+                                            <li class="text-white uppercase ml-15 mr-15"><a href="index2.html">主页</a></li>
                                             <li class="text-white uppercase ml-15 mr-15">简历</li>
                                         </ul>
                                     </div>
@@ -143,14 +143,14 @@
                                             <div class="single-info mb-14 fix">
                                                 <label for="photo" class="uppercase pull-left m-0">照片(点击空白处上传)</label>
                                                 <div style="height: 108px; " class="photo-uploader fix pull-left" id="fileupload">
-                                                    <input type="file" id="photo" name="file"  onchange="showPreview(this)" >
+                                                    <input type="file" id="photo" name="resumePic"  onchange="showPreview(this)" >
                                                     <img id="portrait" src="" style="display:none; width: 192px; height: 108px;" />
                                                 </div>
                                             </div>
                                             <div class="single-info">
-                                                <label for="l_name" class="uppercase pull-left m-0">姓名</label>
+                                                <label for="name" class="uppercase pull-left m-0">姓名</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="l_name" name="l_name" placeholder="请输入您的姓名">
+                                                    <input type="text" id="name" name="resumeName" placeholder="请输入您的姓名">
                                                 </div>
                                             </div>
                                         </div>
@@ -159,25 +159,25 @@
                                             <div class="single-info mb-14">
                                                 <label for="address" class="uppercase pull-left m-0">地址</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="address" name="address" placeholder="请输入您的现居地址">
+                                                    <input type="text" id="address" name="resumeAddress" placeholder="请输入您的现居地址">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="phone" class="uppercase pull-left m-0">电话</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="phone" name="phone" placeholder="请输入您的电话号码">
+                                                    <input type="text" id="phone" name="resumePhone" placeholder="请输入您的电话号码">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="email" class="uppercase pull-left m-0">邮箱</label>
                                                 <div class="form-box fix">
-                                                    <input type="email" id="email" name="email" placeholder="请输入最近能联系的有效邮箱">
+                                                    <input type="email" id="email" name="resumeEmail" placeholder="请输入最近能联系的有效邮箱">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="website" class="uppercase pull-left m-0">社交主页</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="website" name="website" placeholder="输入您的社交主页如GitHub等">
+                                                    <input type="text" id="website" name="resumePage" placeholder="输入您的社交主页如GitHub等">
                                                 </div>
                                             </div>
                                         </div>
@@ -193,7 +193,7 @@
                                                     <span class="mr-15"><i class="zmdi zmdi-format-line-spacing"></i></span>
                                                 </div>
                                                 <div class="desc fix">
-                                                    <textarea name="textarea" class="fix textarea" cols="30" rows="10" placeholder="请输入您的自我描述"></textarea>
+                                                    <textarea name="resumeDescribe" class="fix textarea" cols="30" rows="10" placeholder="请输入您的自我描述"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -202,13 +202,13 @@
                                             <div class="single-info mb-14">
                                                 <label for="school_name" class="uppercase pull-left m-0">学校名字</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="school_name" name="school_name" placeholder="请输入你的毕业学校名字">
+                                                    <input type="text" id="school_name" name="resumeSchool" placeholder="请输入你的毕业学校名字">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="school_name" class="uppercase pull-left m-0">学历</label>
                                                 <div class="form-box fix">
-                                                    <select name="degree" class="select">
+                                                    <select name="resumeDegree" class="select">
                                                         <option value="选择学历">选择学历</option>
                                                         <option value="专科学历">专科</option>
                                                         <option value="本科学历">本科</option>
@@ -220,28 +220,28 @@
                                             <div class="single-info mb-14 fix">
                                                 <label class="uppercase pull-left m-0">荣誉奖项</label>
                                                 <div class="desc fix">
-                                                    <textarea name="textarea" class="fix small textarea" cols="30" rows="10" placeholder="请输入获得的荣誉奖项、学校工作经历等"></textarea>
+                                                    <textarea name="resumeHonour" class="fix small textarea" cols="30" rows="10" placeholder="请输入获得的荣誉奖项、学校工作经历等"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="title uppercase mt-45 mb-38"><span class="lg">项目经历</span></div>
                                         <div class="single-job-form">
                                             <div class="single-info pb-14">
-                                                <label for="title" class="uppercase pull-left m-0">项目名称</label>
+                                                <label for="projectName" class="uppercase pull-left m-0">项目名称</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="title" name="title" placeholder="输入标题">
+                                                    <input type="text" id="projectName" name="projectName" placeholder="输入标题">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
-                                                <label for="date_from" class="uppercase pull-left m-0">项目时长（天）</label>
+                                                <label for="projectTime" class="uppercase pull-left m-0">项目时长（天）</label>
                                                 <div class="form-box fix">
-                                                    <input type="text" id="date_from" name="date_from" placeholder="输入时长">
+                                                    <input type="text" id="projectTime" name="projectTime" placeholder="输入时长">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14 fix">
                                                 <label class="uppercase pull-left m-0">项目描述 </label>
                                                 <div class="desc fix">
-                                                    <textarea name="textarea" class="fix small textarea" cols="30" rows="10" placeholder="请输入项目的描以及你在项目中的职责"></textarea>
+                                                    <textarea name="projectDescribe" class="fix small textarea" cols="30" rows="10" placeholder="请输入项目的描以及你在项目中的职责"></textarea>
                                                 </div>
                                             </div>
                                             <div class="ml-160 mt-42">
@@ -261,7 +261,7 @@
                         <div class="row">
                             <div class="col-md-6 fix col-xs-12 col-sm-6">
                                 <div class="footer-logo pull-left">
-                                    <a href="index.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
+                                    <a href="index2.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-md-6 fix col-xs-12 col-sm-6">

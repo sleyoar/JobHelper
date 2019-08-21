@@ -1,0 +1,622 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>主页</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon
+    ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/static/images/favicon.ico}">
+
+    <!-- Google Fonts
+    ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- All css files are included here
+    ============================================ -->
+    <!-- Bootstrap CSS
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">
+
+    <!-- This core.css file contents all plugins css file
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/core.css}">
+
+    <!-- Theme shortcodes/elements style
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/shortcode/shortcodes.css}">
+
+    <!-- Color Swithcer CSS
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/plugins/color-switcher.css}">
+
+    <!--  Theme main style
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+
+    <!-- Color CSS
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/plugins/color.css}">
+
+    <!-- Responsive CSS
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/static/css/responsive.css}">
+
+    <!-- Modernizr JS -->
+    <script th:src="@{/static/js/vendor/modernizr-2.8.3.min.js}"></script>
+
+    <style>
+        div span p{ width: 240px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+    </style>
+</head>
+<body>
+
+<!--Main Wrapper Start-->
+<div class="as-mainwrapper">
+    <!--Bg White Start-->
+    <div class="bg-white">
+        <!--Header Area Start-->
+        <header id="sticky-header" class="header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-xs-12">
+                        <div class="logo"><a th:href="@{/}"><img th:src="@{/static/images/logo/logo.png}"
+                                                                          alt="JobHelp"></a></div>
+                    </div>
+                    <div class="col-md-9 hidden-sm hidden-xs">
+                        <div class="pull-right">
+                            <nav id="primary-menu">
+                                <ul class="main-menu text-right">
+                                    <li><a th:href="@{/}">主页</a>
+                                    </li>
+                                    <li><a th:href="@{/alljob}" target="_blank">工作栏</a>
+                                    </li>
+                                    <li th:if="session.user !=null">
+                                        <a th:href="@{/resume}" target="_blank">简历</a>
+                                    </li>
+                                    <li><a href="blog.html" target="_blank">博客</a>
+                                        <ul class="dropdown" th:if="session.user !=null">
+                                            <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html" target="_blank">联系我们</a></li>
+                                    <li>
+                                        <!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                        <div class="login-btn pt-36" th:if="${user} == null">
+                                            <a class="modal-view button" data-toggle="modal"
+                                               data-target="#productModal">登录</a>
+                                        </div>
+                                        <div class="login-btn pt-36" th:if="${user != null}">
+                                            <a th:href="@{/infor}">欢迎：<span th:text="${user.userName}" ></span></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu Area start -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul>
+                                        <li><a th:href="@{/}">主页</a>
+                                        </li>
+                                        <li><a href="job-board.html">工作栏</a>
+                                        </li>
+                                        <li><a href="resume.html" target="_blank">简历</a></li>
+                                        <li><a href="blog.html">博客</a>
+                                            <ul class="dropdown">
+                                                <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">联系我们</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu Area end -->
+        </header>
+        <!-- End of Header Area -->
+        <!--Start of Slider Area-->
+        <div class="slider-area">
+            <div class="preview-2">
+                <div id="nivoslider" class="slides">
+                    <img th:src="@{/static/images/slider/1.jpg}" alt="" title="#slider-1-caption1"/>
+                    <img th:src="@{/static/images/slider/2.jpg}" alt="" title="#slider-1-caption2"/>
+                </div>
+                <div id="slider-1-caption1" class="nivo-html-caption nivo-caption">
+                    <div class="banner-content slider-1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-content-wrapper">
+                                        <div class="text-content">
+                                            <h1 class="title1 wow bounceInDown text-uppercase text-white mb-16"
+                                                data-wow-duration="3s" data-wow-delay="0s">还在寻找工作吗?</h1>
+                                            <p class="sub-title wow bounceInRight hidden-xs" data-wow-duration="3s"
+                                               data-wow-delay="1s"> 在职帮网上有许多公司发布的招聘信息可供你选择<br>
+                                                寻找合适的工作十分简单<br> 我们期待你能得到一份好工作！</p>
+                                            <div class="banner-readmore wow bounceInUp mt-35" data-wow-duration="3s"
+                                                 data-wow-delay="2s">
+                                                <a class="button slider-btn" href="#start">开始寻找</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="slider-1-caption2" class="nivo-html-caption nivo-caption">
+                    <div class="banner-content slider-2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-content-wrapper">
+                                        <div class="text-content slide-2">
+                                            <h1 class="title1 wow bounceInDown text-uppercase text-white mb-16"
+                                                data-wow-duration="3s" data-wow-delay="0s">还在寻找工作吗?</h1>
+                                            <p class="sub-title wow bounceInRight hidden-xs" data-wow-duration="3s"
+                                               data-wow-delay="1s"> 在职帮网上有许多公司发布的招聘信息可供你选择<br>
+                                                寻找合适的工作十分简单<br> 我们期待你能得到一份好工作！</p>
+                                            <div class="banner-readmore wow bounceInUp mt-35" data-wow-duration="1s"
+                                                 data-wow-delay=".6s">
+                                                <a class="button slider-btn" href="#start">开始寻找</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Slider Area-->
+        <!--Start of Job Post Area-->
+        <div id="start" class="job-post-area ptb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center ">
+                            <h2 class="uppercase">最近的工作</h2>
+                            <div class="separator mt-35 mb-77">
+                                <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class=" fix mb-70">
+                            <table>
+                                <tbody th:remove="all-but-first">
+                                <!--/*@thymesVar id="jobs" type="java.util.List"*/-->
+                                <!--/*@thymesVar id="job" type="com.entity.Job"*/-->
+                                <tr th:each="job:${jobs}">
+                                    <div class="single-job-post fix">
+                                        <div class="job-title col-4 pl-30" th:switch="${job.jobCategory}">
+                                            <span class="pull-left block mtb-17" th:case="'java'">
+                                                <img th:src="@{/static/images/company-logo/1.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="'php'">
+                                                <img th:src="@{/static/images/company-logo/2.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="'DBA'">
+                                                <img th:src="@{/static/images/company-logo/3.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="*">
+                                                <img th:src="@{/static/images/company-logo/4.png}" alt="">
+                                            </span>
+                                            <div class="fix pl-30 mt-29">
+                                                <h4 class="mb-5"><span th:text="${job.jobName}"></span></h4>
+                                                <h5><a href="job-details.html">详情</a></h5>
+                                            </div>
+                                        </div>
+                                        <div class="address col-4 pl-50">
+                                            <span class="mtb-30 block"><span
+                                                    th:text="${#dates.format(job.jobDate, 'yyyy-mm-dd')}"></span>发布于职帮网
+                                           <p th:text="${job.jobAddress}"></p></span>
+                                        </div>
+                                        <div class="time-payment col-2 pl-60 text-center pt-22">
+                                            <span class="block mb-6"><span th:text="${job.jobSalary}"></span></span>
+                                            <a class="button button-red"><span th:text="${job.jobQuality}"></span></a>
+                                        </div>
+                                    </div>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- 显示分页信息 -->
+                        <div class="row">
+                            <!--分页文字信息  -->
+                            <div class="col-md-6" id="page_info_area"></div>
+                            <!-- 分页条信息 -->
+                            <div class="col-md-6" id="page_nav_area">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Job Post Area -->
+        <!--Start of Job Post Area-->
+        <div class="job-post-area pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center ">
+                            <h2 class="uppercase">特色职位</h2>
+                            <div class="separator mt-35 mb-77">
+                                <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="job-post-container fix">
+                            <table>
+                                <tbody th:remove="all-but-first">
+                                <!--/*@thymesVar id="jobs1" type="java.util.List"*/-->
+                                <!--/*@thymesVar id="job1" type="com.entity.Job"*/-->
+                                <tr th:each="job1:${jobs1}">
+                                    <div class="single-job-post fix">
+                                        <div class="job-title col-4 pl-30" th:switch="${job1.jobCategory}">
+                                            <span class="pull-left block mtb-17" th:case="'java'">
+                                                <img th:src="@{/static/images/company-logo/1.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="'php'">
+                                                <img th:src="@{/static/images/company-logo/2.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="'DBA'">
+                                                <img th:src="@{/static/images/company-logo/3.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="*">
+                                                <img th:src="@{/static/images/company-logo/4.png}" alt="">
+                                            </span>
+                                            <div class="fix pl-30 mt-29">
+                                                <h4 class="mb-5"><span th:text="${job1.jobName}"></span></h4>
+                                                <h5><a href="job-details.html">详情</a></h5>
+                                            </div>
+                                        </div>
+                                        <div class="address col-4 pl-50">
+                                            <span class="mtb-30 block"><span
+                                                    th:text="${#dates.format(job1.jobDate, 'yyyy-mm-dd')}"></span>&nbsp;&nbsp;发布于职帮网<br>
+                                           <span th:text="${job1.jobAddress}"></span></span>
+                                        </div>
+                                        <div class="time-payment col-2 pl-60 text-center pt-22">
+                                            <span class="block mb-6"><span th:text="${job1.jobSalary}"></span></span>
+                                            <a class="button button-red"><span th:text="${job1.jobQuality}"></span></a>
+                                        </div>
+                                    </div>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Job Post Area -->
+        <!--Start of Fun Factor Area-->
+        <div class="fun-factor-area bg-1 text-center fix bg-opacity-blue-10 ptb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        <div class="single-fun-factor">
+                            <h3 class="pb-15 mb-23">工作职位</h3>
+                            <h1><!--/*@thymesVar id="jobs" type="java.util.List"*/-->
+                            <span class="counter" th:text="${jobs.size()}"></span></h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="single-fun-factor">
+                            <h3 class="pb-15 mb-23">成员</h3>
+                            <h1><span class="counter" th:text="${jobs.size()}"></span></h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="single-fun-factor">
+                            <h3 class="pb-15 mb-23">简历</h3>
+                            <h1><span class="counter" th:text="${jobs.size()}"></span></h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="single-fun-factor">
+                            <h3 class="pb-15 mb-23">博客</h3>
+                            <h1><span class="counter">1250</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Fun Factor Area-->
+        <!--Start of Blog Area-->
+        <div class="blog-area ptb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center ">
+                            <h2 class="uppercase">我们的博客</h2>
+                            <div class="separator mt-35 mb-77">
+                                <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="blog-carousel carousel-style-two">
+                        <div class="col-xs-12">
+                            <div class="single-blog hover-effect">
+                                <div class="blog-image box-hover">
+                                    <a href="#" class="block">
+                                        <img th:src="@{/static/images/blog/1.jpg}" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-text">
+                                    <div class="blog-date pt-12">
+                                        <span class="text-large block text-white">25</span>
+                                        <span class="uppercase block text-white">June</span>
+                                    </div>
+                                    <div class="blog-post-info">
+                                        <span class="pl-10"><i class="zmdi zmdi-account pr-8"></i>amir Khan</span>
+                                        <span class="pl-35"><i class="zmdi zmdi-favorite pr-8"></i>like</span>
+                                        <span class="pl-15"><i class="zmdi zmdi-comments pr-8"></i>comments</span>
+                                    </div>
+                                    <h5 class="pt-28 mb-6"><a href="#">There are many variations of passages</a></h5>
+                                    <p class="mb-21">It is a long established fact that a reader will be distracted by
+                                        the readable content of a page when looking its layout. The point of using Lorem
+                                        Ipsum is tat it has a more-or-less normal distribution of letters</p>
+                                    <a href="#" class="button large-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-blog hover-effect">
+                                <div class="blog-image box-hover">
+                                    <a href="#" class="block">
+                                        <img th:src="@{/static/images/blog/2.jpg}" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-text">
+                                    <div class="blog-date pt-12">
+                                        <span class="text-large block text-white">25</span>
+                                        <span class="uppercase block text-white">June</span>
+                                    </div>
+                                    <div class="blog-post-info">
+                                        <span class="pl-10"><i class="zmdi zmdi-account pr-8"></i>amir Khan</span>
+                                        <span class="pl-35"><i class="zmdi zmdi-favorite pr-8"></i>like</span>
+                                        <span class="pl-15"><i class="zmdi zmdi-comments pr-8"></i>comments</span>
+                                    </div>
+                                    <h5 class="pt-28 mb-6"><a href="#">There are many variations of passages</a></h5>
+                                    <p class="mb-21">It is a long established fact that a reader will be distracted by
+                                        the readable content of a page when looking its layout. The point of using Lorem
+                                        Ipsum is tat it has a more-or-less normal distribution of letters</p>
+                                    <a href="#" class="button large-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-blog hover-effect">
+                                <div class="blog-image box-hover">
+                                    <a href="#" class="block">
+                                        <img th:src="@{/static/images/blog/3.jpg}" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-text">
+                                    <div class="blog-date pt-12">
+                                        <span class="text-large block text-white">25</span>
+                                        <span class="uppercase block text-white">June</span>
+                                    </div>
+                                    <div class="blog-post-info">
+                                        <span class="pl-10"><i class="zmdi zmdi-account pr-8"></i>amir Khan</span>
+                                        <span class="pl-35"><i class="zmdi zmdi-favorite pr-8"></i>like</span>
+                                        <span class="pl-15"><i class="zmdi zmdi-comments pr-8"></i>comments</span>
+                                    </div>
+                                    <h5 class="pt-28 mb-6"><a href="#">There are many variations of passages</a></h5>
+                                    <p class="mb-21">It is a long established fact that a reader will be distracted by
+                                        the readable content of a page when looking its layout. The point of using Lorem
+                                        Ipsum is tat it has a more-or-less normal distribution of letters</p>
+                                    <a href="#" class="button large-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-blog hover-effect">
+                                <div class="blog-image box-hover">
+                                    <a href="#" class="block">
+                                        <img th:src="@{/static/images/blog/1.jpg}" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-text">
+                                    <div class="blog-date pt-12">
+                                        <span class="text-large block text-white">25</span>
+                                        <span class="uppercase block text-white">June</span>
+                                    </div>
+                                    <div class="blog-post-info">
+                                        <span class="pl-10"><i class="zmdi zmdi-account pr-8"></i>amir Khan</span>
+                                        <span class="pl-35"><i class="zmdi zmdi-favorite pr-8"></i>like</span>
+                                        <span class="pl-15"><i class="zmdi zmdi-comments pr-8"></i>comments</span>
+                                    </div>
+                                    <h5 class="pt-28 mb-6"><a href="#">There are many variations of passages</a></h5>
+                                    <p class="mb-21">It is a long established fact that a reader will be distracted by
+                                        the readable content of a page when looking its layout. The point of using Lorem
+                                        Ipsum is tat it has a more-or-less normal distribution of letters</p>
+                                    <a href="#" class="button large-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Blog Area-->
+        <!--Start of Social Link Area-->
+        <div class="social-link-area ptb-40 dark-blue-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 fix col-xs-12 col-sm-6">
+                        <div class="footer-logo pull-left">
+                            <a href="index2.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}"
+                                                                     alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 fix col-xs-12 col-sm-6">
+                        <div class="social-links pull-right">
+                            <a href="#"><i class="zmdi zmdi-facebook"></i></a>
+                            <a href="#"><i class="zmdi zmdi-rss"></i></a>
+                            <a href="#"><i class="zmdi zmdi-google-plus"></i></a>
+                            <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
+                            <a href="#"><i class="zmdi zmdi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Social Link Area-->
+        <!--Start of Footer Widget-area-->
+        <div class="footer-widget-area black-bg pt-120 pb-110">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single-footer-widget">
+                            <h3 class="text-white mb-22">关于</h3>
+                            <p class="text-white pr-10">这是一个热衷于给没有工作的人提供帮助的网
+                                站，在这里有许多合适的工作岗位等着他们。我们由衷的希望所有人能得到帮助。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single-footer-widget">
+                            <h3 class="text-white mb-26">保持联系</h3>
+                            <span class="text-white mb-9"><i class="fa fa-phone"></i>+88 018 785 4589</span>
+                            <span class="text-white mb-9"><i class="fa fa-envelope"></i>devitems@email.com</span>
+                            <span class="text-white mb-9"><i class="fa fa-globe"></i>www.slane.me</span>
+                            <span class="text-white mb-9"><i
+                                    class="fa fa-map-marker"></i>南昌,世纪星城, 5楼</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single-footer-widget">
+                            <h3 class="text-white mb-21">相关链接</h3>
+                            <ul class="footer-list">
+                                <li><a href="#">关于</a></li>
+                                <li><a href="#">支持</a></li>
+                                <li><a href="#">加盟</a></li>
+                                <li><a href="#">条款 &amp; 条件</a></li>
+                                <li><a href="#">联系我们</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 hidden-sm">
+                        <div class="single-footer-widget">
+                            <h3 class="text-white mb-21">工作趋势</h3>
+                            <ul class="footer-list">
+                                <li><a href="#">设计师</a></li>
+                                <li><a href="#">开发人员</a></li>
+                                <li><a href="#">iOS 开发</a></li>
+                                <li><a href="#">Android 开发</a></li>
+                                <li><a href="#">测试人员</a></li>
+                                <li><a href="#">运维</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Footer Widget-area-->
+        <!-- Start of Footer area -->
+        <footer class="footer-area blue-bg text-center ptb-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-text">
+                            <span class="text-white block">Copyright &copy; 2019.公司名称保留所有权利.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer area -->
+    </div>
+    <!--End of Bg White-->
+</div>
+<!--End of Main Wrapper Area-->
+<!--Start of Login Form-->
+<div id="quickview-login">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-pop-up-content ptb-60 pl-60 pr-60">
+                        <div class="area-title text-center mb-43">
+                            <h2 class="pt-7 pb-7 pl-40 pr-40">登录</h2>
+                        </div>
+                        <form th:action="@{/login}">
+                            <div class="form-box">
+                                <input type="text" name="userName" placeholder="用户名" class="mb-14">
+                                <input type="password" name="userPassword" placeholder="密码">
+                            </div>
+                            <div class="fix ptb-30">
+                                <span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span>
+                                <span class="pull-right"><a href="#">忘记密码?</a></span>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="text-uppercase">登录</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Login Form-->
+<!-- jquery latest version
+========================================================= -->
+
+<script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>
+<!-- Bootstrap framework js
+========================================================= -->
+<script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+<!-- Owl Carousel js
+========================================================= -->
+<script th:src="@{/static/js/owl.carousel.min.js}"></script>
+
+<!-- nivo slider js
+========================================================= -->
+<script th:src="@{/static/lib/nivo-slider/js/jquery.nivo.slider.js}" type="text/javascript"></script>
+<script th:src="@{/static/lib/nivo-slider/home.js}" type="text/javascript"></script>
+
+<!-- Js plugins included in this file
+========================================================= -->
+<script th:src="@{/static/js/plugins.js}"></script>
+<!-- StyleSwitch JS
+========================================================= -->
+<script th:src="@{/static/js/styleswitch.js}"></script>
+
+<!-- Waypoint Js
+========================================================= -->
+<script th:src="@{/static/js/waypoints.min.js}"></script>
+
+<!-- Main js file contents all jQuery plugins activation
+========================================================= -->
+<script th:src="@{/static/js/main.js}"></script>
+
+</body>
+</html>

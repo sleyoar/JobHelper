@@ -29,6 +29,11 @@ public class UseServiceImpl implements UserService {
     }
 
     @Override
+    public User verifyUser(String userName) {
+        return userMapper.verifyUser(userName);
+    }
+
+    @Override
     public List<User> selectAll() {
         return userMapper.selectAll();
     }

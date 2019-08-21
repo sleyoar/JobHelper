@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.ResumeMapper" >
+<mapper namespace="com.mapper.ResumeMapper" >
   <resultMap id="BaseResultMap" type="com.entity.Resume" >
     <id column="resume_id" property="resumeId" jdbcType="INTEGER" />
     <result column="resume_pic" property="resumePic" jdbcType="VARCHAR" />

@@ -7,6 +7,7 @@ import java.util.List;
 public interface JobMapper {
     /**
      * delete by id
+     *
      * @param jobId id
      * @return row
      */
@@ -14,6 +15,7 @@ public interface JobMapper {
 
     /**
      * insert into job
+     *
      * @param record job
      * @return row
      */
@@ -21,6 +23,7 @@ public interface JobMapper {
 
     /**
      * get job by id
+     *
      * @param jobId id
      * @return job
      */
@@ -28,6 +31,9 @@ public interface JobMapper {
 
     /*get all jobs*/
     List<Job> selectAll();
+
+    /*get random 3 jobs*/
+    List<Job> selectSome();
 
     /*update job*/
     int updateByPrimaryKey(Job record);

@@ -14,6 +14,9 @@ public interface UserMapper {
     /*get one user by id*/
     User selectByPrimaryKey(Integer userId);
 
+    /*get one user by name */
+    User verifyUser(String userName);
+
     /*get all users*/
     List<User> selectAll();
 

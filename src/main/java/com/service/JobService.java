@@ -32,6 +32,9 @@ public interface JobService {
     /*get all jobs*/
     List<Job> selectAll();
 
+    /*get random 3 jobs*/
+    List<Job> selectSome();
+
     /*update job*/
     int updateByPrimaryKey(Job record);
 }
