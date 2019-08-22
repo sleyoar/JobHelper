@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.List;
 
 @Controller
-@SessionAttributes({"user", "jobs", "users", "resumes", "blogs"})
+@SessionAttributes({"jobs", "jobs1","users", "resumes", "blogs","blogs1"})
 public class CommonController {
 
     @Autowired
@@ -32,58 +32,24 @@ public class CommonController {
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public String index(Model model){
         List<Job> jobs = jobService.selectAll();
         List<Job> jobs1 = jobService.selectSome();
         List<User> users = userService.selectAll();
         List<Resume> resumes = resumeService.selectAll();
         List<Blog> blogs = blogService.selectAll();
+        List<Blog> blogs1 = blogService.selectSome();
         model.addAttribute("jobs",jobs);
         model.addAttribute("users",users);
         model.addAttribute("resumes",resumes);
         model.addAttribute("blogs",blogs);
+        model.addAttribute("blogs1",blogs1);
         model.addAttribute("jobs1",jobs1);
         return "index";
     }
 
-    @RequestMapping("/alljob")
-    public String alljobs(){
-        return "job-board";
-    }
-    @RequestMapping("/register")
-    public String register(){
-        return "login";
-    }
-    @RequestMapping("/resume")
-    public String resume(@RequestParam("userId") Integer userId) {
-        System.out.println(userId);
-        return "resume";
-    }
-    @RequestMapping("/blog")
-    public String blog() {
-        return "blog";
-    }
-    @RequestMapping("/blogdetails")
-    public String blogdetails() {
-        return "blog-details";
-    }
-    @RequestMapping("contact")
-    public String contact(){
-        return "contact";
-    }
-    @GetMapping("/login")
-    public String Login(@RequestParam("userName")String userName,
-                        @RequestParam("userPassword")String userPassword, Model model){
-        User user = userService.verifyUser(userName);
-        if (user!=null && userPassword.equals(user.getUserPassword())){
-            model.addAttribute("user",user);
-            return "forward:/";
-        } else {
-            model.addAttribute("msg","用户名或密码错误！");
-            return "redirect:/";
-        }
-    }
+
 
 
 }

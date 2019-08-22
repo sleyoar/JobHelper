@@ -34,6 +34,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> selectSome() {
+        return blogMapper.selectSome();
+    }
+
+    @Override
     public int updateByPrimaryKey(Blog record) {
         return blogMapper.updateByPrimaryKey(record);
     }

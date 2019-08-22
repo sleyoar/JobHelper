@@ -5,6 +5,7 @@
     <id column="blog_id" property="blogId" jdbcType="INTEGER" />
     <result column="blog_user" property="blogUser" jdbcType="VARCHAR" />
     <result column="blog_category" property="blogCategory" jdbcType="VARCHAR" />
+    <result column="blog_title" property="blogTitle" jdbcType="VARCHAR" />
     <result column="blog_date" property="blogDate" jdbcType="DATE" />
     <result column="blog_context" property="blogContext" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -13,26 +14,32 @@
     where blog_id = #{blogId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.entity.Blog" >
-    insert into jh_blog (blog_id, blog_user, blog_category, 
+    insert into jh_blog (blog_id, blog_user, blog_category, blog_title,
       blog_date, blog_context)
-    values (#{blogId,jdbcType=INTEGER}, #{blogUser,jdbcType=VARCHAR}, #{blogCategory,jdbcType=VARCHAR}, 
-      #{blogDate,jdbcType=DATE}, #{blogContext,jdbcType=LONGVARCHAR})
+    values (#{blogId,jdbcType=INTEGER}, #{blogUser,jdbcType=VARCHAR}, #{blogCategory,jdbcType=VARCHAR}, #{blogTitle,jdbcType=VARCHAR},
+            #{blogDate,jdbcType=DATE}, #{blogContext,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.entity.Blog" >
     update jh_blog
     set blog_user = #{blogUser,jdbcType=VARCHAR},
       blog_category = #{blogCategory,jdbcType=VARCHAR},
+      blog_title = #{blogTitle,jdbcType=VARCHAR},
       blog_date = #{blogDate,jdbcType=DATE},
       blog_context = #{blogContext,jdbcType=LONGVARCHAR}
     where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select blog_id, blog_user, blog_category, blog_date, blog_context
+    select blog_id, blog_user, blog_category, blog_title,blog_date, blog_context
     from jh_blog
     where blog_id = #{blogId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select blog_id, blog_user, blog_category, blog_date, blog_context
+    select blog_id, blog_user, blog_category,blog_title, blog_date, blog_context
     from jh_blog
+  </select>
+  <select id="selectSome" resultMap="BaseResultMap" >
+    select blog_id, blog_user, blog_category,blog_title, blog_date, blog_context
+    from jh_blog
+    LIMIT 6
   </select>
 </mapper>

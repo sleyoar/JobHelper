@@ -5,48 +5,51 @@
         <title>简历</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <!-- favicon
-        ============================================ -->		
+        ============================================ -->
         <link rel="shortcut icon" type="image/x-icon" th:href="@{/static/images/favicon.ico}">
-        
+
         <!-- Google Fonts
-        ============================================ -->		
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
-        
+        ============================================ -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
         <!-- All css files are included here
-        ============================================ -->    
+        ============================================ -->
         <!-- Bootstrap CSS
-        ============================================ -->		
+        ============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">
-        
+
         <!-- This core.css file contents all plugins css file
         ============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/core.css}">
-        
+
         <!-- Theme shortcodes/elements style
-        ============================================ -->  
+        ============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/shortcode/shortcodes.css}">
-        
+
 		<!-- Color Swithcer CSS
 		============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/plugins/color-switcher.css}">
-        
+
         <!--  Theme main style
         ============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/style.css}">
-        
+
 		<!-- Color CSS
 		============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/plugins/color.css}">
-        
+
         <!-- Responsive CSS
         ============================================ -->
         <link rel="stylesheet" th:href="@{/static/css/responsive.css}">
-        
+
         <!-- Modernizr JS -->
         <script th:src="@{/static/js/vendor/modernizr-2.8.3.min.js}"></script>
-    </head>  
+        <style>
+            .scroll{height:200px;overflow:auto;overflow-x:hidden;}
+        </style>
+    </head>
     <body>
         <!--Main Wrapper Start-->
         <div class="as-mainwrapper">
@@ -57,28 +60,46 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3 col-xs-12">
-                                <div class="logo"><a href="index2.html"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a></div>
+                                <div class="logo"><a th:href="@{/}"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a>
+                                </div>
                             </div>
                             <div class="col-md-9 hidden-sm hidden-xs">
                                 <div class="pull-right">
                                     <nav id="primary-menu">
                                         <ul class="main-menu text-right">
-                                            <li><a href="index2.html">主页</a>
+                                            <li><a th:href="@{/}">主页</a>
                                             </li>
-                                            <li><a href="job-board.html" target="_blank">工作栏</a>
-                                            </li>
-                                            <li><a href="resume.html" target="_blank">简历</a></li>
-                                            <li><a href="blog.html" target="_blank">博客</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                            <li><a th:href="@{/alljobs}">工作栏</a>
+                                                <ul class="sub-menu">
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html" target="_blank">联系我们</a></li>
+                                            <li th:if="${session.user !=null}">
+                                                <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
+                                            </li>
+                                            <li th:if="${session.user ==null}">
+                                                <a th:href="@{/resume}" target="_blank">简历</a>
+                                            </li>
+                                            <li><a th:href="@{/register}">注册新账号</a></li>
+                                            <li><a th:href="@{/blog}">博客</a>
+                                                <ul class="dropdown">
+                                                    <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a th:href="@{/contact}">联系我们</a></li>
+                                            <!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                            <div class="login-btn pt-36" th:if="${session.user} == null">
+                                                <a class="modal-view button" data-toggle="modal"
+                                                   data-target="#productModal">登录</a>
+                                            </div>
+                                            <div class="login-btn pt-36" th:if="${session.user != null}">
+                                                <a th:href="@{/infor}">欢迎：<span th:text="${session.user.userName}"></span></a>
+                                            </div>
+                                            </li>
+                                            <li th:if="${msg != null}">
+                                                <font color="red"><span th:text="${msg}"></span></font>
+                                            </li>
                                         </ul>
                                     </nav>
-                                    <div class="login-btn pt-36">
-                                        <a class="modal-view button" href="login.html" >登录</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,17 +112,25 @@
                                     <div class="mobile-menu">
                                         <nav id="dropdown">
                                             <ul>
-                                                <li><a href="index2.html">主页</a>
+                                                <li><a th:href="@{/}">主页</a>
                                                 </li>
-                                                <li><a href="job-board.html">工作栏</a>
-                                                </li>
-                                                <li><a href="resume.html" target="_blank">简历</a></li>
-                                                <li><a href="blog.html">博客</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                                <li><a th:href="@{/alljobs}">工作栏</a>
+                                                    <ul class="sub-menu">
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">联系我们</a></li>
+                                                <li th:if="${session.user !=null}">
+                                                    <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
+                                                </li>
+                                                <li th:if="${session.user ==null}">
+                                                    <a th:href="@{/resume}" target="_blank">简历</a>
+                                                </li>
+                                                <li><a th:href="@{/register}">注册新账号</a></li>
+                                                <li><a th:href="@{/blog}">博客</a>
+                                                    <ul class="dropdown">
+                                                        <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a th:href="@{/contact}">联系我们</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -109,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Mobile Menu Area end -->  
+                    <!-- Mobile Menu Area end -->
                 </header>
                 <!-- End of Header Area -->
                 <!--Breadcrumb Banner Area Start-->
@@ -136,21 +165,28 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <form action="#">
+                                <form th:action="@{/resumeSave}">
                                     <div class="single-job-content">
                                         <div class="title uppercase pt-50 pb-38"><span class="lg">基本信息</span></div>
                                         <div class="single-job-form">
                                             <div class="single-info mb-14 fix">
                                                 <label for="photo" class="uppercase pull-left m-0">照片(点击空白处上传)</label>
-                                                <div style="height: 108px; " class="photo-uploader fix pull-left" id="fileupload">
+                                                <div style="height: 108px; " class="photo-uploader fix pull-left" id="fileupload" th:if="${resume==null}">
                                                     <input type="file" id="photo" name="resumePic"  onchange="showPreview(this)" >
-                                                    <img id="portrait" src="" style="display:none; width: 192px; height: 108px;" />
+                                                        <img id="portrait" src="" style="display:none; width: 192px; height: 108px;" />
+                                                </div>
+                                                <div style="height: 108px; " class="photo-uploader fix pull-left"  th:if="${resume!=null}">
+                                                    <input type="hidden" name="resumePic" th:value="${resume.resumePic}" >
+                                                        <img  th:src="|/pic/${resume.resumePic}|" style=" width: 192px; height: 108px;" />
                                                 </div>
                                             </div>
                                             <div class="single-info">
                                                 <label for="name" class="uppercase pull-left m-0">姓名</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume ==null}">
                                                     <input type="text" id="name" name="resumeName" placeholder="请输入您的姓名">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume!=null}">
+                                                    <input type="text" th:value="${resume.resumeName}">
                                                 </div>
                                             </div>
                                         </div>
@@ -158,26 +194,38 @@
                                         <div class="single-job-form">
                                             <div class="single-info mb-14">
                                                 <label for="address" class="uppercase pull-left m-0">地址</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume ==null}">
                                                     <input type="text" id="address" name="resumeAddress" placeholder="请输入您的现居地址">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume!=null}">
+                                                    <input type="text" name="resumeAddress" th:value="${resume.resumeAddress}">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="phone" class="uppercase pull-left m-0">电话</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume==null}">
                                                     <input type="text" id="phone" name="resumePhone" placeholder="请输入您的电话号码">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume!=null}">
+                                                    <input type="text"  name="resumePhone" th:value="${resume.resumePhone}">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="email" class="uppercase pull-left m-0">邮箱</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume==null}">
                                                     <input type="email" id="email" name="resumeEmail" placeholder="请输入最近能联系的有效邮箱">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume!=null}">
+                                                    <input type="email" name="resumeEmail" th:value="${resume.resumeEmail}">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="website" class="uppercase pull-left m-0">社交主页</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume==null}">
                                                     <input type="text" id="website" name="resumePage" placeholder="输入您的社交主页如GitHub等">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume !=null}">
+                                                    <input type="text" name="resumePage" th:value="${resume.resumePage}">
                                                 </div>
                                             </div>
                                         </div>
@@ -192,8 +240,11 @@
                                                     <span class="mr-15"><i class="zmdi zmdi-format-list-numbered"></i></span>
                                                     <span class="mr-15"><i class="zmdi zmdi-format-line-spacing"></i></span>
                                                 </div>
-                                                <div class="desc fix">
-                                                    <textarea name="resumeDescribe" class="fix textarea" cols="30" rows="10" placeholder="请输入您的自我描述"></textarea>
+                                                <div class="desc fix" th:if="${resume==null}">
+                                                    <textarea name="resumeDescribe" class="fix textarea scroll" cols="30" rows="10" placeholder="请输入您的自我描述"></textarea>
+                                                </div>
+                                                <div class="desc fix" th:if="${resume !=null}">
+                                                    <textarea name="resumeDescribe" class="fix textarea scroll" cols="30" rows="10" th:text="${resume.resumeDescribe}"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,15 +252,27 @@
                                         <div class="single-job-form">
                                             <div class="single-info mb-14">
                                                 <label for="school_name" class="uppercase pull-left m-0">学校名字</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume==null}">
                                                     <input type="text" id="school_name" name="resumeSchool" placeholder="请输入你的毕业学校名字">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume!=null}">
+                                                    <input type="text"  name="resumeSchool" th:value="${resume.resumeSchool}">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="school_name" class="uppercase pull-left m-0">学历</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume==null}">
                                                     <select name="resumeDegree" class="select">
                                                         <option value="选择学历">选择学历</option>
+                                                        <option value="专科学历">专科</option>
+                                                        <option value="本科学历">本科</option>
+                                                        <option value="硕士研究生">硕士</option>
+                                                        <option value="博士研究生">博士</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume!=null}">
+                                                    <select name="resumeDegree" class="select">
+                                                        <option th:text="${resume.resumeDegree}"></option>
                                                         <option value="专科学历">专科</option>
                                                         <option value="本科学历">本科</option>
                                                         <option value="硕士研究生">硕士</option>
@@ -219,8 +282,11 @@
                                             </div>
                                             <div class="single-info mb-14 fix">
                                                 <label class="uppercase pull-left m-0">荣誉奖项</label>
-                                                <div class="desc fix">
-                                                    <textarea name="resumeHonour" class="fix small textarea" cols="30" rows="10" placeholder="请输入获得的荣誉奖项、学校工作经历等"></textarea>
+                                                <div class="desc fix" th:if="${resume == null}">
+                                                    <textarea name="resumeHonour" class="fix small textarea scroll" cols="30" rows="10" placeholder="请输入获得的荣誉奖项、学校工作经历等"></textarea>
+                                                </div>
+                                                <div class="desc fix" th:if="${resume != null}">
+                                                    <textarea name="resumeHonour" class="fix small textarea scroll" cols="30" rows="10" th:text="${resume.resumeHonour}"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -228,28 +294,37 @@
                                         <div class="single-job-form">
                                             <div class="single-info pb-14">
                                                 <label for="projectName" class="uppercase pull-left m-0">项目名称</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume ==null}">
                                                     <input type="text" id="projectName" name="projectName" placeholder="输入标题">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume !=null}">
+                                                    <input type="text"  name="projectName" th:value="${resume.projectName}">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14">
                                                 <label for="projectTime" class="uppercase pull-left m-0">项目时长（天）</label>
-                                                <div class="form-box fix">
+                                                <div class="form-box fix" th:if="${resume ==null}">
                                                     <input type="text" id="projectTime" name="projectTime" placeholder="输入时长">
+                                                </div>
+                                                <div class="form-box fix" th:if="${resume !=null}">
+                                                    <input type="text"  name="projectTime" th:value="${resume.projectTime}">
                                                 </div>
                                             </div>
                                             <div class="single-info mb-14 fix">
                                                 <label class="uppercase pull-left m-0">项目描述 </label>
-                                                <div class="desc fix">
-                                                    <textarea name="projectDescribe" class="fix small textarea" cols="30" rows="10" placeholder="请输入项目的描以及你在项目中的职责"></textarea>
+                                                <div class="desc fix" th:if="${resume ==null}">
+                                                    <textarea name="projectDescribe" class="fix small textarea scroll" cols="30" rows="10" placeholder="请输入项目的描以及你在项目中的职责"></textarea>
+                                                </div>
+                                                <div class="desc fix" th:if="${resume !=null}">
+                                                    <textarea name="projectDescribe" class="fix small textarea scroll" cols="30" rows="10" th:text="${resume.projectDescribe}"></textarea>
                                                 </div>
                                             </div>
                                             <div class="ml-160 mt-42">
-                                                <a href="#" class="button button-medium-box">保存简历</a>
+                                                <input type="submit" class="button button-medium-box"/>
                                             </div>
                                         </div>
                                     </div>
-                                </form>    
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -276,7 +351,7 @@
                         </div>
                     </div>
                 </div>
-                <!--End of Social Link Area--> 
+                <!--End of Social Link Area-->
                 <!--Start of Footer Widget-area-->
                 <div class="footer-widget-area black-bg pt-120 pb-110">
                     <div class="container">
@@ -341,41 +416,41 @@
                     </div>
                 </footer>
                 <!-- End of Footer area -->
-            </div>   
-            <!--End of Bg White--> 
-        </div>    
+            </div>
+            <!--End of Bg White-->
+        </div>
         <!--End of Main Wrapper Area-->
-        
+
         <!-- jquery latest version
-		========================================================= -->	
+		========================================================= -->
         <script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>
-        
+
         <!-- Bootstrap framework js
-		========================================================= -->			
+		========================================================= -->
         <script th:src="@{/static/js/bootstrap.min.js}"></script>
-        
+
         <!-- Owl Carousel js
-		========================================================= -->		
+		========================================================= -->
         <script th:src="@{/static/js/owl.carousel.min.js}"></script>
-        
+
         <!-- nivo slider js
-		========================================================= -->	    
+		========================================================= -->
 		<script th:src="@{/static/lib/nivo-slider/js/jquery.nivo.slider.js}" type="text/javascript"></script>
 		<script th:src="@{/static/lib/nivo-slider/home.js}" type="text/javascript"></script>
-        
+
         <!-- Js plugins included in this file
-		========================================================= -->	
+		========================================================= -->
         <script th:src="@{/static/js/plugins.js}"></script>
-        
+
 		<!-- StyleSwitch JS
-		========================================================= -->		
+		========================================================= -->
         <script th:src="@{/static/js/styleswitch.js}"></script>
         <!-- Waypoint Js
-		========================================================= -->	
+		========================================================= -->
         <script th:src="@{/static/js/waypoints.min.js}"></script>
-        
+
         <!-- Main js file contents all jQuery plugins activation
-		========================================================= -->		
+		========================================================= -->
         <script th:src="@{/static/js/main.js}"></script>
 
         <!--show picture-->

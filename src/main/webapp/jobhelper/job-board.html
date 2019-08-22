@@ -46,69 +46,100 @@
         
         <!-- Modernizr JS -->
         <script th:src="@{/static/js/vendor/modernizr-2.8.3.min.js}"></script>
-    </head>  
+        <style>
+            div span p {
+                width: 240px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .blog-text p {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            }
+        </style>
+    </head>
     <body>
-        <!--Main Wrapper Start-->
-        <div class="as-mainwrapper">
-            <!--Bg White Start-->
-            <div class="bg-white">
-                <!--Header Area Start-->
-                <header id="sticky-header" class="header-area">
+
+    <!--Main Wrapper Start-->
+    <div class="as-mainwrapper">
+        <!--Bg White Start-->
+        <div class="bg-white">
+            <!--Header Area Start-->
+            <header id="sticky-header" class="header-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <div class="logo"><a th:href="@{/}"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9 hidden-sm hidden-xs">
+                            <div class="pull-right">
+                                <nav id="primary-menu">
+                                    <ul class="main-menu text-right">
+                                        <li><a th:href="@{/}">主页</a>
+                                        </li>
+                                        <li><a th:href="@{/alljobs}">工作栏</a>
+                                            <ul class="sub-menu">
+                                            </ul>
+                                        </li>
+                                        <li><!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                            <a th:href="@{/resume}" target="_blank">简历</a></li>
+                                        <li><a th:href="@{/register}">注册新账号</a></li>
+                                        <li><a th:href="@{/blog}">博客</a>
+                                            <ul class="dropdown">
+                                                <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a th:href="@{/contact}">联系我们</a></li>
+                                        <!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                        <div class="login-btn pt-36" th:if="${user} == null">
+                                            <a class="modal-view button" data-toggle="modal"
+                                               data-target="#productModal">登录</a>
+                                        </div>
+                                        <div class="login-btn pt-36" th:if="${user != null}">
+                                            <a th:href="@{/infor}">欢迎：<span th:text="${user.userName}"></span></a>
+                                        </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile Menu Area start -->
+                <div class="mobile-menu-area">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-3 col-xs-12">
-                                <div class="logo"><a href="index2.html"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a></div>
-                            </div>
-                            <div class="col-md-9 hidden-sm hidden-xs">
-                                <div class="pull-right">
-                                    <nav id="primary-menu">
-                                        <ul class="main-menu text-right">
-                                            <li><a href="index2.html">主页</a>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="mobile-menu">
+                                    <nav id="dropdown">
+                                        <ul>
+                                            <li><a th:href="@{/}">主页</a>
                                             </li>
-                                            <li><a href="job-board.html" target="_blank">工作栏</a>
-                                            </li>
-                                            <li><a href="resume.html" target="_blank">简历</a></li>
-                                            <li><a href="blog.html" target="_blank">博客</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                            <li><a th:href="@{/alljobs}">工作栏</a>
+                                                <ul class="sub-menu">
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html" target="_blank">联系我们</a></li>
+                                            <li><!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                                <a th:href="@{/resume}" target="_blank">简历</a></li>
+                                            <li><a th:href="@{/register}">注册新账号</a></li>
+                                            <li><a th:href="@{/blog}">博客</a>
+                                                <ul class="dropdown">
+                                                    <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a th:href="@{/contact}">联系我们</a></li>
                                         </ul>
                                     </nav>
-                                    <div class="login-btn pt-36">
-                                        <a class="modal-view button" href="login.html" >登录</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Mobile Menu Area start -->
-                    <div class="mobile-menu-area">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="mobile-menu">
-                                        <nav id="dropdown">
-                                            <ul>
-                                                <li><a href="index2.html">主页</a>
-                                                </li>
-                                                <li><a href="job-board.html">工作栏</a>
-                                                </li>
-                                                <li><a href="resume.html" target="_blank">简历</a></li>
-                                                <li><a href="blog.html">博客</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="blog-details.html" target="_blank">博客详情</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">联系我们</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
                     <!-- Mobile Menu Area end -->  
                 </header>
                 <!-- End of Header Area -->
@@ -121,7 +152,7 @@
                                     <h2 class="text-center text-white uppercase mb-17">工作栏</h2>
                                     <div class="breadcrumb-bar">
                                         <ul class="breadcrumb text-center m-0">
-                                            <li class="text-white uppercase ml-15 mr-15"><a href="index2.html">主页</a></li>
+                                            <li class="text-white uppercase ml-15 mr-15"><a th:href="@{/}">主页</a></li>
                                             <li class="text-white uppercase ml-15 mr-15">工作栏</li>
                                         </ul>
                                     </div>
@@ -169,125 +200,129 @@
                 </div>
                 <!--End of Breadcrumb Banner Area-->
                 <!--Start of Job Post Area-->
-                <div class="job-post-area ptb-120">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="section-title text-center ">
-                                    <h2 class="uppercase">最近发布工作</h2>
-                                    <div class="separator mt-35 mb-77">
-                                        <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="job-post-container fix">
-                                    <div class="single-job-post fix">
-                                        <div class="job-title col-4 pl-30">
-                                            <span class="pull-left block mtb-17">
-                                                <a href="#"><img th:src="@{/static/images/company-logo/1.png}" alt=""></a>
-                                            </span>
-                                            <div class="fix pl-30 mt-29">
-                                                <h4 class="mb-5">Graphic Designer</h4>
-                                                <h5><a href="#">Devitems</a></h5>
-                                            </div>
-                                        </div>
-                                        <div class="address col-4 pl-50">
-                                            <span class="mtb-30 block">2020 Willshire Glen,<br>
-                                            Alpharetta, GA-30009</span>
-                                        </div>
-                                        <div class="time-payment col-2 pl-60 text-center pt-22">
-                                            <span class="block mb-6">€ 200.00</span>
-                                            <a href="#" class="button button-red">Full Time</a>
-                                        </div>
-                                    </div>
-
+            <div class="job-post-area ptb-120" id="start">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title text-center ">
+                                <h2 class="uppercase">最近的工作</h2>
+                                <div class="separator mt-35 mb-77">
+                                    <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="job-post-container fix mb-70">
+                                <table>
+                                    <tbody th:remove="all-but-first">
+                                    <!--/*@thymesVar id="jobs" type="java.util.List"*/-->
+                                    <!--/*@thymesVar id="job" type="com.entity.Job"*/-->
+                                    <tr th:each="job:${session.jobs}">
+                                        <div class="single-job-post fix">
+                                            <div class="job-title col-4 pl-30" th:switch="${job.jobCategory}">
+                                                    <span class="pull-left block mtb-17" th:case="'java'">
+                                                <img th:src="@{/static/images/company-logo/1.png}" alt="">
+                                            </span>
+                                                <span class="pull-left block mtb-17" th:case="'php'">
+                                                <img th:src="@{/static/images/company-logo/2.png}" alt="">
+                                            </span>
+                                                <span class="pull-left block mtb-17" th:case="'DBA'">
+                                                <img th:src="@{/static/images/company-logo/3.png}" alt="">
+                                            </span>
+                                                <span class="pull-left block mtb-17" th:case="*">
+                                                <img th:src="@{/static/images/company-logo/4.png}" alt="">
+                                            </span>
+                                                <div class="fix pl-30 mt-29">
+                                                    <h4 class="mb-5"><span th:text="${job.jobName}"></span></h4>
+                                                    <h5><a th:href="@{/jobdetails(${job.jobId})}">详情</a></h5>
+                                                </div>
+                                            </div>
+                                            <div class="address col-4 pl-50">
+                                            <span class="mtb-30 block"><span
+                                                    th:text="${#dates.format(job.jobDate, 'yyyy-MM-dd')}"></span>&nbsp;&nbsp;发布于职帮网
+                                           <p th:text="${job.jobAddress}"></p></span>
+                                            </div>
+                                            <div class="time-payment col-2 pl-60 text-center pt-22">
+                                                <span class="block mb-6"><span th:text="${job.jobSalary}"></span></span>
+                                                <a class="button button-red"><span th:text="${job.jobQuality}"></span></a>
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">
+                                <!--分页文字信息  -->
+                                <div class="col-md-6" id="page_info_area"></div>
+                                <!-- 分页条信息 -->
+                                <div class="col-md-6" id="page_nav_area"></div>
+                                <a href="#" class="button large-button">查看所有工作</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
                 <!-- End of Job Post Area -->
                 <!--Start of Job Post Area-->
-                <div class="job-post-area pb-120">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="section-title text-center ">
-                                    <h2 class="uppercase">特色职位</h2>
-                                    <div class="separator mt-35 mb-77">
-                                        <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="job-post-container fix">
-                                    <div class="single-job-post fix">
-                                        <div class="job-title col-4 pl-30">
-                                            <span class="pull-left block mtb-17">
-                                                <a href="#"><img th:src="@{/static/images/company-logo/1.png}" alt=""></a>
-                                            </span>
-                                            <div class="fix pl-30 mt-29">
-                                                <h4 class="mb-5">Graphic Designer</h4>
-                                                <h5><a href="#">Devitems</a></h5>
-                                            </div>
-                                        </div>
-                                        <div class="address col-4 pl-50">
-                                            <span class="mtb-30 block">2020 Willshire Glen,<br>
-                                            Alpharetta, GA-30009</span>
-                                        </div>
-                                        <div class="time-payment col-2 pl-60 text-center pt-22">
-                                            <span class="block mb-6">€ 200.00</span>
-                                            <a href="#" class="button button-red">Full Time</a>
-                                        </div>
-                                    </div>
-                                    <div class="single-job-post fix">
-                                        <div class="job-title col-4 pl-30">
-                                            <span class="pull-left block mtb-17">
-                                                <a href="#"><img th:src="@{/static/images/company-logo/2.png}" alt=""></a>
-                                            </span>
-                                            <div class="fix pl-30 mt-29">
-                                                <h4 class="mb-5">Web Designer</h4>
-                                                <h5><a href="#">Hastech</a></h5>
-                                            </div>
-                                        </div>
-                                        <div class="address col-4 pl-50">
-                                            <span class="mtb-30 block">2020 Willshire Glen,<br>
-                                            Alpharetta, GA-30009</span>
-                                        </div>
-                                        <div class="time-payment col-2 pl-60 text-center pt-22">
-                                            <span class="block mb-6">€ 450.00</span>
-                                            <a href="#" class="button button-red">Full Time</a>
-                                        </div>
-                                    </div>
-                                    <div class="single-job-post fix">
-                                        <div class="job-title col-4 pl-30">
-                                            <span class="pull-left block mtb-17">
-                                                <a href="#"><img th:src="@{/static/images/company-logo/3.png}" alt=""></a>
-                                            </span>
-                                            <div class="fix pl-30 mt-29">
-                                                <h4 class="mb-5">Print Designer</h4>
-                                                <h5><a href="#">Bootexperts</a></h5>
-                                            </div>
-                                        </div>
-                                        <div class="address col-4 pl-50">
-                                            <span class="mtb-30 block">2020 Willshire Glen,<br>
-                                            Alpharetta, GA-30009</span>
-                                        </div>
-                                        <div class="time-payment col-2 pl-60 text-center pt-22">
-                                            <span class="block mb-6">€ 500.00</span>
-                                            <a href="#" class="button">Part Time</a>
-                                        </div>
-                                    </div>
+            <div class="job-post-area pb-120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title text-center ">
+                                <h2 class="uppercase">特色职位</h2>
+                                <div class="separator mt-35 mb-77">
+                                    <span><img th:src="@{/static/images/icons/1.png}" alt=""></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="job-post-container fix">
+                                <table>
+                                    <tbody th:remove="all-but-first">
+                                    <!--/*@thymesVar id="jobs1" type="java.util.List"*/-->
+                                    <!--/*@thymesVar id="job1" type="com.entity.Job"*/-->
+                                    <tr th:each="job1:${session.jobs1}">
+                                        <div class="single-job-post fix">
+                                            <div class="job-title col-4 pl-30" th:switch="${job1.jobCategory}">
+                                            <span class="pull-left block mtb-17" th:case="'java'">
+                                                <img th:src="@{/static/images/company-logo/1.png}" alt="">
+                                            </span>
+                                                <span class="pull-left block mtb-17" th:case="'php'">
+                                                <img th:src="@{/static/images/company-logo/2.png}" alt="">
+                                            </span>
+                                                <span class="pull-left block mtb-17" th:case="'DBA'">
+                                                <img th:src="@{/static/images/company-logo/3.png}" alt="">
+                                            </span>
+                                                <span class="pull-left block mtb-17" th:case="*">
+                                                <img th:src="@{/static/images/company-logo/4.png}" alt="">
+                                            </span>
+                                                <div class="fix pl-30 mt-29">
+                                                    <h4 class="mb-5"><span th:text="${job1.jobName}"></span></h4>
+                                                    <h5><a href="job-details.html">详情</a></h5>
+                                                </div>
+                                            </div>
+                                            <div class="address col-4 pl-50">
+                                            <span class="mtb-30 block"><span
+                                                    th:text="${#dates.format(job1.jobDate, 'yyyy-MM-dd')}"></span>&nbsp;&nbsp;发布于职帮网<br>
+                                           <span th:text="${job1.jobAddress}"></span></span>
+                                            </div>
+                                            <div class="time-payment col-2 pl-60 text-center pt-22">
+                                                <span class="block mb-6"><span th:text="${job1.jobSalary}"></span></span>
+                                                <a class="button button-red"><span th:text="${job1.jobQuality}"></span></a>
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
                 <!-- End of Job Post Area -->
                 <!--Start of Social Link Area-->
                 <div class="social-link-area ptb-40 dark-blue-bg">
@@ -379,6 +414,41 @@
             <!--End of Bg White--> 
         </div>   
         <!--End of Main Wrapper Area-->
+    <!--Start of Login Form-->
+    <div id="quickview-login">
+        <!-- Modal -->
+        <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-pop-up-content ptb-60 pl-60 pr-60">
+                            <div class="area-title text-center mb-43">
+                                <h2 class="pt-7 pb-7 pl-40 pr-40">登录</h2>
+                            </div>
+                            <form th:action="@{/login}" method="post">
+                                <div class="form-box">
+                                    <input type="text" name="userName" placeholder="用户名" class="mb-14">
+                                    <input type="password" name="userPassword" placeholder="密码">
+                                </div>
+                                <div class="fix ptb-30">
+                                    <span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span>
+                                    <span class="pull-right"><a href="#">忘记密码?</a></span>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="text-uppercase">登录</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Login Form-->
         <!-- jquery latest version
 		========================================================= -->	
         <script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>

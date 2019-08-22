@@ -1,7 +1,8 @@
 package com.entity;
 
 public class Resume {
-    private Integer resumeId;
+
+    private Integer resumeId=10;
 
     private String resumePic;
 
@@ -50,6 +51,7 @@ public class Resume {
     }
 
     public Resume() {
+        this.resumeId+=1;
     }
 
     public Integer getResumeId() {

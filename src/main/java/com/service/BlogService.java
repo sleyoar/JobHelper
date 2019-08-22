@@ -17,6 +17,9 @@ public interface BlogService {
     /*get all blog*/
     List<Blog> selectAll();
 
+    /*get some blog*/
+    List<Blog> selectSome();
+
     /*update one blog*/
     int updateByPrimaryKey(Blog record);
 }

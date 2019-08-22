@@ -7,6 +7,7 @@ import com.service.JobService;
 import com.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +31,19 @@ public class JobController {
         // 封装了详细的分页信息,包括有我们查询出来的数据，传入连续显示的页数
         PageInfo page = new PageInfo(jobs, 3);
         return Msg.success().add("pageInfo", page);
+    }
+
+
+    @RequestMapping("/alljobs")
+    public String allJobs(){
+        return "job-board";
+    }
+
+    @RequestMapping("/jobdetails")
+    private String jobDetails(@RequestParam("jobId") Integer jobId, Model model) {
+        Job job = jobService.selectByPrimaryKey(jobId);
+        model.addAttribute("job",job);
+        return "job-details";
     }
 
 }
