@@ -27,6 +27,13 @@ public interface ResumeService {
     Resume selectByPrimaryKey(Integer resumeId);
 
     /**
+     * get one resume by id
+     * @param userId user_id
+     * @return resume
+     */
+    Resume selectByUserId(Integer userId);
+
+    /**
      * get all resumes
      * @return resume-list
      */

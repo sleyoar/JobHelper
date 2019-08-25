@@ -70,7 +70,7 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
         }
-        .scroll{height:400px;overflow:auto;overflow-x:hidden;}
+        .scroll{height:400px;overflow:scroll;overflow-x:hidden;}
     </style>
 </head>
 <body>
@@ -105,9 +105,9 @@
                                     </li>
                                     <li><a th:href="@{/register}">注册新账号</a></li>
                                     <li><a th:href="@{/blog}">博客</a>
-                                        <ul class="dropdown">
+                                        <!--<ul class="dropdown">
                                             <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                        </ul>
+                                        </ul>-->
                                     </li>
                                     <li><a th:href="@{/contact}">联系我们</a></li>
                                     <!--/*@thymesVar id="user" type="com.entity.User"*/-->
@@ -150,9 +150,9 @@
                                         </li>
                                         <li><a th:href="@{/register}">注册新账号</a></li>
                                         <li><a th:href="@{/blog}">博客</a>
-                                            <ul class="dropdown">
+                                            <!--<ul class="dropdown">
                                                 <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                            </ul>
+                                            </ul>-->
                                         </li>
                                         <li><a th:href="@{/contact}">联系我们</a></li>
                                     </ul>
@@ -258,7 +258,7 @@
                                             </span>
                                             <div class="fix pl-30 mt-29">
                                                 <h4 class="mb-5"><span th:text="${job.jobName}"></span></h4>
-                                                <h5><a th:href="@{/jobdetails(${job.jobId})}">详情</a></h5>
+                                                <h5><a th:href="@{/jobdetails(jobId=${job.jobId})}">详情</a></h5>
                                             </div>
                                         </div>
                                         <div class="address col-4 pl-50">
@@ -280,7 +280,7 @@
                             <div class="col-md-6" id="page_info_area"></div>
                             <!-- 分页条信息 -->
                             <div class="col-md-6" id="page_nav_area"></div>
-                            <a href="#" class="button large-button">查看所有工作</a>
+                            <a th:href="@{/alljobs}" class="button large-button">查看所有工作</a>
                         </div>
                     </div>
                 </div>
@@ -301,7 +301,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 scroll">
                         <div class="job-post-container fix">
                             <table>
                                 <tbody th:remove="all-but-first">
@@ -324,7 +324,7 @@
                                             </span>
                                             <div class="fix pl-30 mt-29">
                                                 <h4 class="mb-5"><span th:text="${job1.jobName}"></span></h4>
-                                                <h5><a href="job-details.html">详情</a></h5>
+                                                <h5><a th:href="@{/jobdetails(jobId=${job1.jobId})}">详情</a></h5>
                                             </div>
                                         </div>
                                         <div class="address col-4 pl-50">

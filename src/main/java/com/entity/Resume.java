@@ -1,8 +1,7 @@
 package com.entity;
 
 public class Resume {
-
-    private Integer resumeId=10;
+    private Integer resumeId;
 
     private String resumePic;
 
@@ -30,6 +29,11 @@ public class Resume {
 
     private String projectDescribe;
 
+    private Integer userId;
+
+    public Resume() {
+    }
+
     @Override
     public String toString() {
         return "Resume{" +
@@ -47,11 +51,8 @@ public class Resume {
                 ", projectName='" + projectName + '\'' +
                 ", projectTime=" + projectTime +
                 ", projectDescribe='" + projectDescribe + '\'' +
+                ", userId=" + userId +
                 '}';
-    }
-
-    public Resume() {
-        this.resumeId+=1;
     }
 
     public Integer getResumeId() {
@@ -156,6 +157,14 @@ public class Resume {
 
     public void setProjectTime(Integer projectTime) {
         this.projectTime = projectTime;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getProjectDescribe() {

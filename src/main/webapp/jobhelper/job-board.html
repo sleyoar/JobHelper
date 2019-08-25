@@ -90,9 +90,9 @@
                                             <a th:href="@{/resume}" target="_blank">简历</a></li>
                                         <li><a th:href="@{/register}">注册新账号</a></li>
                                         <li><a th:href="@{/blog}">博客</a>
-                                            <ul class="dropdown">
+                                            <!--<ul class="dropdown">
                                                 <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                            </ul>
+                                            </ul>-->
                                         </li>
                                         <li><a th:href="@{/contact}">联系我们</a></li>
                                         <!--/*@thymesVar id="user" type="com.entity.User"*/-->
@@ -128,9 +128,9 @@
                                                 <a th:href="@{/resume}" target="_blank">简历</a></li>
                                             <li><a th:href="@{/register}">注册新账号</a></li>
                                             <li><a th:href="@{/blog}">博客</a>
-                                                <ul class="dropdown">
+                                                <!--<ul class="dropdown">
                                                     <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                                </ul>
+                                                </ul>-->
                                             </li>
                                             <li><a th:href="@{/contact}">联系我们</a></li>
                                         </ul>
@@ -161,7 +161,7 @@
                                     <div class="form-container fix bg-opacity-blue-85 mt-125">
                                         <div class="box-select">
                                             <div class="select large">
-                                                <select name="category">
+                                                <select name="job">
                                                     <option>Keywords</option>
                                                     <option>Finance</option>
                                                     <option>Accountant</option>
@@ -181,7 +181,7 @@
                                                 </select>
                                             </div>
                                             <div class="select medium">
-                                                <select name="date">
+                                                <select name="jobCategory">
                                                     <option>Category</option>
                                                     <option>Web Design</option>
                                                     <option>Designing</option>
@@ -191,7 +191,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="button" class="button-dark pull-right">Search</button>
+                                        <button type="button" class="button-dark pull-right" >Search</button>
                                     </div>
                                 </form>  
                             </div>
@@ -236,7 +236,7 @@
                                             </span>
                                                 <div class="fix pl-30 mt-29">
                                                     <h4 class="mb-5"><span th:text="${job.jobName}"></span></h4>
-                                                    <h5><a th:href="@{/jobdetails(${job.jobId})}">详情</a></h5>
+                                                    <h5><a th:href="@{/jobdetails(jobId=${job.jobId})}">详情</a></h5>
                                                 </div>
                                             </div>
                                             <div class="address col-4 pl-50">
@@ -302,7 +302,7 @@
                                             </span>
                                                 <div class="fix pl-30 mt-29">
                                                     <h4 class="mb-5"><span th:text="${job1.jobName}"></span></h4>
-                                                    <h5><a href="job-details.html">详情</a></h5>
+                                                    <h5><a th:href="@{/jobdetails(jobId=${job1.jobId})}">详情</a></h5>
                                                 </div>
                                             </div>
                                             <div class="address col-4 pl-50">

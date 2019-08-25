@@ -29,6 +29,11 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
+    public Resume selectByUserId(Integer userId) {
+        return resumeMapper.selectByUserId(userId);
+    }
+
+    @Override
     public List<Resume> selectAll() {
         return resumeMapper.selectAll();
     }

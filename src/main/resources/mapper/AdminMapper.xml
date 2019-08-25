@@ -5,30 +5,39 @@
     <id column="admin_id" property="adminId" jdbcType="INTEGER" />
     <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
     <result column="admin_password" property="adminPassword" jdbcType="VARCHAR" />
+    <result column="admin_phone" property="adminPhone" jdbcType="VARCHAR" />
+    <result column="admin_Email" property="adminEmail" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from jh_admin
     where admin_id = #{adminId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.entity.Admin" >
-    insert into jh_admin (admin_id, admin_name, admin_password
-      )
-    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}
-      )
+    insert into jh_admin (admin_id, admin_name, admin_password, 
+      admin_phone, admin_Email)
+    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}, 
+      #{adminPhone,jdbcType=VARCHAR}, #{adminEmail,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.entity.Admin" >
     update jh_admin
     set admin_name = #{adminName,jdbcType=VARCHAR},
-      admin_password = #{adminPassword,jdbcType=VARCHAR}
+      admin_password = #{adminPassword,jdbcType=VARCHAR},
+      admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      admin_Email = #{adminEmail,jdbcType=VARCHAR}
     where admin_id = #{adminId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select admin_id, admin_name, admin_password
+    select admin_id, admin_name, admin_password, admin_phone, admin_Email
     from jh_admin
     where admin_id = #{adminId,jdbcType=INTEGER}
   </select>
+  <select id="verifyAdmin" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select admin_id, admin_name, admin_password, admin_phone, admin_Email
+    from jh_admin
+    where admin_name = #{adminName,jdbcType=VARCHAR}
+  </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select admin_id, admin_name, admin_password
+    select admin_id, admin_name, admin_password, admin_phone, admin_Email
     from jh_admin
   </select>
 </mapper>

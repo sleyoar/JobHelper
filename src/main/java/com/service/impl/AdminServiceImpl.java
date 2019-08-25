@@ -29,6 +29,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Admin verifyAdmin(String adminName) {
+        return adminMapper.verifyAdmin(adminName);
+    }
+
+    @Override
     public List<Admin> selectAll() {
         return adminMapper.selectAll();
     }

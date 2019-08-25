@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Job Details</title>
+        <title>上传工作</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -57,28 +57,46 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3 col-xs-12">
-                                <div class="logo"><a href="index2.html"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a></div>
+                                <div class="logo"><a th:href="@{/}"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a>
+                                </div>
                             </div>
                             <div class="col-md-9 hidden-sm hidden-xs">
                                 <div class="pull-right">
                                     <nav id="primary-menu">
                                         <ul class="main-menu text-right">
-                                            <li><a href="index2.html">主页</a>
+                                            <li><a th:href="@{/}">主页</a>
                                             </li>
-                                            <li><a href="job-board.html" target="_blank">工作栏</a>
-                                            </li>
-                                            <li><a href="resume.html" target="_blank">简历</a></li>
-                                            <li><a href="blog.html" target="_blank">博客</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                            <li><a th:href="@{/alljobs}">工作栏</a>
+                                                <ul class="sub-menu">
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html" target="_blank">联系我们</a></li>
+                                            <li th:if="${session.user !=null}">
+                                                <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
+                                            </li>
+                                            <li th:if="${session.user ==null}">
+                                                <a th:href="@{/resume}" target="_blank">简历</a>
+                                            </li>
+                                            <li><a th:href="@{/register}">注册新账号</a></li>
+                                            <li><a th:href="@{/blog}">博客</a>
+                                                <!--<ul class="dropdown">
+                                                    <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                                </ul>-->
+                                            </li>
+                                            <li><a th:href="@{/contact}">联系我们</a></li>
+                                            <!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                            <div class="login-btn pt-36" th:if="${session.user} == null">
+                                                <a class="modal-view button" data-toggle="modal"
+                                                   data-target="#productModal">登录</a>
+                                            </div>
+                                            <div class="login-btn pt-36" th:if="${session.user != null}">
+                                                <a th:href="@{/infor}">欢迎：<span th:text="${session.user.userName}"></span></a>
+                                            </div>
+                                            </li>
+                                            <li th:if="${msg != null}">
+                                                <font color="red"><span th:text="${msg}"></span></font>
+                                            </li>
                                         </ul>
                                     </nav>
-                                    <div class="login-btn pt-36">
-                                        <a class="modal-view button" href="login.html" >登录</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,17 +109,25 @@
                                     <div class="mobile-menu">
                                         <nav id="dropdown">
                                             <ul>
-                                                <li><a href="index2.html">主页</a>
+                                                <li><a th:href="@{/}">主页</a>
                                                 </li>
-                                                <li><a href="job-board.html">工作栏</a>
-                                                </li>
-                                                <li><a href="resume.html" target="_blank">简历</a></li>
-                                                <li><a href="blog.html">博客</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                                <li><a th:href="@{/alljobs}">工作栏</a>
+                                                    <ul class="sub-menu">
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">联系我们</a></li>
+                                                <li th:if="${session.user !=null}">
+                                                    <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
+                                                </li>
+                                                <li th:if="${session.user ==null}">
+                                                    <a th:href="@{/resume}" target="_blank">简历</a>
+                                                </li>
+                                                <li><a th:href="@{/register}">注册新账号</a></li>
+                                                <li><a th:href="@{/blog}">博客</a>
+                                                    <!--<ul class="dropdown">
+                                                        <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                                    </ul>-->
+                                                </li>
+                                                <li><a th:href="@{/contact}">联系我们</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -121,7 +147,7 @@
                                     <h2 class="text-center text-white uppercase mb-17">工作详情</h2>
                                     <div class="breadcrumb-bar">
                                         <ul class="breadcrumb text-center m-0">
-                                            <li class="text-white uppercase ml-15 mr-15"><a href="index2.html">主页</a></li>
+                                            <li class="text-white uppercase ml-15 mr-15"><a th:href="@{/}">主页</a></li>
                                             <li class="text-white uppercase ml-15 mr-15">工作详情</li>
                                         </ul>
                                     </div>
@@ -139,43 +165,27 @@
                                 <form action="#">
                                     <div class="single-job-content">
                                         <div class="area-title text-center">
-                                            <h2 class="pt-10 pb-10">职位名称</h2>
+                                            <h2 class="pt-10 pb-10" th:text="${job.jobName}"></h2>
                                         </div>
                                         <div class="title uppercase pt-70 pb-26"><span>职位描述</span></div>
                                         <div class="single-job-form">
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the my have suffered
-                                                alteration in some form, by injected humour, or randomised words which don't loven slightly
-                                                believable.available, but the majority have suffered alteration in some form,t the my have
-                                                suffered alteration in some form, by injected humour, or randomised words or randomised words
-                                                which don't loven slightly believable.available, but the majority have sufferederation in some</p>
+                                                <p th:text="${job.jobDescribe}"></p>
                                         </div>
                                         <div class="title uppercase mt-58 mb-25"><span class="medium">职位诱惑</span></div>
                                         <div class="single-job-form">
                                             <div class="single-info mb-14">
-                                                <span class="mark-icon block pl-27">Some form,t the my have suffered alteration in some form,andomised words</span>
-                                                <span class="mark-icon block pl-27">believable.available, but the majority have sufferederation in some</span>
-                                                <span class="mark-icon block pl-27">There are many variations of passages of Lorem Ipsum available, but</span>
-                                                <span class="mark-icon block pl-27">Some form,t the my have suffered alteration in some form,andomised words</span>
-                                                <span class="mark-icon block pl-27">believable.available, but the majority have sufferederation in some</span>
-                                                <span class="mark-icon block pl-27">There are many variations of passages of Lorem Ipsum available, but</span>
+                                                <span class="mark-icon block pl-27" th:text="${job.jobBuff}"></span>
                                             </div>
                                         </div>
                                         <div class="title uppercase mt-58 mb-25"><span>任职要求</span></div>
                                         <div class="single-job-form">
                                             <div class="single-info mb-14">
-                                                <span class="number block"><span>1.</span>Some form,t the my have suffered alteration in some form,andomised words</span>
-                                                <span class="number block"><span>2.</span>believable.available, but the majority have sufferederation in some</span>
-                                                <span class="number block"><span>3.</span>There are many variations of passages of Lorem Ipsum available, but</span>
-                                                <span class="number block"><span>4.</span>Some form,t the my have suffered alteration in some form,andomised words</span>
-                                                <span class="number block"><span>5.</span>believable.available, but the majority have sufferederation in some</span>
-                                                <span class="number block"><span>6.</span>There are many variations of passages of Lorem Ipsum available, but</span>
+                                                <span class="number block" th:text="${job.jobNeed}"></span>
                                             </div>
                                         </div>
                                         <div class="title uppercase pt-47 pb-26"><span class="medium">工作地址</span></div>
                                         <div class="single-job-form">
-                                            <p>There are many variations of passages of Lorem Ipsum available,
-                                                but the my have suffered alteration in some form, by injected humour,
-                                                or randomised words which don't loven</p>
+                                            <p th:text="${job.jobAddress}"></p>
                                         </div>
                                         <div class="mt-38">
                                             <a href="#" class="button button-large-box lg-btn mr-20">返回</a>
@@ -194,7 +204,7 @@
                         <div class="row">
                             <div class="col-md-6 fix col-xs-12 col-sm-6">
                                 <div class="footer-logo pull-left">
-                                    <a href="index2.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
+                                    <a th:href="@{/}" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-md-6 fix col-xs-12 col-sm-6">
@@ -278,7 +288,41 @@
             <!--End of Bg White--> 
         </div>   
         <!--End of Main Wrapper Area-->
-
+        <!--Start of Login Form-->
+        <div id="quickview-login">
+            <!-- Modal -->
+            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-pop-up-content ptb-60 pl-60 pr-60">
+                                <div class="area-title text-center mb-43">
+                                    <h2 class="pt-7 pb-7 pl-40 pr-40">登录</h2>
+                                </div>
+                                <form th:action="@{/login}" method="post">
+                                    <div class="form-box">
+                                        <input type="text" name="userName" placeholder="用户名" class="mb-14">
+                                        <input type="password" name="userPassword" placeholder="密码">
+                                    </div>
+                                    <div class="fix ptb-30">
+                                        <span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span>
+                                        <span class="pull-right"><a href="#">忘记密码?</a></span>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="text-uppercase">登录</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Login Form-->
         <!-- jquery latest version
 		========================================================= -->	
         <script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>

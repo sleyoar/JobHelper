@@ -58,28 +58,46 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-xs-12">
-                        <div class="logo"><a href="index2.html"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a></div>
+                        <div class="logo"><a th:href="@{/}"><img th:src="@{/static/images/logo/logo.png}" alt="JobHelp"></a>
+                        </div>
                     </div>
                     <div class="col-md-9 hidden-sm hidden-xs">
                         <div class="pull-right">
                             <nav id="primary-menu">
                                 <ul class="main-menu text-right">
-                                    <li><a href="index2.html">主页</a>
+                                    <li><a th:href="@{/}">主页</a>
                                     </li>
-                                    <li><a href="job-board.html" target="_blank">工作栏</a>
-                                    </li>
-                                    <li><a href="resume.html" target="_blank">简历</a></li>
-                                    <li><a href="blog.html" target="_blank">博客</a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                    <li><a th:href="@{/alljobs}">工作栏</a>
+                                        <ul class="sub-menu">
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html" target="_blank">联系我们</a></li>
+                                    <li th:if="${session.user !=null}">
+                                        <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
+                                    </li>
+                                    <li th:if="${session.user ==null}">
+                                        <a th:href="@{/resume}" target="_blank">简历</a>
+                                    </li>
+                                    <li><a th:href="@{/register}">注册新账号</a></li>
+                                    <li><a th:href="@{/blog}">博客</a>
+                                        <!--<ul class="dropdown">
+                                            <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                        </ul>-->
+                                    </li>
+                                    <li><a th:href="@{/contact}">联系我们</a></li>
+                                    <!--/*@thymesVar id="user" type="com.entity.User"*/-->
+                                    <div class="login-btn pt-36" th:if="${session.user} == null">
+                                        <a class="modal-view button" data-toggle="modal"
+                                           data-target="#productModal">登录</a>
+                                    </div>
+                                    <div class="login-btn pt-36" th:if="${session.user != null}">
+                                        <a th:href="@{/infor}">欢迎：<span th:text="${session.user.userName}"></span></a>
+                                    </div>
+                                    </li>
+                                    <li th:if="${msg != null}">
+                                        <font color="red"><span th:text="${msg}"></span></font>
+                                    </li>
                                 </ul>
                             </nav>
-                            <div class="login-btn pt-36">
-                                <a class="modal-view button" href="login.html" >登录</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,17 +110,25 @@
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul>
-                                        <li><a href="index2.html">主页</a>
+                                        <li><a th:href="@{/}">主页</a>
                                         </li>
-                                        <li><a href="job-board.html">工作栏</a>
-                                        </li>
-                                        <li><a href="resume.html" target="_blank">简历</a></li>
-                                        <li><a href="blog.html">博客</a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-details.html" target="_blank">博客详情</a></li>
+                                        <li><a th:href="@{/alljobs}">工作栏</a>
+                                            <ul class="sub-menu">
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">联系我们</a></li>
+                                        <li th:if="${session.user !=null}">
+                                            <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
+                                        </li>
+                                        <li th:if="${session.user ==null}">
+                                            <a th:href="@{/resume}" target="_blank">简历</a>
+                                        </li>
+                                        <li><a th:href="@{/register}">注册新账号</a></li>
+                                        <li><a th:href="@{/blog}">博客</a>
+                                            <!--<ul class="dropdown">
+                                                <li><a th:href="@{/blogdetails}">博客详情</a></li>
+                                            </ul>-->
+                                        </li>
+                                        <li><a th:href="@{/contact}">联系我们</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -122,7 +148,7 @@
                             <h2 class="text-center text-white uppercase mb-17">博客详情</h2>
                             <div class="breadcrumb-bar">
                                 <ul class="breadcrumb text-center m-0">
-                                    <li class="text-white uppercase ml-15 mr-15"><a href="index2.html">主页</a></li>
+                                    <li class="text-white uppercase ml-15 mr-15"><a th:href="@{/}">主页</a></li>
                                     <li class="text-white uppercase ml-15 mr-15">博客详情</li>
                                 </ul>
                             </div>
@@ -139,41 +165,26 @@
                     <div class="col-md-8">
                         <div class="single-blog hover-effect mb-50">
                             <div class="blog-image box-hover">
-                                <a href="#" class="block">
-                                    <img th:src="@{/static/images/blog/l-1.jpg}" alt="">
+                                <a th:href="@{/blogdetails(blogId=${blog.blogId})}" class="block" th:switch="${blog.blogCategory}">
+                                    <span th:case="热门帖子"><img th:src="@{/static/images/blog/3.jpg}" alt=""></span>
+                                    <span th:case="技术"><img th:src="@{/static/images/blog/jishu.jpg}" alt=""></span>
+                                    <span th:case="科学"><img th:src="@{/static/images/blog/kexue.jpg}" alt=""></span>
+                                    <span th:case="简历"><img th:src="@{/static/images/blog/1.jpg}" alt=""></span>
+                                    <span th:case="趣味"><img th:src="@{/static/images/blog/2.jpg}" alt=""></span>
                                 </a>
                             </div>
                             <div class="blog-text">
                                 <div class="blog-date pt-12">
-                                    <span class="text-large block text-white">25</span>
-                                    <span class="uppercase block text-white">June</span>
+                                    <span class="text-large block text-white"><span th:text="${#dates.format(blog.blogDate, 'dd')}"></span></span>
+                                    <span class="uppercase block text-white"><span th:text="${#dates.format(blog.blogDate, 'MM')}+'月'"></span></span>
                                 </div>
                                 <div class="blog-post-info">
-                                    <span class="pl-20 l-text"><i class="zmdi zmdi-account pr-8"></i>amir Khan</span>
+                                    <span class="pl-20 l-text"><i class="zmdi zmdi-account pr-8"></i><span th:text="${blog.blogUser}"></span></span>
                                     <span class="pl-50 l-text"><i class="zmdi zmdi-favorite pr-8"></i>like</span>
                                     <span class="pl-15 l-text"><i class="zmdi zmdi-comments pr-8"></i>comments</span>
                                 </div>
-                                <h5 class="pt-42 mb-14 l-text">There are many variations of passages</h5>
-                                <p class="mb-25">It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking its layout. The point of using Lorem Ipsum
-                                    is tat it has a more-or-less normal distribution of letters It is a long established
-                                    fact that a reader will be distracted by the readable content of a page when looking
-                                    its layout. The point of using Lorem Ipsum is tat it has a more Lorem Ipsum is
-                                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                    industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                    galley of type and scrambled it to make a type specimen book. It has survived not
-                                    only five centuries, but also the leap into electronic typesetting, remaining
-                                    essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                                    software like Aldus PageMaker including versions of Lorem Ipsum..</p>
-                                <p class="mb-25">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                    1500s, when an unknown printer took a galley of type and scrambled</p>
-                                <p>it to make a type specimen book. It has survived not only five centuries, but also
-                                    the leap into electronic typesetting, remaining essentially unchanged. It was
-                                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                    passages, and more recently with desktop publishing software like Aldus PageMaker
-                                    including versions of Lorem Ipsum</p>
+                                <h5 class="pt-42 mb-14 l-text"><p class="p1" th:text="${blog.blogTitle}"></h5>
+                                <p class="mb-25" th:text="${blog.blogContext}"></p>
                             </div>
                         </div>
                         <div class="tags-and-links fix pt-14 pb-12">
@@ -266,24 +277,12 @@
                         </div>
                         <div class="single-sidebar-widget mb-48">
                             <div class="sidebar-widget-title">
-                                <h4 class="mb-23">Recent Posts</h4>
+                                <h4 class="mb-23">最近帖子</h4>
                             </div>
-                            <div class="recent-posts light-gray-bg">
+                            <div class="recent-posts light-gray-bg" th:each="blog1:${session.blogs1}">
                                 <div class="recent-post-item pl-30 ptb-20">
-                                    <h5 class="mb-6"><a href="#">There are many variations of</a></h5>
-                                    <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i>20 Jun 2015</span>
-                                </div>
-                                <div class="recent-post-item pl-30 ptb-20">
-                                    <h5 class="mb-6"><a href="#">There are many variations of</a></h5>
-                                    <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i>20 Jun 2015</span>
-                                </div>
-                                <div class="recent-post-item pl-30 ptb-20">
-                                    <h5 class="mb-6"><a href="#">There are many variations of</a></h5>
-                                    <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i>20 Jun 2015</span>
-                                </div>
-                                <div class="recent-post-item pl-30 ptb-20">
-                                    <h5 class="mb-6"><a href="#">There are many variations of</a></h5>
-                                    <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i>20 Jun 2015</span>
+                                    <h5 class="mb-6"><a th:href="@{/blogdetails(blogId=${blog1.blogId})}"><span th:text="${blog1.blogTitle}"></span></a></h5>
+                                    <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i><span th:text="${blog1.blogDate}"></span></span>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +297,7 @@
                 <div class="row">
                     <div class="col-md-6 fix col-xs-12 col-sm-6">
                         <div class="footer-logo pull-left">
-                            <a href="index2.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
+                            <a th:href="@{/}" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-md-6 fix col-xs-12 col-sm-6">
@@ -382,7 +381,41 @@
     <!--End of Bg White-->
 </div>
 <!--End of Main Wrapper Area-->
-
+<!--Start of Login Form-->
+<div id="quickview-login">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-pop-up-content ptb-60 pl-60 pr-60">
+                        <div class="area-title text-center mb-43">
+                            <h2 class="pt-7 pb-7 pl-40 pr-40">登录</h2>
+                        </div>
+                        <form th:action="@{/login}" method="post">
+                            <div class="form-box">
+                                <input type="text" name="userName" placeholder="用户名" class="mb-14">
+                                <input type="password" name="userPassword" placeholder="密码">
+                            </div>
+                            <div class="fix ptb-30">
+                                <span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span>
+                                <span class="pull-right"><a href="#">忘记密码?</a></span>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="text-uppercase">登录</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Login Form-->
 <!-- jquery latest version
 ========================================================= -->
 <script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>

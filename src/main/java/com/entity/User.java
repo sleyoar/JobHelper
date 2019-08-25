@@ -9,7 +9,8 @@ public class User {
 
     private String userEmail;
 
-    private Integer resumeId;
+    public User() {
+    }
 
     @Override
     public String toString() {
@@ -18,11 +19,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userEmail='" + userEmail + '\'' +
-                ", resumeId=" + resumeId +
                 '}';
-    }
-
-    public User() {
     }
 
     public Integer getUserId() {
@@ -55,13 +52,5 @@ public class User {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail == null ? null : userEmail.trim();
-    }
-
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
     }
 }

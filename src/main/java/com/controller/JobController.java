@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -40,8 +41,10 @@ public class JobController {
     }
 
     @RequestMapping("/jobdetails")
-    private String jobDetails(@RequestParam("jobId") Integer jobId, Model model) {
-        Job job = jobService.selectByPrimaryKey(jobId);
+    private String jobDetails(HttpServletRequest request, Model model) {
+        String jobId = request.getParameter("jobId");
+        Integer jobId1 = Integer.parseInt(jobId);
+        Job job = jobService.selectByPrimaryKey(jobId1);
         model.addAttribute("job",job);
         return "job-details";
     }

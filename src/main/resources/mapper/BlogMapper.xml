@@ -40,6 +40,6 @@
   <select id="selectSome" resultMap="BaseResultMap" >
     select blog_id, blog_user, blog_category,blog_title, blog_date, blog_context
     from jh_blog
-    LIMIT 6
+    LIMIT 3
   </select>
 </mapper>

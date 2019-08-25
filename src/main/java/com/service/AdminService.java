@@ -14,6 +14,9 @@ public interface AdminService {
     /*get one admin by id*/
     Admin selectByPrimaryKey(Integer adminId);
 
+    /*get onr admin by naame*/
+    Admin verifyAdmin(String adminName);
+
     /*get all admins*/
     List<Admin> selectAll();
 

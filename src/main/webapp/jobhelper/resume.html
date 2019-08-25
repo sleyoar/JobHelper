@@ -81,9 +81,9 @@
                                             </li>
                                             <li><a th:href="@{/register}">注册新账号</a></li>
                                             <li><a th:href="@{/blog}">博客</a>
-                                                <ul class="dropdown">
+                                                <!--<ul class="dropdown">
                                                     <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                                </ul>
+                                                </ul>-->
                                             </li>
                                             <li><a th:href="@{/contact}">联系我们</a></li>
                                             <!--/*@thymesVar id="user" type="com.entity.User"*/-->
@@ -126,9 +126,9 @@
                                                 </li>
                                                 <li><a th:href="@{/register}">注册新账号</a></li>
                                                 <li><a th:href="@{/blog}">博客</a>
-                                                    <ul class="dropdown">
+                                                    <!--<ul class="dropdown">
                                                         <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                                    </ul>
+                                                    </ul>-->
                                                 </li>
                                                 <li><a th:href="@{/contact}">联系我们</a></li>
                                             </ul>
@@ -150,7 +150,7 @@
                                     <h2 class="text-center text-white uppercase mb-17">添加简历</h2>
                                     <div class="breadcrumb-bar">
                                         <ul class="breadcrumb text-center m-0">
-                                            <li class="text-white uppercase ml-15 mr-15"><a href="index2.html">主页</a></li>
+                                            <li class="text-white uppercase ml-15 mr-15"><a th:href="@{/}">主页</a></li>
                                             <li class="text-white uppercase ml-15 mr-15">简历</li>
                                         </ul>
                                     </div>
@@ -165,7 +165,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <form th:action="@{/resumeSave}">
+                                <form th:action="@{/resumeSave}" method="post">
                                     <div class="single-job-content">
                                         <div class="title uppercase pt-50 pb-38"><span class="lg">基本信息</span></div>
                                         <div class="single-job-form">
@@ -183,10 +183,16 @@
                                             <div class="single-info">
                                                 <label for="name" class="uppercase pull-left m-0">姓名</label>
                                                 <div class="form-box fix" th:if="${resume ==null}">
+                                                    <span th:if="${session.user !=null}">
+                                                        <input type="hidden" name="userId" th:value="${session.user.userId}">
+                                                    </span>
+                                                    <input type="hidden" name="resumeId" th:value="${session.resumes.size()+1}">
                                                     <input type="text" id="name" name="resumeName" placeholder="请输入您的姓名">
                                                 </div>
                                                 <div class="form-box fix" th:if="${resume!=null}">
-                                                    <input type="text" th:value="${resume.resumeName}">
+                                                    <input type="hidden" name="resumeId" th:value="${resume.resumeId}">
+                                                    <input type="hidden" name="userId" th:value="${resume.userId}">
+                                                    <input type="text" name="resumeName" th:value="${resume.resumeName}">
                                                 </div>
                                             </div>
                                         </div>
@@ -336,7 +342,7 @@
                         <div class="row">
                             <div class="col-md-6 fix col-xs-12 col-sm-6">
                                 <div class="footer-logo pull-left">
-                                    <a href="index2.html" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
+                                    <a th:href="@{/}" class="block"><img th:src="@{/static/images/logo/footer-logo.png}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-md-6 fix col-xs-12 col-sm-6">
@@ -420,7 +426,41 @@
             <!--End of Bg White-->
         </div>
         <!--End of Main Wrapper Area-->
-
+        <!--Start of Login Form-->
+        <div id="quickview-login">
+            <!-- Modal -->
+            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-pop-up-content ptb-60 pl-60 pr-60">
+                                <div class="area-title text-center mb-43">
+                                    <h2 class="pt-7 pb-7 pl-40 pr-40">登录</h2>
+                                </div>
+                                <form th:action="@{/login}" method="post">
+                                    <div class="form-box">
+                                        <input type="text" name="userName" placeholder="用户名" class="mb-14">
+                                        <input type="password" name="userPassword" placeholder="密码">
+                                    </div>
+                                    <div class="fix ptb-30">
+                                        <span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span>
+                                        <span class="pull-right"><a href="#">忘记密码?</a></span>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="text-uppercase">登录</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Login Form-->
         <!-- jquery latest version
 		========================================================= -->
         <script th:src="@{/static/js/vendor/jquery-1.12.4.min.js}"></script>
