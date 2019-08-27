@@ -22,35 +22,18 @@
                 class="logo navbar-logo-m f-l mr-10 visible-xs">JobHelper</a>
             <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
-            <nav class="nav navbar-nav">
-                <ul class="cl">
-                    <li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i
-                            class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
-                        <ul class="dropDown-menu menu radius box-shadow">
-                            <li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i
-                                    class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
-                            <li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i
-                                    class="Hui-iconfont">&#xe613;</i> 图片</a></li>
-                            <li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i
-                                    class="Hui-iconfont">&#xe620;</i> 产品</a></li>
-                            <li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i
-                                    class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
                     <li>超级管理员</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" class="dropDown_A"><span th:text="${session.admin.getAdminName()}"></span> <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-                            <li><a href="#">切换账户</a></li>
-                            <li><a href="#">退出</a></li>
+                            <li><a th:href="@{/changeAdmin}">切换账户</a></li>
+                            <li><a th:href="@{/adminLogout}">退出</a></li>
                         </ul>
                     </li>
-                    <li id="Hui-msg"><a href="#" title="消息"><span class="badge badge-danger">1</span><i
+                    <li id="Hui-msg"><a href="#" title="消息"><span class="badge badge-danger"></span><i
                             class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a></li>
                     <li id="Hui-skin" class="dropDown right dropDown_hover"><a href="javascript:;" class="dropDown_A"
                                                                                title="换肤"><i class="Hui-iconfont"
@@ -72,26 +55,18 @@
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
         <dl id="menu-article">
-            <dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe616;</i> 博客管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="article-list.html" data-title="资讯管理" href="javascript:void(0)">资讯管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-picture">
-            <dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">图片管理</a></li>
+                    <li><a data-href="/JobHelper/blogManage" data-title="博客管理" href="javascript:void(0)">博客管理</a></li>
                 </ul>
             </dd>
         </dl>
         <dl id="menu-product">
-            <dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe620;</i> 职位管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+                    <li><a data-href="product-list.html" data-title="职位管理" href="javascript:void(0)">职位管理</a></li>
                 </ul>
             </dd>
         </dl>
@@ -101,7 +76,6 @@
                 <ul>
                     <li><a data-href="http://h-ui.duoshuo.com/admin/" data-title="评论列表" href="javascript:;">评论列表</a>
                     </li>
-                    <li><a data-href="feedback-list.html" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
                 </ul>
             </dd>
         </dl>
@@ -110,7 +84,6 @@
             <dd>
                 <ul>
                     <li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
-
                 </ul>
             </dd>
         </dl>
@@ -131,7 +104,7 @@
         <div class="Hui-tabNav-wp">
             <ul id="min_title_list" class="acrossTab cl">
                 <li class="active">
-                    <span title="我的桌面" data-href="welcome.html">我的桌面</span>
+                    <span title="我的桌面" data-href="/desktop">我的桌面</span>
                     <em></em></li>
             </ul>
         </div>
@@ -143,7 +116,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="welcome.html"></iframe>
+            <iframe scrolling="yes" frameborder="0" th:src="@{/desktop}"></iframe>
         </div>
     </div>
 </section>
@@ -157,7 +130,7 @@
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" th:src="@{/static/lib/jquery/1.9.1/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/lib/layer/2.4/layer.js}"></script>
-<script type="text/javascript" th:src="@{/static/static/h-ui/js/H-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/h-ui/js/H-ui.js}"></script>
 <script type="text/javascript" th:src="@{/static/h-ui.admin/js/H-ui.admin.js}"></script>
 <!--/_footer 作为公共模版分离出去-->
 
@@ -192,42 +165,6 @@
             content: '<div>管理员信息</div>'
         });
     }
-
-    /*资讯-添加*/
-    function article_add(title, url) {
-        var index = layer.open({
-            type: 2,
-            title: title,
-            content: url
-        });
-        layer.full(index);
-    }
-
-    /*图片-添加*/
-    function picture_add(title, url) {
-        var index = layer.open({
-            type: 2,
-            title: title,
-            content: url
-        });
-        layer.full(index);
-    }
-
-    /*产品-添加*/
-    function product_add(title, url) {
-        var index = layer.open({
-            type: 2,
-            title: title,
-            content: url
-        });
-        layer.full(index);
-    }
-
-    /*用户-添加*/
-    function member_add(title, url, w, h) {
-        layer_show(title, url, w, h);
-    }
-
 </script>
 
 </body>

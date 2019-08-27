@@ -34,7 +34,7 @@ public class UserController {
             return "forward:/";
         } else if (admin !=null && userPassword.equals(admin.getAdminPassword())){
             request.getSession().setAttribute("admin",admin);
-            return "manager/index";
+            return "forward:/admin";
         } else {
             request.setAttribute("msg","用户名或密码错误！");
             return "forward:/";
