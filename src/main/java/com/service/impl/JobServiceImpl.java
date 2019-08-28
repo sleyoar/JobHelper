@@ -42,4 +42,9 @@ public class JobServiceImpl implements JobService {
     public int updateByPrimaryKey(Job record) {
         return jobMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void batchDelete(List<Integer> ids) {
+        jobMapper.batchDelete(ids);
+    }
 }

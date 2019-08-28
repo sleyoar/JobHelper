@@ -42,4 +42,9 @@ public class ResumeServiceImpl implements ResumeService {
     public int updateByPrimaryKey(Resume record) {
         return resumeMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void batchDelete(List<Integer> ids) {
+        resumeMapper.batchDelete(ids);
+    }
 }

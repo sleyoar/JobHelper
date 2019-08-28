@@ -57,4 +57,10 @@
     from jh_job
     LIMIT 3
   </select>
+  <delete id="batchDelete" parameterType="list">
+    DELETE from jh_blog
+    <foreach collection="ids" item="jobId" separator="," open="where job_id in(" close=")">
+      #{jobId}
+    </foreach>
+  </delete>
 </mapper>

@@ -33,4 +33,10 @@
     select contact_id, contact_name, contact_email, context_message
     from jh_contact
   </select>
+  <delete id="batchDelete" parameterType="list">
+    DELETE from jh_contact
+    <foreach collection="ids" item="contactId" separator="," open="where contact_id in(" close=")">
+      #{contactId}
+    </foreach>
+  </delete>
 </mapper>

@@ -38,4 +38,10 @@
     from jh_user
     where user_name = #{userName}
   </select>
+  <delete id="batchDelete" parameterType="list">
+    DELETE from jh_user
+    <foreach collection="ids" item="userId" separator="," open="where user_id in(" close=")">
+      #{userId}
+    </foreach>
+  </delete>
 </mapper>

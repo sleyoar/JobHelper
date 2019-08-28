@@ -1,6 +1,7 @@
 package com.service;
 
 import com.entity.Admin;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface AdminService {
 
     /*update one admin*/
     int updateByPrimaryKey(Admin record);
+
+    void batchDelete(@Param("ids") List<Integer> ids);
 }

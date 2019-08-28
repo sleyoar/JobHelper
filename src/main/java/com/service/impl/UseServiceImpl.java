@@ -42,4 +42,9 @@ public class UseServiceImpl implements UserService {
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void batchDelete(List<Integer> ids) {
+        userMapper.batchDelete(ids);
+    }
 }

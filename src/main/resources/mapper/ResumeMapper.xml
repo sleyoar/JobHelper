@@ -74,4 +74,10 @@
                project_time, user_id, project_describe
         from jh_resume
     </select>
+    <delete id="batchDelete" parameterType="list">
+        DELETE from jh_resume
+        <foreach collection="ids" item="resumeId" separator="," open="where resume_id in(" close=")">
+            #{resumeId}
+        </foreach>
+    </delete>
 </mapper>

@@ -40,4 +40,10 @@
     select admin_id, admin_name, admin_password, admin_phone, admin_Email
     from jh_admin
   </select>
+  <delete id="batchDelete" parameterType="list">
+    DELETE from jh_admin
+    <foreach collection="ids" item="adminId" separator="," open="where admin_id in(" close=")">
+      #{adminId}
+    </foreach>
+  </delete>
 </mapper>

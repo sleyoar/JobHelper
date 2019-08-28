@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.Contact;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface ContactMapper {
 
     /*update one contact */
     int updateByPrimaryKey(Contact record);
+
+    void batchDelete(@Param("ids") List<Integer> ids);
 }

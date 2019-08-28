@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface UserMapper {
 
     /*update one user*/
     int updateByPrimaryKey(User record);
+
+    void batchDelete(@Param("ids") List<Integer> ids);
 }

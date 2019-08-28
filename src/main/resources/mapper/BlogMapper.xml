@@ -42,4 +42,10 @@
     from jh_blog
     LIMIT 3
   </select>
+  <delete id="batchDelete" parameterType="list">
+    DELETE from jh_blog
+    <foreach collection="ids" item="blogId" separator="," open="where blog_id in(" close=")">
+      #{blogId}
+    </foreach>
+  </delete>
 </mapper>

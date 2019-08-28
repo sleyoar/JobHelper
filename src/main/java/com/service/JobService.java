@@ -1,6 +1,7 @@
 package com.service;
 
 import com.entity.Job;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -37,4 +38,6 @@ public interface JobService {
 
     /*update job*/
     int updateByPrimaryKey(Job record);
+
+    void batchDelete(@Param("ids") List<Integer> ids);
 }

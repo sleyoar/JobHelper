@@ -37,4 +37,9 @@ public class ContactServiceImpl implements ContactService {
     public int updateByPrimaryKey(Contact record) {
         return contactMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void batchDelete(List<Integer> ids) {
+        contactMapper.batchDelete(ids);
+    }
 }

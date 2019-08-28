@@ -42,4 +42,9 @@ public class BlogServiceImpl implements BlogService {
     public int updateByPrimaryKey(Blog record) {
         return blogMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void batchDelete(List<Integer> ids) {
+        blogMapper.batchDelete(ids);
+    }
 }

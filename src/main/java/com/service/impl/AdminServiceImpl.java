@@ -42,4 +42,9 @@ public class AdminServiceImpl implements AdminService {
     public int updateByPrimaryKey(Admin record) {
         return adminMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void batchDelete(List<Integer> ids) {
+        adminMapper.batchDelete(ids);
+    }
 }

@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.Blog;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface BlogMapper {
 
     /*update one blog*/
     int updateByPrimaryKey(Blog record);
+
+    void batchDelete(@Param("ids") List<Integer> ids);
 }

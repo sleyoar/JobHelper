@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.Resume;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -51,4 +52,6 @@ public interface ResumeMapper {
      * @return row
      */
     int updateByPrimaryKey(Resume record);
+
+    void batchDelete(@Param("ids") List<Integer> ids);
 }
