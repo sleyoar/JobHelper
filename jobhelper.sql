@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 20/08/2019 22:23:44
+ Date: 29/08/2019 16:34:42
 */
 
 SET NAMES utf8mb4;
@@ -25,8 +25,10 @@ CREATE TABLE `jh_admin`  (
   `admin_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '管理员id',
   `admin_name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员名字',
   `admin_password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员密码',
+  `admin_phone` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员联系电话',
+  `admin_Email` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员邮箱',
   PRIMARY KEY (`admin_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for jh_blog
@@ -36,11 +38,11 @@ CREATE TABLE `jh_blog`  (
   `blog_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '博客id',
   `blog_user` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '博客用户',
   `blog_category` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '博客类别',
-  `blog_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `blog_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '博客标题',
   `blog_context` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '博客正文',
   `blog_date` date NULL DEFAULT NULL COMMENT '发文时间',
   PRIMARY KEY (`blog_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for jh_contact
@@ -51,7 +53,10 @@ CREATE TABLE `jh_contact`  (
   `contact_name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名字',
   `contact_email` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系电话',
   `context_message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '详细信息',
-  PRIMARY KEY (`contact_id`) USING BTREE
+  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户id',
+  PRIMARY KEY (`contact_id`) USING BTREE,
+  INDEX `contact`(`user_id`) USING BTREE,
+  CONSTRAINT `contact` FOREIGN KEY (`user_id`) REFERENCES `jh_user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -91,7 +96,10 @@ CREATE TABLE `jh_resume`  (
   `project_name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '项目名',
   `project_time` int(11) NULL DEFAULT NULL COMMENT '项目时长',
   `project_describe` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '项目描述',
-  PRIMARY KEY (`resume_id`) USING BTREE
+  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户id',
+  PRIMARY KEY (`resume_id`) USING BTREE,
+  INDEX `user_id`(`user_id`) USING BTREE,
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `jh_user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -103,10 +111,7 @@ CREATE TABLE `jh_user`  (
   `user_name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `user_password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码',
   `user_email` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
-  `resume_id` int(11) NULL DEFAULT NULL COMMENT '简历id',
-  PRIMARY KEY (`user_id`) USING BTREE,
-  INDEX `resume_id`(`resume_id`) USING BTREE,
-  CONSTRAINT `resume_id` FOREIGN KEY (`resume_id`) REFERENCES `jh_resume` (`resume_id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
