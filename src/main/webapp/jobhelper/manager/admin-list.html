@@ -8,12 +8,9 @@
 <link rel="Bookmark" th:href="@{/favicon.ico}" >
 <link rel="Shortcut Icon" th:src="@{/favicon.ico}" />
 
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui/css/H-ui.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui.admin/css/H-ui.admin.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/lib/Hui-iconfont/1.0.8/iconfont.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui.admin/skin/default/skin.css}" id="skin"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui.admin/css/style.css}"/>
-
+    <script type="text/javascript" th:src="@{/static/js/jquery-3.2.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/static/bootstrap-3.3.7-dist/css/bootstrap.min.css}">
+    <script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
 <title>管理员列表</title>
 </head>
 <body>
@@ -29,7 +26,7 @@
 			<div class="modal-body">
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminName</label>
+						<label class="col-sm-2 control-label">管理员</label>
 						<div class="col-sm-10">
 							<input type="text" name="adminName" class="form-control" id="adminName_add_input"
 								   placeholder="adminName">
@@ -37,25 +34,24 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminPassword</label>
+						<label class="col-sm-2 control-label">密码</label>
 						<div class="col-sm-10">
 							<input type="password" name="adminPassword" class="form-control" id="adminPassword_add_input">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminPhone</label>
+						<label class="col-sm-2 control-label">联系电话</label>
 						<div class="col-sm-10">
-							<input type="text" name="adminPhone" class="form-control" id="adminPhone_add_input"
-								   placeholder="adminPhone:1-100">
+							<input type="text" name="adminPhone" class="form-control" id="adminPhone_add_input">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminEmail</label>
+						<label class="col-sm-2 control-label">邮箱地址</label>
 						<div class="col-sm-10">
 							<input type="email" name="adminEmail" class="form-control" id="adminEmail_add_input"
-								   placeholder="地址">
+								   placeholder="邮箱地址">
 							<span class="help-block"></span>
 						</div>
 					</div>
@@ -76,46 +72,42 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="modifyModalLabel">用户修改</h4>
+				<h4 class="modal-title" id="modifyModalLabel">管理员修改</h4>
 			</div>
 			<div class="modal-body">
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminID</label>
+						<label class="col-sm-2 control-label">管理员ID</label>
 						<div class="col-sm-10">
-							<input type="text" name="adminId" class="form-control" id="adminId_modify_input" th:value="" readonly placeholder="adminId">
+							<input type="text" name="adminId" class="form-control" id="adminId_modify_input" readonly placeholder="adminId">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminName</label>
+						<label class="col-sm-2 control-label">管理员</label>
 						<div class="col-sm-10">
-							<input type="text" name="adminName" class="form-control" id="adminName_modify_input"
-								   value="${admin.adminName}" placeholder="adminName">
+							<input type="text" name="adminName" class="form-control" id="adminName_modify_input" placeholder="adminName">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminPassword</label>
+						<label class="col-sm-2 control-label">密码</label>
 						<div class="col-sm-10">
-							<input type="text" name="adminPassword" class="form-control" id="adminPassword_modify_input"
-								   value="${admin.adminPassword}" placeholder="adminPassword">
+							<input type="password" name="adminPassword" class="form-control" id="adminPassword_modify_input" placeholder="adminPassword">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminPhone</label>
+						<label class="col-sm-2 control-label">联系电话</label>
 						<div class="col-sm-10">
-							<input type="text" name="adminPhone" class="form-control" id="adminPhone_modify_input"
-								   value="${admin.adminPhone}" placeholder="adminPhone">
+							<input type="text" name="adminPhone" class="form-control" id="adminPhone_modify_input" placeholder="adminPhone">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">adminEmail</label>
+						<label class="col-sm-2 control-label">邮件地址</label>
 						<div class="col-sm-10">
-							<input type="text" name="adminEmail" class="form-control" id="adminEmail_modify_input"
-								   value="${admin.adminEmail}" placeholder="adminEmail">
+							<input type="email" name="adminEmail" class="form-control" id="adminEmail_modify_input" placeholder="adminEmail">
 							<span class="help-block"></span>
 						</div>
 					</div>
@@ -129,22 +121,15 @@
 	</div>
 </div>
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 管理员列表</nav>
 <div class="container">
-	<div class="text-c"> 日期范围：
-		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
-		-
-		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
-		<input type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="" name="">
-		<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
-	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-8">
 			<button class="btn btn-primary" id="admin_add_modal_btn">新增</button>
 			<button class="btn btn-danger" id="admin_delete_all_btn">批量删除</button>
 		</div>
 	</div>
-	<table class="table table-border table-bordered table-bg">
+	<table class="table table-border table-bordered table-bg" id="admin_table">
 		<thead>
 			<tr>
 				<th scope="col" colspan="9">管理员列表</th>
@@ -165,30 +150,48 @@
 	</table>
 	<div class="row">
 		<!--分页文字信息  -->
-		<div class="col-md-6" id="padminPhone_info_area"></div>
+		<div class="col-md-6" id="page_info_area"></div>
 		<!-- 分页条信息 -->
-		<div class="col-md-6" id="padminPhone_nav_area">
+		<div class="col-md-6" id="page_nav_area">
 		</div>
 	</div>
 </div>
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" th:src="@{/static/lib/jquery/1.9.1/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/static/lib/layer/2.4/layer.js}"></script>
-<script type="text/javascript" th:src="@{/static/h-ui/js/H-ui.min.js}"></script>
-<script type="text/javascript" th:src="@{/static/h-ui.admin/js/H-ui.admin.js}"></script>  <!--/_footer 作为公共模版分离出去-->
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" th:src="@{/static/lib/My97DatePicker/4.8/WdatePicker.js}"></script>
-<script type="text/javascript" th:src="@{/satic/lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
-<script type="text/javascript" th:src="@{/static/lib/laypadminPhone/1.2/laypadminPhone.js}"></script>
 <script type="text/javascript">
+    function getRootPath() {
+        var pathName = window.location.pathname.substring(1);
+        var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
+        return window.location.protocol + '//' + window.location.host + '/' + webName + '/';
+    }
+
+    Date.prototype.format = function(fmt) {
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt)) {
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(fmt)){
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+            }
+        }
+        return fmt;
+    };
 	$(function () {
-		to_padminPhone(1);
+		to_page(1);
 	});
 
-	function to_padminPhone(pn) {
+	function to_page(pn) {
+	    var str = getRootPath();
 		$.ajax({
-			url: "${padminPhoneContext.request.contextPath}/admins",
+			url: str+"manageAdmin",
 			data: "pn=" + pn,
 			type: "GET",
 			success: function (result) {
@@ -196,9 +199,9 @@
 				//1、解析并显示员工数据
 				build_admins_table(result);
 				//2、解析并显示分页信息
-				build_padminPhone_info(result);
+				build_page_info(result);
 				//3、解析显示分页条数据
-				build_padminPhone_nav(result);
+				build_page_nav(result);
 			}
 		});
 	}
@@ -206,26 +209,23 @@
 	function build_admins_table(result) {
 		//清空table表格
 		$("#admin_table tbody").empty();
-		var admins = result.extend.padminPhoneInfo.list;
+		var admins = result.extend.pageInfo.list;
 		$.each(admins, function (index, admin) {
 			var checkBoxTd = $("<td><input type='checkbox' name='ids' class='check_item'/></td>");
-			/*
-            var checkBoxTd = $("<td></td>").append("<input type='checkbox' name='ids' class='check_item'>").val(admin.id);
-            */
-			var adminIdTd = $("<td></td>").append(admin.id);
+			var adminIdTd = $("<td></td>").append(admin.adminId);
 			var adminNameTd = $("<td></td>").append(admin.adminName);
-			var adminPasswordTd = $("<td></td>").append(admin.adminPassword);
+			var adminPasswordTd = $("<td></td>").append($("<input readonly style='border: none' type='password'>").val(admin.adminPassword));
 			var adminPhoneTd = $("<td></td>").append(admin.adminPhone);
 			var adminEmailTd = $("<td></td>").append(admin.adminEmail);
 
 			var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
 					.append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
 			//为编辑按钮添加一个自定义的属性，来表示当前员工id
-			editBtn.attr("edit-id", admin.id);
+			editBtn.attr("edit-id", admin.adminId);
 			var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
 					.append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
 			//为删除按钮添加一个自定义的属性来表示当前删除的员工id
-			delBtn.attr("del-id", admin.id);
+			delBtn.attr("del-id", admin.adminId);
 			var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
 
 			//append方法执行完成以后还是返回原来的元素
@@ -241,71 +241,71 @@
 	}
 
 	//解析显示分页信息
-	function build_padminPhone_info(result) {
-		$("#padminPhone_info_area").empty();
-		$("#padminPhone_info_area").append("当前" + result.extend.padminPhoneInfo.padminPhoneNum + "页,总" +
-				result.extend.padminPhoneInfo.padminPhones + "页,总" +
-				result.extend.padminPhoneInfo.total + "条记录");
-		totalRecord = result.extend.padminPhoneInfo.total;//最后的数据
-		currentPadminPhone = result.extend.padminPhoneInfo.padminPhoneNum;//当前页
+	function build_page_info(result) {
+		$("#page_info_area").empty();
+		$("#page_info_area").append("当前" + result.extend.pageInfo.pageNum + "页,总" +
+				result.extend.pageInfo.pages + "页,总" +
+				result.extend.pageInfo.total + "条记录");
+		totalRecord = result.extend.pageInfo.total;//最后的数据
+		currentpage = result.extend.pageInfo.pageNum;//当前页
 	}
 
 	//解析显示分页条，点击分页要能去下一页....
-	function build_padminPhone_nav(result) {
-		//padminPhone_nav_area
-		$("#padminPhone_nav_area").empty();
+	function build_page_nav(result) {
+		//page_nav_area
+		$("#page_nav_area").empty();
 		var ul = $("<ul></ul>").addClass("pagination");
 
 		//构建元素
-		var firstPadminPhoneLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
-		var prePadminPhoneLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
-		if (result.extend.padminPhoneInfo.hasPreviousPadminPhone == false) {
-			firstPadminPhoneLi.addClass("disabled");
-			prePadminPhoneLi.addClass("disabled");
+		var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
+		var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+		if (result.extend.pageInfo.hasPreviousPage == false) {
+			firstPageLi.addClass("disabled");
+			prePageLi.addClass("disabled");
 		} else {
 			//为元素添加点击翻页的事件
-			firstPadminPhoneLi.click(function () {
-				to_padminPhone(1);
+			firstPageLi.click(function () {
+				to_page(1);
 			});
-			prePadminPhoneLi.click(function () {
-				to_padminPhone(result.extend.padminPhoneInfo.padminPhoneNum - 1);
+			prePageLi.click(function () {
+				to_page(result.extend.pageInfo.pageNum - 1);
 			});
 		}
 
-		var nextPadminPhoneLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
-		var lastPadminPhoneLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
-		if (result.extend.padminPhoneInfo.hasNextPadminPhone == false) {
-			nextPadminPhoneLi.addClass("disabled");
-			lastPadminPhoneLi.addClass("disabled");
+		var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+		var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
+		if (result.extend.pageInfo.hasNextPage == false) {
+			nextPageLi.addClass("disabled");
+			lastPageLi.addClass("disabled");
 		} else {
-			nextPadminPhoneLi.click(function () {
-				to_padminPhone(result.extend.padminPhoneInfo.padminPhoneNum + 1);
+			nextPageLi.click(function () {
+				to_page(result.extend.pageInfo.pageNum + 1);
 			});
-			lastPadminPhoneLi.click(function () {
-				to_padminPhone(result.extend.padminPhoneInfo.padminPhones);
+			lastPageLi.click(function () {
+				to_page(result.extend.pageInfo.pages);
 			});
 		}
 
 		//添加首页和前一页 的提示
-		ul.append(firstPadminPhoneLi).append(prePadminPhoneLi);
+		ul.append(firstPageLi).append(prePageLi);
 		//1,2，3遍历给ul中添加页码提示
-		$.each(result.extend.padminPhoneInfo.navigatepadminPhoneNums, function (index, item) {
+		$.each(result.extend.pageInfo.navigatepageNums, function (index, item) {
 
 			var numLi = $("<li></li>").append($("<a></a>").append(item));
-			if (result.extend.padminPhoneInfo.padminPhoneNum == item) {
+			if (result.extend.pageInfo.pageNum == item) {
 				numLi.addClass("active");
 			}
 			numLi.click(function () {
-				to_padminPhone(item);
+				to_page(item);
 			});
 			ul.append(numLi);
 		});
 		//添加下一页和末页 的提示
-		ul.append(nextPadminPhoneLi).append(lastPadminPhoneLi);
+		ul.append(nextPageLi).append(lastPageLi);
 
 		//把ul加入到nav
 		var navEle = $("<nav></nav>").append(ul);
-		navEle.appendTo("#padminPhone_nav_area");
+		navEle.appendTo("#page_nav_area");
 	}
 
 	//清空表单样式及内容
@@ -327,9 +327,10 @@
 	});
 	//点击保存，保存员工。
 	$("#admin_save_btn").click(function () {
+	    var str =
 		//2、发送ajax请求保存员工
 		$.ajax({
-			url: "${APP_PATH}/add",
+			url: getRootPath()+"addAdmin",
 			type: "POST",
 			data: $("#adminAddModal form").serialize(),
 			success: function (result) {
@@ -339,7 +340,7 @@
 					//1、关闭模态框
 					$("#adminAddModal").modal('hide');
 					//2、显示刚才保存的数据
-					to_padminPhone(1);
+					to_page(1);
 				} else {
 					//显示失败信息
 					console.log(result);
@@ -356,13 +357,13 @@
 		if (confirm("确认删除【" + empName + "】吗？")) {
 			//确认，发送ajax请求删除即可
 			$.ajax({
-				url: "${APP_PATH}/delete?id=" + adminId,
+				url: getRootPath()+"deleteAdmin?id=" + adminId,
 				type: "GET",
 				success: function (result) {
 					alert(result.msg);
 					if (result.code == 100) {
 						//2、显示刚才保存的数据
-						to_padminPhone(1);
+						to_page(1);
 					} else {
 						//显示失败信息
 						console.log(result);
@@ -396,13 +397,13 @@
 		if (checkID != null && checkID.length > 0) {
 			$.ajax({
 				type: 'POST',
-				url: '${padminPhoneContext.request.contextPath}/batchDelete',
+				url: getRootPath()+'batchDeleteAdmin',
 				data: JSON.stringify(checkID),
 				dataType: 'json',
 				contentType: 'application/json',
 				success: function (result) {
 					if (result.code == 100) {
-						to_padminPhone(1);
+						to_page(1);
 					} else {
 						//显示失败信息
 						console.log(result);
@@ -418,15 +419,14 @@
 		reset_form("#adminModifyModal form");
 		var Id = $(this).attr("edit-id");
 		$.ajax({
-			url: "${APP_PATH}/edit?id=" + Id,
+			url: getRootPath()+"editAdmin?id=" + Id,
 			type: "GET",
 			success: function (result) {
 				//填充用户信息
 				console.log(result);
 
-				$("#adminId_modify_input").val(result.extend.admin.id);
+				$("#adminId_modify_input").val(result.extend.admin.adminId);
 				$("#adminName_modify_input").val(result.extend.admin.adminName);
-				$("#password_modify_input").val(result.extend.admin.password);
 				$("#adminPassword_modify_input").val(result.extend.admin.adminPassword);
 				$("#adminPhone_modify_input").val(result.extend.admin.adminPhone);
 				$("#adminEmail_modify_input").val(result.extend.admin.adminEmail);
@@ -440,7 +440,7 @@
 	//点击保存，更新数据库
 	$("#admin_modify_btn").click(function () {
 		$.ajax({
-			url: "${padminPhoneContext.request.contextPath}/update",
+			url: getRootPath()+"updateAdmin",
 			type: "POST",
 			data: $("#adminModifyModal form").serialize(),
 			success: function (result) {
@@ -450,7 +450,7 @@
 					//1、关闭模态框
 					$("#adminModifyModal").modal('hide');
 					//2、显示刚才保存的数据
-					to_padminPhone(1);
+					to_page(1);
 				} else {
 					//显示失败信息
 					console.log(result);

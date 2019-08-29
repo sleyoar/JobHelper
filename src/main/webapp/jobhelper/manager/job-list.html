@@ -31,48 +31,80 @@
 			<div class="modal-body">
 				<form class="form-horizontal">
 					<div class="form-group" >
-						<label class="col-sm-2 control-label">JobId</label>
-						<div class="col-sm-10" th:if="${job!=null}">
-							<input type="text" name="blogId" class="form-control" id="blogId_modify_input"
-								   th:value="${job.jobId}" readonly placeholder="blogId">
+						<label class="col-sm-2 control-label">职位ID</label>
+						<div class="col-sm-10">
+							<input type="text" name="jobId" class="form-control" id="jobId_modify_input"
+								  readonly placeholder="jobId">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group" >
-						<label class="col-sm-2 control-label">发帖人</label>
-						<div class="col-sm-10" th:if="${blog!=null}">
-							<input type="text" name="blogUser" class="form-control" id="blogUser_modify_input"
-								   placeholder="发帖人" th:value="${blog.blogUser}">
+						<label class="col-sm-2 control-label">职位名称</label>
+						<div class="col-sm-10">
+							<input type="text" name="jobName" class="form-control" id="jobName_modify_input"
+								   placeholder="职位名称" >
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group" >
+						<label class="col-sm-2 control-label">职位薪资</label>
+						<div class="col-sm-10">
+							<input type="text" name="jobSalary" class="form-control" id="jobSalary_modify_input"
+								   placeholder="??K-??K" >
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group" >
 						<label class="col-sm-2 control-label">类别</label>
-						<div class="col-sm-10" th:if="${blog!=null}">
-							<input type="text" name="blogCategory" class="form-control" id="blogCategory_modify_input" th:value="${blog.blogCategory}">
+						<div class="col-sm-10">
+							<input type="text" name="jobCategory" class="form-control" id="jobCategory_modify_input">
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group" >
-						<label class="col-sm-2 control-label">标题</label>
-						<div class="col-sm-10" th:if="${blog!=null}">
-							<input type="text" name="blogTitle" class="form-control" id="blogTitle_modify_input" th:value="${blog.blogTitle}">
+						<label class="col-sm-2 control-label">职位描述</label>
+						<div class="col-sm-10">
+							<textarea name="jobDescribe" class="form-control" id="jobDescribe_modify_input" ></textarea>
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group" >
-						<label class="col-sm-2 control-label">正文</label>
-						<div class="col-sm-10" th:if="${blog!=null}">
-                            <textarea  name="blogContext" class="form-control" id="blogContext_modify_input"
-									   placeholder="地址" th:value="${blog.blogContext}"></textarea>
+						<label class="col-sm-2 control-label">职位诱惑</label>
+						<div class="col-sm-10">
+							<input type="text" name="jobBuff" class="form-control" id="jobBuff_modify_input"
+								   placeholder="职位诱惑" >
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group" >
+						<label class="col-sm-2 control-label">职位需求</label>
+						<div class="col-sm-10">
+                            <textarea  name="jobNeed" class="form-control" id="jobNeed_modify_input"
+									   placeholder="要求"></textarea>
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group" >
+						<label class="col-sm-2 control-label">职位性质</label>
+						<div class="col-sm-10">
+							<input type="text" name="jobQuality" class="form-control" id="jobQuality_modify_input"
+								   placeholder="职位性质" >
 							<span class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Date</label>
-						<div class="col-sm-10" th:if="${blog!=null}">
-							<input type="text" name="blogDate" class="form-control" id="blogDate_modify_input"
-								   th:value="${blog.blogDate}" readonly placeholder="blogDate">
+						<div class="col-sm-10">
+							<input type="text" name="jobDate" class="form-control" id="jobDate_modify_input"
+								   readonly placeholder="jobDate">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group" >
+						<label class="col-sm-2 control-label">就职地点</label>
+						<div class="col-sm-10">
+							<input type="text" name="jobAddress" class="form-control" id="jobAddress_modify_input"
+								   placeholder="职位名称" >
 							<span class="help-block"></span>
 						</div>
 					</div>
@@ -105,6 +137,7 @@
 				<th style="width: 80px">类别</th>
 				<th style="width: 120px">描述</th>
 				<th style="width: 75px">职位诱惑</th>
+				<th style="width: 75px">职位需求</th>
 				<th style="width: 80px">职位性质</th>
 				<th style="width: 80px">上传日期</th>
 				<th style="width: 80px">就职地点</th>
@@ -360,12 +393,17 @@
 			success: function (result) {
 				//填充用户信息
 				console.log(result);
+				var jobdate = new Date(result.extend.job.jobDate).format("yyyy-MM-dd");
 				$("#jobId_modify_input").val(result.extend.job.jobId);
 				$("#jobName_modify_input").val(result.extend.job.jobName);
+				$("#jobSalary_modify_input").val(result.extend.job.jobSalary);
 				$("#jobCategory_modify_input").val(result.extend.job.jobCategory);
-				$("#jobTitle_modify_input").val(result.extend.job.jobTitle);
+				$("#jobDescribe_modify_input").val(result.extend.job.jobDescribe);
+				$("#jobBuff_modify_input").val(result.extend.job.jobBuff);
 				$("#jobNeed_modify_input").val(result.extend.job.jobNeed);
-				$("#jobDate_modify_input").val(result.extend.job.jobDate);
+				$("#jobQuality_modify_input").val(result.extend.job.jobQuality);
+				$("#jobDate_modify_input").val(jobdate);
+				$("#jobAddress_modify_input").val(result.extend.job.jobAddress);
 			}
 		});
 		//2、弹出模态框

@@ -5,156 +5,365 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui/css/H-ui.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui.admin/css/H-ui.admin.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/lib/Hui-iconfont/1.0.8/iconfont.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui.admin/skin/default/skin.css}" id="skin"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/static/h-ui.admin/css/style.css}"/>
+	<script type="text/javascript" th:src="@{/static/js/jquery-3.2.1.min.js}"></script>
+	<link rel="stylesheet" th:href="@{/static/bootstrap-3.3.7-dist/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
 
 <title>意见反馈</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 评论管理 <span class="c-gray en">&gt;</span> 意见反馈 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-<div class="page-container">
-	<div class="text-c"> 日期范围：
-		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
-		-
-		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
-		<input type="text" class="input-text" style="width:250px" placeholder="输入关键词" id="" name="">
-		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜意见</button>
+<!-- 管理员修改的模态框-->
+<div class="modal fade" id="contactModifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="modifyModalLabel">反馈修改</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">ID</label>
+						<div class="col-sm-10">
+							<input type="text" name="contactId" class="form-control" id="contactId_modify_input" readonly placeholder="contactId">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">用户</label>
+						<div class="col-sm-10">
+							<input type="text" name="contactName" class="form-control" id="contactName_modify_input" placeholder="contactName">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">邮件地址</label>
+						<div class="col-sm-10">
+							<input type="email" name="contactEmail" class="form-control" id="contactEmail_modify_input" placeholder="contactEmail">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">联系电话</label>
+						<div class="col-sm-10">
+							<input type="text" name="contextMessage" class="form-control" id="contextMessage_modify_input" placeholder="contextMessage">
+							<span class="help-block"></span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" id="contact_modify_btn">保存</button>
+			</div>
+		</div>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </span> <span class="r">共有数据：<strong>88</strong> 条</span> </div>
-	<div class="mt-20">
-		<table class="table table-border table-bordered table-hover table-bg table-sort">
+</div>
+
+<nav class="breadcrumb">首页 <span class="c-gray en">&gt;</span> 评论管理 <span class="c-gray en">&gt;</span> 意见反馈 </nav>
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-4 col-md-offset-8">
+			<button class="btn btn-danger" id="contact_delete_all_btn">批量删除</button>
+		</div>
+	</div>
+		<table class="table table-border table-bordered table-bg" id="contact_table">
 			<thead>
+			<tr>
+				<th scope="col" colspan="9">反馈列表</th>
+			</tr>
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="60">ID</th>
 					<th width="60">用户名</th>
+					<th width="60">用户邮箱</th>
 					<th>留言内容</th>
 					<th width="100">操作</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="text-c">
-					<td><input type="checkbox" value="1" name=""></td>
-					<td>1</td>
-					<td><a href="javascript:;" onclick="member_show('张三','member-show.html','10001','360','400')"><i class="avatar size-L radius"><img alt="" src="static/h-ui/images/ucnter/avatar-default-S.gif"></i></a></td>
-					<td class="text-l"><div class="c-999 f-12">
-							<u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">张三</u> <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time> <span class="ml-20">13000000000</span> <span class="ml-20">admin@mail.com</span></div>
-							<div class="f-12 c-999"><a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank">http://www.h-ui.net/Hui-4.22-comment.shtml</a></div>
-						<div>留言内容</div></td>
-					<td class="td-manage"><a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input type="checkbox" value="1" name=""></td>
-					<td>1</td>
-					<td><a href="javascript:;" onclick="member_show('张三','member-show.html','10001','360','400')"><i class="avatar size-L radius"><img alt="" src="static/h-ui/images/ucnter/avatar-default-S.gif"></i></a></td>
-					<td class="text-l"><div class="c-999 f-12">
-							<u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">张三</u> <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time> <span class="ml-20">13000000000</span> <span class="ml-20">admin@mail.com</span></div>
-							<div class="f-12 c-999"><a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank">http://www.h-ui.net/Hui-4.22-comment.shtml</a></div>
-						<div>留言内容</div></td>
-					<td class="td-manage"><a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input type="checkbox" value="1" name=""></td>
-					<td>1</td>
-					<td><a href="javascript:;" onclick="member_show('张三','member-show.html','10001','360','400')"><i class="avatar size-L radius"><img alt="" src="static/h-ui/images/ucnter/avatar-default-S.gif"></i></a></td>
-					<td class="text-l"><div class="c-999 f-12">
-							<u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">张三</u> <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time> <span class="ml-20">13000000000</span> <span class="ml-20">admin@mail.com</span></div>
-							<div class="f-12 c-999"><a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank">http://www.h-ui.net/Hui-4.22-comment.shtml</a></div>
-						<div>留言内容</div></td>
-					<td class="td-manage"><a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input type="checkbox" value="1" name=""></td>
-					<td>1</td>
-					<td><a href="javascript:;" onclick="member_show('张三','member-show.html','10001','360','400')"><i class="avatar size-L radius"><img alt="" src="static/h-ui/images/ucnter/avatar-default-S.gif"></i></a></td>
-					<td class="text-l"><div class="c-999 f-12">
-							<u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">张三</u> <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time> <span class="ml-20">13000000000</span> <span class="ml-20">admin@mail.com</span></div>
-							<div class="f-12 c-999"><a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank">http://www.h-ui.net/Hui-4.22-comment.shtml</a></div>
-						<div>留言内容</div></td>
-					<td class="td-manage"><a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
+
 			</tbody>
 		</table>
+	<div class="row">
+		<!--分页文字信息  -->
+		<div class="col-md-6" id="page_info_area"></div>
+		<!-- 分页条信息 -->
+		<div class="col-md-6" id="page_nav_area">
+		</div>
 	</div>
 </div>
 
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" th:src="@{/static/lib/jquery/1.9.1/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/static/lib/layer/2.4/layer.js}"></script>
-<script type="text/javascript" th:src="@{/static/h-ui/js/H-ui.min.js}"></script>
-<script type="text/javascript" th:src="@{/static/h-ui.admin/js/H-ui.admin.js}"></script> <!--/_footer /作为公共模版分离出去-->
-
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" th:src="@{/static/lib/My97DatePicker/4.8/WdatePicker.js}"></script>
-<script type="text/javascript" th:src="@{/static/lib/datatables/1.10.0/jquery.dataTables.min.js}"></script>
-<script type="text/javascript" th:src="@{/static/lib/laypage/1.2/laypage.js}"></script>
 <script type="text/javascript">
-$(function(){
-	$('.table-sort').dataTable({
-		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-		"bStateSave": true,//状态保存
-		"aoColumnDefs": [
-		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		  {"orderable":false,"aTargets":[0,2,4]}// 制定列不参与排序
-		]
+	function getRootPath() {
+		var pathName = window.location.pathname.substring(1);
+		var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
+		return window.location.protocol + '//' + window.location.host + '/' + webName + '/';
+	}
+
+	Date.prototype.format = function(fmt) {
+		var o = {
+			"M+" : this.getMonth()+1,                 //月份
+			"d+" : this.getDate(),                    //日
+			"h+" : this.getHours(),                   //小时
+			"m+" : this.getMinutes(),                 //分
+			"s+" : this.getSeconds(),                 //秒
+			"q+" : Math.floor((this.getMonth()+3)/3), //季度
+			"S"  : this.getMilliseconds()             //毫秒
+		};
+		if(/(y+)/.test(fmt)) {
+			fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+		}
+		for(var k in o) {
+			if(new RegExp("("+ k +")").test(fmt)){
+				fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+			}
+		}
+		return fmt;
+	};
+	$(function () {
+		to_page(1);
 	});
 
-});
-/*用户-添加*/
-function member_add(title,url,w,h){
-	layer_show(title,url,w,h);
-}
-/*用户-查看*/
-function member_show(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
-/*用户-停用*/
-function member_stop(obj,id){
-	layer.confirm('确认要停用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-		$(obj).remove();
-		layer.msg('已停用!',{icon: 5,time:1000});
-	});
-}
-
-/*用户-启用*/
-function member_start(obj,id){
-	layer.confirm('确认要启用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-		$(obj).remove();
-		layer.msg('已启用!',{icon: 6,time:1000});
-	});
-}
-/*用户-编辑*/
-function member_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
-/*密码-修改*/
-function change_password(title,url,id,w,h){
-	layer_show(title,url,w,h);	
-}
-/*用户-删除*/
-function member_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
+	function to_page(pn) {
+		var str = getRootPath();
 		$.ajax({
-			type: 'POST',
-			url: '',
-			dataType: 'json',
-			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
-			},
-			error:function(data) {
-				console.log(data.msg);
-			},
-		});		
+			url: str+"manageContact",
+			data: "pn=" + pn,
+			type: "GET",
+			success: function (result) {
+				console.log(result)
+				//1、解析并显示员工数据
+				build_contacts_table(result);
+				//2、解析并显示分页信息
+				build_page_info(result);
+				//3、解析显示分页条数据
+				build_page_nav(result);
+			}
+		});
+	}
+
+	function build_contacts_table(result) {
+		//清空table表格
+		$("#contact_table tbody").empty();
+		var contacts = result.extend.pageInfo.list;
+		$.each(contacts, function (index, contact) {
+			var checkBoxTd = $("<td><input type='checkbox' name='ids' class='check_item'/></td>");
+			var contactIdTd = $("<td></td>").append(contact.contactId);
+			var contactNameTd = $("<td></td>").append(contact.contactName);
+			var contactEmailTd = $("<td></td>").append(contact.contactEmail);
+			var contextMessageTd = $("<td></td>").append(contact.contextMessage);
+
+			var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
+					.append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
+			//为编辑按钮添加一个自定义的属性，来表示当前员工id
+			editBtn.attr("edit-id", contact.contactId);
+			var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
+					.append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
+			//为删除按钮添加一个自定义的属性来表示当前删除的员工id
+			delBtn.attr("del-id", contact.contactId);
+			var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
+
+			//append方法执行完成以后还是返回原来的元素
+			$("<tr></tr>").append(checkBoxTd)
+					.append(contactIdTd)
+					.append(contactNameTd)
+					.append(contactEmailTd)
+					.append(contextMessageTd)
+					.append(btnTd)
+					.appendTo("#contact_table tbody");
+		});
+	}
+
+	//解析显示分页信息
+	function build_page_info(result) {
+		$("#page_info_area").empty();
+		$("#page_info_area").append("当前" + result.extend.pageInfo.pageNum + "页,总" +
+				result.extend.pageInfo.pages + "页,总" +
+				result.extend.pageInfo.total + "条记录");
+		totalRecord = result.extend.pageInfo.total;//最后的数据
+		currentpage = result.extend.pageInfo.pageNum;//当前页
+	}
+
+	//解析显示分页条，点击分页要能去下一页....
+	function build_page_nav(result) {
+		//page_nav_area
+		$("#page_nav_area").empty();
+		var ul = $("<ul></ul>").addClass("pagination");
+
+		//构建元素
+		var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
+		var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+		if (result.extend.pageInfo.hasPreviousPage == false) {
+			firstPageLi.addClass("disabled");
+			prePageLi.addClass("disabled");
+		} else {
+			//为元素添加点击翻页的事件
+			firstPageLi.click(function () {
+				to_page(1);
+			});
+			prePageLi.click(function () {
+				to_page(result.extend.pageInfo.pageNum - 1);
+			});
+		}
+
+		var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+		var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
+		if (result.extend.pageInfo.hasNextPage == false) {
+			nextPageLi.addClass("disabled");
+			lastPageLi.addClass("disabled");
+		} else {
+			nextPageLi.click(function () {
+				to_page(result.extend.pageInfo.pageNum + 1);
+			});
+			lastPageLi.click(function () {
+				to_page(result.extend.pageInfo.pages);
+			});
+		}
+
+		//添加首页和前一页 的提示
+		ul.append(firstPageLi).append(prePageLi);
+		//1,2，3遍历给ul中添加页码提示
+		$.each(result.extend.pageInfo.navigatepageNums, function (index, item) {
+
+			var numLi = $("<li></li>").append($("<a></a>").append(item));
+			if (result.extend.pageInfo.pageNum == item) {
+				numLi.addClass("active");
+			}
+			numLi.click(function () {
+				to_page(item);
+			});
+			ul.append(numLi);
+		});
+		//添加下一页和末页 的提示
+		ul.append(nextPageLi).append(lastPageLi);
+
+		//把ul加入到nav
+		var navEle = $("<nav></nav>").append(ul);
+		navEle.appendTo("#page_nav_area");
+	}
+
+	//清空表单样式及内容
+	function reset_form(ele) {
+		$(ele)[0].reset();
+		//清空表单样式
+		$(ele).find("*").removeClass("has-error has-success");
+		$(ele).find(".help-block").text("");
+	}
+
+
+	//单个删除
+	$(document).on("click", ".delete_btn", function () {
+		//1、弹出是否确认删除对话框
+		var empName = $(this).parents("tr").find("td:eq(2)").text();
+		var contactId = $(this).attr("del-id");
+
+		if (confirm("确认删除【" + empName + "】吗？")) {
+			//确认，发送ajax请求删除即可
+			$.ajax({
+				url: getRootPath()+"deleteContact?id=" + contactId,
+				type: "GET",
+				success: function (result) {
+					alert(result.msg);
+					if (result.code == 100) {
+						//2、显示刚才保存的数据
+						to_page(1);
+					} else {
+						//显示失败信息
+						console.log(result);
+					}
+				}
+			});
+		}
 	});
-}
+	//多个删除
+	//全选或者取消全选
+	function DoCheck() {
+		var ch = document.getElementsByName("ids");
+		if (document.getElementById("check_all").checked == true) {
+			for (var i = 0; i < ch.length; i++) {
+				ch[i].checked = true;
+			}
+		} else {
+			for (var i = 0; i < ch.length; i++) {
+				ch[i].checked = false;
+			}
+		}
+	}
+	//点击批量删除按钮
+	$(document).on('click', '#contact_delete_all_btn', function () {
+		var checkID = [];//定义一个空数组
+		$("input[name='ids']:checked").each(function (i) {//把所有被选中的复选框的值存入数组
+			checkID[i] = $(this).parents("tr").find("td:eq(1)").text();
+		});
+		alert(JSON.stringify(checkID));
+		if (checkID != null && checkID.length > 0) {
+			$.ajax({
+				type: 'POST',
+				url: getRootPath()+'batchDeleteContact',
+				data: JSON.stringify(checkID),
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function (result) {
+					if (result.code == 100) {
+						to_page(1);
+					} else {
+						//显示失败信息
+						console.log(result);
+					}
+				}
+			});
+		}
+	});
+	//点击编辑按钮弹出模态框。
+	$(document).on("click", ".edit_btn", function () {
+		//1、发送ajax,根据id获取用户信息
+		//清除表单数据（表单完整重置（表单的数据，表单的样式））
+		reset_form("#contactModifyModal form");
+		var Id = $(this).attr("edit-id");
+		$.ajax({
+			url: getRootPath()+"editContact?id=" + Id,
+			type: "GET",
+			success: function (result) {
+				//填充用户信息
+				console.log(result);
+
+				$("#contactId_modify_input").val(result.extend.contact.contactId);
+				$("#contactName_modify_input").val(result.extend.contact.contactName);
+				$("#contactEmail_modify_input").val(result.extend.contact.contactEmail);
+				$("#contextMessage_modify_input").val(result.extend.contact.contextMessage);
+			}
+		});
+		//2、弹出模态框
+		$("#contactModifyModal").modal({
+			backdrop: "static"
+		});
+	});
+	//点击保存，更新数据库
+	$("#contact_modify_btn").click(function () {
+		$.ajax({
+			url: getRootPath()+"updateContact",
+			type: "POST",
+			data: $("#contactModifyModal form").serialize(),
+			success: function (result) {
+				//alert(result.msg);
+				if (result.code == 100) {
+					//员工保存成功；
+					//1、关闭模态框
+					$("#contactModifyModal").modal('hide');
+					//2、显示刚才保存的数据
+					to_page(1);
+				} else {
+					//显示失败信息
+					console.log(result);
+				}
+			}
+		});
+	});
 </script>
 </body>
 </html>
