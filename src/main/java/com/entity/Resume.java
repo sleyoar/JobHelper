@@ -1,6 +1,9 @@
 package com.entity;
 
-public class Resume {
+import java.io.Serializable;
+
+public class Resume implements Serializable {
+    private static final long serialVersionUID = 9044508942189776025L;
     private Integer resumeId;
 
     private String resumePic;

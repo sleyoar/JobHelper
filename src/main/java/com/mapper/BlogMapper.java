@@ -25,4 +25,9 @@ public interface BlogMapper {
     int updateByPrimaryKey(Blog record);
 
     void batchDelete(@Param("ids") List<Integer> ids);
+
+    List<Blog> getByBlogCategory(String blogCategory);
+
+    List<Blog> getByLike(String blogLike);
+
 }

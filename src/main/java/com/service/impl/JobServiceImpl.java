@@ -47,4 +47,9 @@ public class JobServiceImpl implements JobService {
     public void batchDelete(List<Integer> ids) {
         jobMapper.batchDelete(ids);
     }
+
+    @Override
+    public List<Job> getByCategory(String jobCategory) {
+        return jobMapper.getByCategory(jobCategory);
+    }
 }

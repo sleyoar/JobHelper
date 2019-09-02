@@ -1,5 +1,6 @@
 package com.service;
 
+import com.entity.UJM;
 import com.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,6 +16,10 @@ public interface UserService {
     /*get one user by id*/
     User selectByPrimaryKey(Integer userId);
 
+    int insertUJM (UJM ujm);
+
+    User getUserJob(Integer userId);
+
     /*get one user by name  */
     User verifyUser(String userName);
 
@@ -25,4 +30,6 @@ public interface UserService {
     int updateByPrimaryKey(User record);
 
     void batchDelete(@Param("ids") List<Integer> ids);
+
+    UJM getUJM(Integer userId, Integer jobId);
 }

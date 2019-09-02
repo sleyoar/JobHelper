@@ -13,8 +13,30 @@
     <!--配置注解驱动-->
     <mvc:annotation-driven/>
     <!--静态资源-->
-    <!--<mvc:default-servlet-handler/>-->
-    <mvc:resources location="/static/" mapping="/static/**" />
+    <mvc:default-servlet-handler/>
+    <!-- 拦截器配置 -->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            &lt;!&ndash; 拦截所有请求 &ndash;&gt;
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/**/fonts/*"/>
+            <mvc:exclude-mapping path="/**/*.css"/>
+            <mvc:exclude-mapping path="/**/*.js"/>
+            <mvc:exclude-mapping path="/**/*.png"/>
+            <mvc:exclude-mapping path="/**/*.gif"/>
+            <mvc:exclude-mapping path="/**/*.jpg"/>
+            <mvc:exclude-mapping path="/**/*.jpeg"/>
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/blog"/>
+            <mvc:exclude-mapping path="/blogdetails"/>
+            <mvc:exclude-mapping path="/alljobs"/>
+            <mvc:exclude-mapping path="/jobdetails"/>
+            <mvc:exclude-mapping path="/contact"/>
+            <bean class="com.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+    <!--<mvc:resources location="/static/" mapping="/static/**" />-->
     <!--视图解析器-->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jobhelper/"/>

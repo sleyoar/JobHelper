@@ -33,9 +33,26 @@ public class BlogController {
         ModelAndView mv = new ModelAndView();
         Blog blog = blogService.selectByPrimaryKey(Integer.parseInt(request.getParameter("blogId")));
         //System.out.println(blog);
-        mv.addObject("blog",blog);
+        mv.addObject("blog", blog);
         mv.setViewName("blog-details");
         return mv;
+    }
+
+    @RequestMapping("/searchBlog")
+    public String getByLike(HttpServletRequest request) {
+        String like = request.getParameter("blogLike");
+        String blogLike = "%" + like + "%";
+        List<Blog> blogs = blogService.getByLike(blogLike);
+        request.getSession().setAttribute("blogs", blogs);
+        return "forward:/blog";
+    }
+
+    @RequestMapping("/blogCategory")
+    public String getBlogCategory(HttpServletRequest request) {
+        String blogCategory = request.getParameter("blogCategory");
+        List<Blog> blogs = blogService.getByBlogCategory(blogCategory);
+        request.getSession().setAttribute("blogs", blogs);
+        return "forward:/blog";
     }
 
     @RequestMapping("/manageBlog")
@@ -61,6 +78,7 @@ public class BlogController {
             return Msg.fail();
         }
     }
+
     @RequestMapping("/delete")
     @ResponseBody
     public Msg deleteBlog(Integer id) {
@@ -85,6 +103,7 @@ public class BlogController {
     @RequestMapping("/update")
     @ResponseBody
     public Msg updateBlog(Blog blog) {
+        System.out.println(blog.getBlogDate());
         if (blogService.updateByPrimaryKey(blog) > 0) {
             return Msg.success().add("blog", blog);
         } else {
@@ -95,7 +114,6 @@ public class BlogController {
     @RequestMapping("/batchDelete")
     @ResponseBody
     public Msg batchDeleteBlog(@RequestBody String ids) {
-        System.out.println("============================================================");
         System.out.println(ids);
         JSONArray json = JSONArray.fromObject(ids);
         List<Integer> list = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.entity.UJM;
 import com.entity.User;
 import com.mapper.UserMapper;
 import com.service.UserService;
@@ -29,6 +30,16 @@ public class UseServiceImpl implements UserService {
     }
 
     @Override
+    public int insertUJM(UJM ujm) {
+        return userMapper.insertUJM(ujm);
+    }
+
+    @Override
+    public User getUserJob(Integer userId) {
+        return userMapper.getUserJob(userId);
+    }
+
+    @Override
     public User verifyUser(String userName) {
         return userMapper.verifyUser(userName);
     }
@@ -46,5 +57,10 @@ public class UseServiceImpl implements UserService {
     @Override
     public void batchDelete(List<Integer> ids) {
         userMapper.batchDelete(ids);
+    }
+
+    @Override
+    public UJM getUJM(Integer userId, Integer jobId) {
+        return userMapper.getUJM(userId,jobId);
     }
 }

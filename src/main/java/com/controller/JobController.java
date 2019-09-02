@@ -31,11 +31,17 @@ public class JobController {
         return "job-board";
     }
 
+    @RequestMapping("/jobCategory")
+    public String getByCategory(HttpServletRequest request) {
+        String jobCategory = request.getParameter("jobCategory");
+        List<Job> jobs = jobService.getByCategory(jobCategory);
+        request.getSession().setAttribute("jobs",jobs);
+        return "forward:/alljobs";
+    }
     @RequestMapping("/jobdetails")
-    private String jobDetails(HttpServletRequest request, Model model) {
-        String jobId = request.getParameter("jobId");
-        Integer jobId1 = Integer.parseInt(jobId);
-        Job job = jobService.selectByPrimaryKey(jobId1);
+    private String jobDetails( HttpServletRequest request, Model model) {
+        Integer jobId = Integer.parseInt(request.getParameter("jobId"));
+        Job job = jobService.selectByPrimaryKey(jobId);
         model.addAttribute("job",job);
         return "job-details";
     }

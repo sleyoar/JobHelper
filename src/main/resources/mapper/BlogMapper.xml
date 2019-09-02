@@ -48,4 +48,15 @@
       #{blogId}
     </foreach>
   </delete>
+  <select id="getByBlogCategory" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM jh_blog WHERE blog_category = #{blogCategory}
+  </select>
+  <select id="getByLike" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT *
+    FROM jh_blog
+    WHERE blog_title LIKE #{blogLike}
+       or blog_category LIKE #{blogLike}
+       or blog_context LIKE  #{blogLike}
+       or blog_user LIKE  #{blogLike}
+  </select>
 </mapper>

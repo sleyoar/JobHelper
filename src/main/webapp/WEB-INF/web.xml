@@ -5,6 +5,7 @@
          version="4.0">
 
     <display-name>Archetype Created Web Application</display-name>
+
     <!--前端控制器-->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>

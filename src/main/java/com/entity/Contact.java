@@ -1,6 +1,9 @@
 package com.entity;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
+    private static final long serialVersionUID = 357594945855586053L;
     private Integer contactId;
 
     private String contactName;

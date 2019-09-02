@@ -81,29 +81,26 @@
                             <div class="pull-right">
                                 <nav id="primary-menu">
                                     <ul class="main-menu text-right">
-                                        <li><a th:href="@{/}">主页</a>
-                                        </li>
-                                        <li><a th:href="@{/alljobs}">工作栏</a>
-                                            <ul class="sub-menu">
-                                            </ul>
-                                        </li>
-                                        <li><!--/*@thymesVar id="user" type="com.entity.User"*/-->
-                                            <a th:href="@{/resume}" target="_blank">简历</a></li>
+                                        <li><a th:href="@{/}">主页</a></li>
+                                        <li><a th:href="@{/alljobs}">工作栏</a></li>
                                         <li><a th:href="@{/register}">注册新账号</a></li>
-                                        <li><a th:href="@{/blog}">博客</a>
-                                            <!--<ul class="dropdown">
-                                                <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                            </ul>-->
-                                        </li>
+                                        <li><a th:href="@{/blog}">博客</a></li>
                                         <li><a th:href="@{/contact}">联系我们</a></li>
+                                        <li th:if="${session.user !=null}">
+                                            <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">我的简历</a>
+                                        </li>
                                         <!--/*@thymesVar id="user" type="com.entity.User"*/-->
-                                        <div class="login-btn pt-36" th:if="${user} == null">
+                                        <div class="login-btn pt-36" th:if="${session.user} == null">
                                             <a class="modal-view button" data-toggle="modal"
                                                data-target="#productModal">登录</a>
                                         </div>
-                                        <div class="login-btn pt-36" th:if="${user != null}">
-                                            <a th:href="@{/infor}">欢迎：<span th:text="${user.userName}"></span></a>
+                                        <div class="login-btn pt-36" th:if="${session.user != null}">
+                                            <a th:href="@{/infor}">欢迎：<span th:text="${session.user.userName}"></span></a>
+                                            <a th:href="@{/logout}">退出</a>
                                         </div>
+                                        </li>
+                                        <li th:if="${msg != null}">
+                                            <font color="red"><span th:text="${msg}"></span></font>
                                         </li>
                                     </ul>
                                 </nav>
@@ -111,38 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Mobile Menu Area start -->
-                <div class="mobile-menu-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="mobile-menu">
-                                    <nav id="dropdown">
-                                        <ul>
-                                            <li><a th:href="@{/}">主页</a>
-                                            </li>
-                                            <li><a th:href="@{/alljobs}">工作栏</a>
-                                                <ul class="sub-menu">
-                                                </ul>
-                                            </li>
-                                            <li><!--/*@thymesVar id="user" type="com.entity.User"*/-->
-                                                <a th:href="@{/resume}" target="_blank">简历</a></li>
-                                            <li><a th:href="@{/register}">注册新账号</a></li>
-                                            <li><a th:href="@{/blog}">博客</a>
-                                                <!--<ul class="dropdown">
-                                                    <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                                </ul>-->
-                                            </li>
-                                            <li><a th:href="@{/contact}">联系我们</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <!-- Mobile Menu Area end -->  
-                </header>
+            </header>
                 <!-- End of Header Area -->
                 <!--Breadcrumb Banner Area Start-->
                 <div class="breadcrumb-banner-area pt-150 bg-3 bg-opacity-black-60">
@@ -158,41 +124,21 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <form action="#" method="post">
+                                <form th:action="@{/jobCategory}" method="post">
                                     <div class="form-container fix bg-opacity-blue-85 mt-125">
                                         <div class="box-select">
-                                            <div class="select large">
-                                                <select name="job">
-                                                    <option>Keywords</option>
-                                                    <option>Finance</option>
-                                                    <option>Accountant</option>
-                                                    <option>Enginner</option>
-                                                    <option>Programmer</option>
-                                                    <option>Developer</option>
-                                                </select>
-                                            </div>
-                                            <div class="select small">
-                                                <select name="date">
-                                                    <option>All Regions</option>
-                                                    <option>Dhaka</option>
-                                                    <option>Shylet</option>
-                                                    <option>Khulna</option>
-                                                    <option>Barishal</option>
-                                                    <option>Chittagong</option>
-                                                </select>
-                                            </div>
                                             <div class="select medium">
                                                 <select name="jobCategory">
-                                                    <option>Category</option>
-                                                    <option>Web Design</option>
-                                                    <option>Designing</option>
-                                                    <option>Development</option>
-                                                    <option>Programming</option>
-                                                    <option>Developing</option>
+                                                    <option value="">类别</option>
+                                                    <option value="java">java</option>
+                                                    <option value="python">python</option>
+                                                    <option value="php">php</option>
+                                                    <option value="UI设计">UI设计</option>
+                                                    <option value="DBA">DBA</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="button" class="button-dark pull-right" >Search</button>
+                                        <button type="submit" class="button-dark pull-right" >Search</button>
                                     </div>
                                 </form>  
                             </div>

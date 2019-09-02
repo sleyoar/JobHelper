@@ -1,47 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.entity.User" >
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
-    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from jh_user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.entity.User" >
-    insert into jh_user (user_id, user_name, user_password,
-                         user_email)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
-            #{userEmail,jdbcType=VARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.entity.User" >
-    update jh_user
-    set user_name = #{userName,jdbcType=VARCHAR},
-        user_password = #{userPassword,jdbcType=VARCHAR},
-        user_email = #{userEmail,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select user_id, user_name, user_password, user_email
-    from jh_user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
-    select user_id, user_name, user_password, user_email
-    from jh_user
-  </select>
-  <select id="verifyUser" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select user_id, user_name, user_password, user_email
-    from jh_user
-    where user_name = #{userName}
-  </select>
-  <delete id="batchDelete" parameterType="list">
-    DELETE from jh_user
-    <foreach collection="ids" item="userId" separator="," open="where user_id in(" close=")">
-      #{userId}
-    </foreach>
-  </delete>
+    <resultMap id="BaseResultMap" type="com.entity.User" >
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from jh_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.entity.User" >
+        insert into jh_user (user_id, user_name, user_password,
+                             user_email)
+        values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
+                #{userEmail,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.entity.User" >
+        update jh_user
+        set user_name = #{userName,jdbcType=VARCHAR},
+            user_password = #{userPassword,jdbcType=VARCHAR},
+            user_email = #{userEmail,jdbcType=VARCHAR}
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select user_id, user_name, user_password, user_email
+        from jh_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap" >
+        select user_id, user_name, user_password, user_email
+        from jh_user
+    </select>
+    <select id="verifyUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select user_id, user_name, user_password, user_email
+        from jh_user
+        where user_name = #{userName}
+    </select>
+    <delete id="batchDelete" parameterType="list">
+        DELETE from jh_user
+        <foreach collection="ids" item="userId" separator="," open="where user_id in(" close=")">
+            #{userId}
+        </foreach>
+    </delete>
+    <select id="getUserJob" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+        SELECT *
+        FROM jh_user
+            INNER JOIN user_job_middle ujm on jh_user.user_id = ujm.user_id
+            INNER JOIN jh_job jj on ujm.job_id = jj.job_id
+        WHERE jh_user.user_id=#{userId}
+    </select>
+    <resultMap id="BaseResultMap1" type="com.entity.User">
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+        <collection property="jobs" ofType="com.entity.Job" javaType="list">
+            <id column="job_id" property="jobId" jdbcType="INTEGER" />
+            <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+            <result column="job_salary" property="jobSalary" jdbcType="VARCHAR" />
+            <result column="job_category" property="jobCategory" jdbcType="VARCHAR" />
+            <result column="job_describe" property="jobDescribe" jdbcType="VARCHAR" />
+            <result column="job_buff" property="jobBuff" jdbcType="VARCHAR" />
+            <result column="job_need" property="jobNeed" jdbcType="VARCHAR" />
+            <result column="job_quality" property="jobQuality" jdbcType="VARCHAR" />
+            <result column="job_date" property="jobDate" jdbcType="DATE" />
+            <result column="job_address" property="jobAddress" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+    <insert id="insertUJM" parameterType="com.entity.UJM">
+        insert into user_job_middle (user_id, job_id)
+        values (#{userId},#{jobId});
+    </insert>
+    <select id="getUJM" parameterType="com.entity.UJM" resultType="com.entity.UJM">
+        SELECT user_id,job_id FROM user_job_middle WHERE user_id = #{userId} and job_id=#{jobId}
+    </select>
 </mapper>

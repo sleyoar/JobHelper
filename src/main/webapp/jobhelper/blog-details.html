@@ -65,25 +65,14 @@
                         <div class="pull-right">
                             <nav id="primary-menu">
                                 <ul class="main-menu text-right">
-                                    <li><a th:href="@{/}">主页</a>
-                                    </li>
-                                    <li><a th:href="@{/alljobs}">工作栏</a>
-                                        <ul class="sub-menu">
-                                        </ul>
-                                    </li>
-                                    <li th:if="${session.user !=null}">
-                                        <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
-                                    </li>
-                                    <li th:if="${session.user ==null}">
-                                        <a th:href="@{/resume}" target="_blank">简历</a>
-                                    </li>
+                                    <li><a th:href="@{/}">主页</a></li>
+                                    <li><a th:href="@{/alljobs}">工作栏</a></li>
                                     <li><a th:href="@{/register}">注册新账号</a></li>
-                                    <li><a th:href="@{/blog}">博客</a>
-                                        <!--<ul class="dropdown">
-                                            <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                        </ul>-->
-                                    </li>
+                                    <li><a th:href="@{/blog}">博客</a></li>
                                     <li><a th:href="@{/contact}">联系我们</a></li>
+                                    <li th:if="${session.user !=null}">
+                                        <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">我的简历</a>
+                                    </li>
                                     <!--/*@thymesVar id="user" type="com.entity.User"*/-->
                                     <div class="login-btn pt-36" th:if="${session.user} == null">
                                         <a class="modal-view button" data-toggle="modal"
@@ -91,6 +80,7 @@
                                     </div>
                                     <div class="login-btn pt-36" th:if="${session.user != null}">
                                         <a th:href="@{/infor}">欢迎：<span th:text="${session.user.userName}"></span></a>
+                                        <a th:href="@{/logout}">退出</a>
                                     </div>
                                     </li>
                                     <li th:if="${msg != null}">
@@ -102,41 +92,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile Menu Area start -->
-            <div class="mobile-menu-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="mobile-menu">
-                                <nav id="dropdown">
-                                    <ul>
-                                        <li><a th:href="@{/}">主页</a>
-                                        </li>
-                                        <li><a th:href="@{/alljobs}">工作栏</a>
-                                            <ul class="sub-menu">
-                                            </ul>
-                                        </li>
-                                        <li th:if="${session.user !=null}">
-                                            <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">简历</a>
-                                        </li>
-                                        <li th:if="${session.user ==null}">
-                                            <a th:href="@{/resume}" target="_blank">简历</a>
-                                        </li>
-                                        <li><a th:href="@{/register}">注册新账号</a></li>
-                                        <li><a th:href="@{/blog}">博客</a>
-                                            <!--<ul class="dropdown">
-                                                <li><a th:href="@{/blogdetails}">博客详情</a></li>
-                                            </ul>-->
-                                        </li>
-                                        <li><a th:href="@{/contact}">联系我们</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Mobile Menu Area end -->
         </header>
         <!-- End of Header Area -->
         <!--Breadcrumb Banner Area Start-->
@@ -206,8 +161,11 @@
                                 <a href="#"><i class="zmdi zmdi-instagram"></i></a>
                             </div>
                         </div>
+
+
                         <div class="comments fix pt-55">
-                            <h4 class="title pb-8 mb-27">Comments</h4>
+                            <h4 class="title pb-8 mb-27">评论</h4>
+
                             <div class="single-comment fix mb-30">
                                 <div class="author-image">
                                     <img alt="" th:src="@{/static/images/comment/1.jpg}">
@@ -222,7 +180,7 @@
                                         the majority have suffered aation in some form, by injected humour,</p>
                                 </div>
                             </div>
-                            <div class="single-comment fix mb-30 ml-130">
+                            <div class="single-comment fix mb-30 ">
                                 <div class="author-image">
                                     <img alt="" th:src="@{/static/images/comment/2.jpg}">
                                 </div>
@@ -251,6 +209,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                     <div class="col-md-4">
                         <div class="single-sidebar-widget mb-48">
@@ -258,21 +218,21 @@
                                 <h4 class="mb-23">Search</h4>
                             </div>
                             <div class="search-container">
-                                <form action="#" method="post">
-                                    <input type="text" placeholder="Search keyword"/>
+                                <form th:action="@{/searchBlog}" method="post">
+                                    <input type="text" name="blogLike" placeholder="搜索关键词"/>
                                 </form>
                             </div>
                         </div>
                         <div class="single-sidebar-widget mb-48">
                             <div class="sidebar-widget-title">
-                                <h4 class="mb-23">Categories</h4>
+                                <h4 class="mb-23">类别</h4>
                             </div>
                             <ul class="sidebar-widget-lists light-gray-bg pt-17 pb-15">
-                                <li class="ptb-10"><a href="#" class="ml-30">热门帖子<span class="ml-9">(9)</span></a></li>
-                                <li class="ptb-10"><a href="#" class="ml-30">技术 <span class="ml-9">(5)</span></a></li>
-                                <li class="ptb-10"><a href="#" class="ml-30">科学 <span class="ml-9">(2)</span></a></li>
-                                <li class="ptb-10"><a href="#" class="ml-30">简历 <span class="ml-9">(9)</span></a></li>
-                                <li class="ptb-10"><a href="#" class="ml-30">趣味 <span class="ml-9">(9)</span></a></li>
+                                <li class="ptb-10"><a th:href="@{/blogCategory(blogCategory='热门帖子')}" class="ml-30">热门帖子</a></li>
+                                <li class="ptb-10"><a th:href="@{/blogCategory(blogCategory='技术')}" class="ml-30">技术 </a></li>
+                                <li class="ptb-10"><a th:href="@{/blogCategory(blogCategory='科学')}" class="ml-30">科学 </a></li>
+                                <li class="ptb-10"><a th:href="@{/blogCategory(blogCategory='简历')}" class="ml-30">简历 </a></li>
+                                <li class="ptb-10"><a th:href="@{/blogCategory(blogCategory='趣味')}" class="ml-30">趣味 </a></li>
                             </ul>
                         </div>
                         <div class="single-sidebar-widget mb-48">

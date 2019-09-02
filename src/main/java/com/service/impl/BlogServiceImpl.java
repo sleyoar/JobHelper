@@ -47,4 +47,15 @@ public class BlogServiceImpl implements BlogService {
     public void batchDelete(List<Integer> ids) {
         blogMapper.batchDelete(ids);
     }
+
+    @Override
+    public List<Blog> getByBlogCategory(String blogCategory) {
+        return blogMapper.getByBlogCategory(blogCategory);
+    }
+
+    @Override
+    public List<Blog> getByLike(String blogLike) {
+        return blogMapper.getByLike(blogLike);
+    }
+
 }

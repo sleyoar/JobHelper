@@ -1,19 +1,24 @@
 package com.controller;
 
 import com.entity.Admin;
+import com.entity.Resume;
+import com.entity.UJM;
 import com.entity.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.AdminService;
+import com.service.ResumeService;
 import com.service.UserService;
 import com.util.Msg;
 import net.sf.json.JSONArray;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -25,6 +30,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private ResumeService resumeService;
 
     @RequestMapping("/register")
     public String register(){
@@ -37,7 +44,8 @@ public class UserController {
         User user = userService.verifyUser(userName);
         Admin admin = adminService.verifyAdmin(userName);
         if (user!=null && userPassword.equals(user.getUserPassword())){
-            request.getSession().setAttribute("user",user);
+            User user1 = userService.getUserJob(user.getUserId());
+            request.getSession().setAttribute("user",user1);
             return "forward:/";
         } else if (admin !=null && userPassword.equals(admin.getAdminPassword())){
             request.getSession().setAttribute("admin",admin);
@@ -46,6 +54,31 @@ public class UserController {
             request.setAttribute("msg","用户名或密码错误！");
             return "forward:/";
         }
+    }
+    @RequestMapping("/insertUJM")
+    @ResponseBody
+    public Msg insertUJM(@RequestParam("userId")Integer userId,@RequestParam("jobId")Integer jobId) {
+        if (userService.getUJM(userId,jobId)==null){
+            UJM ujm = new UJM();
+            ujm.setUserId(userId);
+            ujm.setJobId(jobId);
+            userService.insertUJM(ujm);
+            return Msg.success();
+        }else {
+            return Msg.fail();
+        }
+    }
+    @RequestMapping("/infor")
+    public String resume(HttpServletRequest request) {
+        Integer userId = ((User)request.getSession().getAttribute("user")).getUserId();
+        User user = userService.getUserJob(userId);
+        request.getSession().setAttribute("user",user);
+        return "info";
+    }
+    @RequestMapping("/logout")
+    public String adminLogout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "forward:/";
     }
 
     @RequestMapping("/userSave")

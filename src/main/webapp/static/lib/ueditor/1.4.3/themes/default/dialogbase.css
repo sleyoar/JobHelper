@@ -95,6 +95,6 @@ a.button {
     background: url(../../themes/default/images/icons-all.gif) no-repeat;
 }
 
-a.button:hover {
+a. button:hover {
     background-position: 0 -30px;
 }

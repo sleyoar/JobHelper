@@ -24,5 +24,13 @@ public interface BlogService {
     /*update one blog*/
     int updateByPrimaryKey(Blog record);
 
+    /*批量删除*/
     void batchDelete(@Param("ids") List<Integer> ids);
+
+    /*类别查询*/
+    List<Blog> getByBlogCategory(String blogCategory);
+
+    /*模糊查询*/
+    List<Blog> getByLike(String blogLike);
+
 }

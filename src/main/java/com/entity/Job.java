@@ -1,8 +1,10 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Job {
+public class Job implements Serializable {
+    private static final long serialVersionUID = 4957683856877445307L;
     private Integer jobId;
 
     private String jobName;

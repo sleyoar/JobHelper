@@ -1,6 +1,10 @@
 package com.entity;
 
-public class User {
+import java.io.Serializable;
+import java.util.List;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1892687130952591086L;
     private Integer userId;
 
     private String userName;
@@ -8,6 +12,16 @@ public class User {
     private String userPassword;
 
     private String userEmail;
+
+    List<Job> jobs;
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 
     public User() {
     }
@@ -19,6 +33,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userEmail='" + userEmail + '\'' +
+                ", jobs=" + jobs +
                 '}';
     }
 

@@ -40,4 +40,7 @@ public interface JobService {
     int updateByPrimaryKey(Job record);
 
     void batchDelete(@Param("ids") List<Integer> ids);
+
+    List<Job> getByCategory(String jobCategory);
+
 }

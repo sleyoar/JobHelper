@@ -1,8 +1,10 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Blog {
+public class Blog implements Serializable {
+    private static final long serialVersionUID = 354507549220004454L;
     private Integer blogId;
 
     private String blogUser;

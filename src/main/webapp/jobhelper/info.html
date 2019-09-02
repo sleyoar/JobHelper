@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>工作详情</title>
+    <title>个人详情</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,6 +47,9 @@
     <!-- Modernizr JS -->
     <script th:src="@{/static/js/vendor/modernizr-2.8.3.min.js}"></script>
 
+    <style>
+        .scroll{height:400px;overflow:auto;overflow-x:hidden;}
+    </style>
 </head>
 <body>
 <!--Main Wrapper Start-->
@@ -70,7 +73,7 @@
                                     <li><a th:href="@{/register}">注册新账号</a></li>
                                     <li><a th:href="@{/blog}">博客</a></li>
                                     <li><a th:href="@{/contact}">联系我们</a></li>
-                                    <li th:if="${session.user!=null}">
+                                    <li th:if="${session.user !=null}">
                                         <a th:href="@{/resume(userId=${session.user.userId})}" target="_blank">我的简历</a>
                                     </li>
                                     <!--/*@thymesVar id="user" type="com.entity.User"*/-->
@@ -78,7 +81,7 @@
                                         <a class="modal-view button" data-toggle="modal"
                                            data-target="#productModal">登录</a>
                                     </div>
-                                    <div class="login-btn pt-36" th:if="${session.user!=null}">
+                                    <div class="login-btn pt-36" th:if="${session.user != null}">
                                         <a th:href="@{/infor}">欢迎：<span th:text="${session.user.userName}"></span></a>
                                         <a th:href="@{/logout}">退出</a>
                                     </div>
@@ -94,72 +97,76 @@
             </div>
         </header>
         <!-- End of Header Area -->
-        <!--Breadcrumb Banner Area Start-->
-        <div class="breadcrumb-banner-area pt-94 pb-85 bg-3 bg-opacity-dark-blue-90">
+        <div class="job-post-area pb-120">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="breadcrumb-text">
-                            <h2 class="text-center text-white uppercase mb-17">工作详情</h2>
-                            <div class="breadcrumb-bar">
-                                <ul class="breadcrumb text-center m-0">
-                                    <li class="text-white uppercase ml-15 mr-15"><a th:href="@{/}">主页</a></li>
-                                    <li class="text-white uppercase ml-15 mr-15">工作详情</li>
-                                </ul>
-                            </div>
+                        <div class="section-title text-center">
+                            <h2 class="uppercase">我的基本信息</h2>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+        </div>
+
+        <div class="job-post-area pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h2 class="uppercase">我的投递</h2>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="job-post-container fix scroll">
+                            <table>
+                                <tbody th:remove="all-but-first">
+                                <!--/*@thymesVar id="jobs2" type="java.util.List"*/-->
+                                <!--/*@thymesVar id="job2" type="com.entity.Job"*/-->
+                                <tr th:each="job2:${session.user.jobs}">
+                                    <div class="single-job-post fix">
+                                        <div class="job-title col-4 pl-30" th:switch="${job2.jobCategory}">
+                                            <span class="pull-left block mtb-17" th:case="'java'">
+                                                <img th:src="@{/static/images/company-logo/1.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="'php'">
+                                                <img th:src="@{/static/images/company-logo/2.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="'DBA'">
+                                                <img th:src="@{/static/images/company-logo/3.png}" alt="">
+                                            </span>
+                                            <span class="pull-left block mtb-17" th:case="*">
+                                                <img th:src="@{/static/images/company-logo/4.png}" alt="">
+                                            </span>
+                                            <div class="fix pl-30 mt-29">
+                                                <h4 class="mb-5"><span th:text="${job2.jobName}"></span></h4>
+                                                <h5><a th:href="@{/jobdetails(jobId=${job2.jobId})}">详情</a></h5>
+                                            </div>
+                                        </div>
+                                        <div class="address col-4 pl-50">
+                                            <span class="mtb-30 block"><span
+                                                    th:text="${#dates.format(job2.jobDate, 'yyyy-MM-dd')}"></span>&nbsp;&nbsp;发布于职帮网<br>
+                                           <span th:text="${job2.jobAddress}"></span></span>
+                                        </div>
+                                        <div class="time-payment col-2 pl-60 text-center pt-22">
+                                            <span class="block mb-6"><span th:text="${job2.jobSalary}"></span></span>
+                                            <a class="button button-red"><span th:text="${job2.jobQuality}"></span></a>
+                                        </div>
+                                    </div>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--End of Breadcrumb Banner Area-->
-        <!--Start of Single Job Post Area-->
-        <div class="single-job-post-area pt-70 mb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <form action="#">
-                            <div class="single-job-content">
-                                <div class="area-title text-center">
-                                    <h2 class="pt-10 pb-10" th:text="${job.jobName}"></h2>
-                                </div>
-                                <div class="title uppercase pt-70 pb-26"><span>职位描述</span></div>
-                                <div class="single-job-form">
-                                    <p th:text="${job.jobDescribe}"></p>
-                                </div>
-                                <div class="title uppercase pt-70 pb-26"><span>职位薪资</span></div>
-                                <div class="single-job-form">
-                                    <span class="block mb-6"><span th:text="${job.jobSalary}"></span></span>
-                                </div>
-                                <div class="title uppercase mt-58 mb-25"><span class="medium">职位诱惑</span></div>
-                                <div class="single-job-form">
-                                    <div class="single-info mb-14">
-                                        <span class="mark-icon block pl-27" th:text="${job.jobBuff}"></span>
-                                    </div>
-                                </div>
-                                <div class="title uppercase mt-58 mb-25"><span>任职要求</span></div>
-                                <div class="single-job-form">
-                                    <div class="single-info mb-14">
-                                        <span class="number block" th:text="${job.jobNeed}"></span>
-                                    </div>
-                                </div>
-                                <div class="title uppercase pt-47 pb-26"><span class="medium">工作地址</span></div>
-                                <div class="single-job-form">
-                                    <p th:text="${job.jobAddress}"></p>
-                                </div>
-                                <div class="mt-38">
-                                    <a th:href="@{/}" class="button button-large-box lg-btn mr-20">返回</a>
-                                    <span th:if="${session.user !=null}">
-                                        <a id="submitMe" class="button button-large-box lg-btn">投递简历</a>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End of Single Job Post Area-->
+
         <!--Start of Social Link Area-->
         <div class="social-link-area ptb-40 dark-blue-bg">
             <div class="container">
@@ -316,41 +323,5 @@
 <!-- Main js file contents all jQuery plugins activation
 ========================================================= -->
 <script th:src="@{/static/js/main.js}"></script>
-<script>
-    function getRootPath() {
-        var pathName = window.location.pathname.substring(1);
-        var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
-        return window.location.protocol + '//' + window.location.host + '/' + webName + '/';
-    }
-    $(function () {
-        var userId = [[${session.user.userId}]];
-        var jobId = [[${job.jobId}]];
-        console.log(userId+jobId);
-        $("#submitMe").click(function () {
-                $.ajax({
-                    url:getRootPath()+"insertUJM?userId="+userId+"&jobId="+jobId,
-                    type:"GET",
-                    success:function (result) {
-                        if (result.code==100){
-                            changeColor();
-                        }else {
-                            console.log(result)
-                        }
-                    }
-                })
-        })
-    });
-
-    function changeColor() {
-        $("#submitMe").removeClass("btn-danger").addClass(" button-large-box lg-btn disable").text("已投递");
-    }
-
-/*    $(function () {
-        var attr = [[${session.user.jobs}]];
-        var job = [[${job}]];
-        var a = $.contain(job,attr);
-        console.log(a);
-    })*/
-</script>
 </body>
 </html>

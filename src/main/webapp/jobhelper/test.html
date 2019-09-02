@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>点击显示全文效果</title>
+    <style type="text/css">
+        #box
+        {
+            width:680px;
+            height:200px;
+        }
+    </style>
+    <script type="text/javascript">
+        function show()
+        {
+            var box = document.getElementById("box");
+            var text = box.innerHTML;
+            var newBox = document.createElement("div");
+            var btn = document.createElement("a");
+            newBox.innerHTML = text.substring(0,20);
+            btn.innerHTML = text.length > 20 ? "...显示全部" : "";
+            btn.href = "###";
+            btn.onclick = function(){
+                if(btn.innerHTML == "...显示全部")
+                {
+                    btn.innerHTML = "收起";
+                    newBox.innerHTML = text;
+                }
+                else
+                {
+                    btn.innerHTML = "...显示全部";
+                    newBox.innerHTML = text.substring(0,20);
+                }
+            }
+            box.innerHTML = "";
+            box.appendChild(newBox);
+            box.appendChild(btn);
+        }
+        window.onload=function()
+        {
+            show();
+        }
+    </script>
+</head>
+<body>
+<span id="box" >
+    奇芳阁（原名：三次元世界）是一个分享精品绿色便携软件、实用绿色软件、互联网免费资源下载的绿软分享吧部落格。免费资源部落社区天天更新大量精选实用的绿色软件,并提供真实客观的软件测评.
+</span>
+</body>
+</html>
